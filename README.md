@@ -21,7 +21,9 @@ Reproductor de música **retro, inspirado en el Winamp clásico**, para Windows.
 
 ## 📥 Descargar e instalar
 
-1. Ve a **[Releases](../../releases)** y descarga `RetroAmp-Instalador.zip`.
+### 👉 [Descargar RetroAmp 1.0 (instalador, 54 MB)](https://github.com/ElarCastro/RetroAmp/raw/main/descargas/RetroAmp-Instalador.zip)
+
+1. Descarga el archivo `RetroAmp-Instalador.zip` con el enlace de arriba.
 2. Descomprímelo y ejecuta `RetroAmp-Setup.exe`.
 3. Si Windows muestra *"Windows protegió su PC"*, pulsa **Más información → Ejecutar de todas formas**. El instalador no tiene firma digital de pago.
 
