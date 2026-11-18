@@ -51,7 +51,7 @@ Reproductor de música **retro, inspirado en el Winamp clásico**, para Windows.
 
 ## 🙌 Créditos
 
-- Basado en un proyecto que descargué (antes llamado *WinampYT*): **[nombre o enlace del proyecto original y su autor]**.
+- Basado en un proyecto que descargué (antes llamado *WinampYT*):
 - Mejorado y empaquetado con la ayuda de **Claude (Anthropic)**: nuevo nombre, instalador, modo fantasma, diseño Cromo, temas, inicio con Windows y lanzador sin consola.
 - yt-dlp, Deno, ffmpeg y WebView2 pertenecen a sus respectivos autores.
 
