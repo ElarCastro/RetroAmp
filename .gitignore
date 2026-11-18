@@ -1,0 +1,16 @@
+# Se descargan solos o van en el instalador (no subir: son muy pesados)
+bin/yt-dlp.exe
+bin/deno.exe
+bin/ffmpeg.exe
+bin/ffprobe.exe
+# Datos de cada usuario
+cache/
+perfil/
+playlists/
+estado.json
+registro.txt
+ventana.txt
+# Compilados
+*.exe
+!RetroAmp.exe
+instalador/app/

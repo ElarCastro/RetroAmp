@@ -1,0 +1,99 @@
+RETROAMP - Reproductor retro (inspirado en el Winamp clásico), solo audio,
+con música de YouTube
+=======================================================================
+
+INSTALAR / ACTUALIZAR
+1. Ejecuta RetroAmp-Setup.exe y sigue los pasos (no pide permisos de
+   administrador; se instala solo para tu usuario).
+2. Puedes elegir: acceso directo en el escritorio e iniciar con Windows.
+3. Para actualizar, vuelve a ejecutar el instalador: tus listas, ajustes y
+   caché se conservan.
+- ¿Tenías WinampYT instalado? El instalador de RetroAmp pasa tus listas y
+  ajustes automáticamente y quita la versión anterior. Tus MP3 anteriores
+  siguen en Música\WinampYT; los nuevos se guardan en Música\RetroAmp.
+- ¿Tenías la versión portable? Copia tu carpeta "playlists" y el archivo
+  estado.json a %LOCALAPPDATA%\Programs\RetroAmp (con RetroAmp cerrado).
+- Desinstalar: Configuración de Windows > Aplicaciones > RetroAmp, o
+  Menú Inicio > RetroAmp > Desinstalar RetroAmp.
+
+INICIAR CON WINDOWS
+- Actívalo o quítalo en OPC > INICIO, o con clic derecho en el icono de
+  RetroAmp junto al reloj > "Iniciar con Windows".
+- Al iniciar con Windows el reproductor arranca minimizado.
+
+LA VENTANA
+- Diseño "Cromo": plateado con pantalla azul, botones redondos, barra de
+  menús (Archivo, Reproducir, Opciones, Ver, Ayuda; también con Alt + letra),
+  botón de silencio y CONFIG para abrir las opciones.
+- RetroAmp ahora tiene su propia ventana de Windows, del tamaño exacto del
+  reproductor (sin bordes ni espacio sobrante). Se arrastra desde la barra
+  de título dorada.
+- Botones de la barra de título:
+    👻 Modo fantasma   📌 Siempre visible   ▁ Mini reproductor
+    _  Minimizar       ×  Cerrar
+- Botones EQ, PL y OPC: muestran u ocultan el ecualizador, la lista y las
+  opciones. La ventana se ajusta sola.
+- Junto al reloj de Windows aparece el icono de RetroAmp (menú con clic derecho).
+
+MODO FANTASMA
+- El reproductor queda encima de todo, semitransparente, y el mouse lo
+  atraviesa: puedes trabajar en lo que está debajo sin que moleste.
+- Mantén Ctrl o Alt para poder tocarlo.
+- Para activarlo desde cualquier programa: Ctrl + Alt + F.
+- Para desactivarlo: Ctrl + W (o de nuevo Ctrl + Alt + F).
+  Mientras el modo fantasma está activo, Ctrl + W queda reservado para
+  RetroAmp (en el navegador no cerrará pestañas hasta que lo quites).
+- También: mantén Ctrl y pulsa 👻, o haz clic en el icono junto al reloj.
+- La transparencia se ajusta en OPC.
+
+BARRA DE TAREAS
+- Al pasar el mouse sobre el icono de RetroAmp en la barra de tareas aparecen
+  los botones ⏮ ▶/⏸ ⏭.
+- El icono muestra el avance de la canción (verde sonando, amarillo en pausa).
+- Botón ▁: mini reproductor de una línea, acoplado junto a la barra de tareas.
+- Las teclas multimedia del teclado controlan RetroAmp.
+
+LISTAS DE REPRODUCCIÓN
+- NUEVA: empieza una lista vacía.  GUARDAR / GUARDAR COMO: la guarda con nombre.
+- El desplegable "Mis listas" carga cualquier lista guardada.
+- BORRAR: elimina la lista elegida en el desplegable.
+- Se guardan en la carpeta "playlists" (puedes copiarlas a otro PC).
+
+GUARDAR EN MP3
+- En la lista: elige una canción y pulsa MP3, o pulsa MP3 TODO para la lista
+  completa. Se guardan con nombre, artista y carátula en Música\RetroAmp
+  (las listas completas, en una subcarpeta con el nombre de la lista).
+- 📁 abre la carpeta.
+- La primera vez se descarga el conversor ffmpeg (unos 150 MB, una sola vez).
+- La conversión sigue en segundo plano mientras escuchas música.
+
+ECUALIZADOR
+- 10 bandas (60 Hz a 16 kHz) + preamplificador, ±12 dB.
+- Ajustes listos: Rock, Pop, Jazz, Clásica, Dance, Electrónica, Latino,
+  Más graves, Más agudos, Voz, Fiesta, Suave, Audífonos.
+- Doble clic en una barra la deja en 0. ON/OFF lo activa o desactiva.
+
+TEMAS (en OPC)
+  Cromo (nuevo diseño, por defecto), Clásico, Medianoche, Matrix, Ámbar, Vaporwave, Plata, Fuego, Océano,
+  Sakura, Carbón y Ártico.
+
+BUSCAR MÚSICA
+- Escribe canción o artista y pulsa Enter. Aparecen canciones y listas.
+- Clic: añadir a la lista. Doble clic: escuchar ya.
+- Clic en una lista: muestra sus canciones; "Añadir las N canciones" la suma entera.
+- También puedes pegar enlaces de videos o listas de YouTube.
+
+ATAJOS
+  Z anterior · X play · C pausa · V stop · B siguiente
+  ← / → adelantar 5 s · ↑ / ↓ volumen · S aleatorio · R repetir · L buscar
+  Ctrl+Alt+F modo fantasma (funciona desde cualquier programa) · Ctrl+W lo quita
+
+SI ALGO FALLA
+- Para cerrar RetroAmp por completo: × en el reproductor, "Salir" en el
+  icono junto al reloj, o Menú Inicio > RetroAmp > Cerrar RetroAmp.
+- Si la ventana propia no puede abrirse, RetroAmp se abre en Chrome/Edge como
+  antes (sin modo fantasma ni botones en la barra de tareas) y anota el motivo
+  en registro.txt. Envía ese archivo para revisarlo.
+- La ventana propia usa WebView2, que ya viene en Windows 10 y 11.
+- Si Windows muestra "Windows protegió su PC" al instalar: "Más información"
+  > "Ejecutar de todas formas" (el instalador no tiene firma digital de pago).
