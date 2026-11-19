@@ -19,6 +19,12 @@ Reproductor de música **retro, inspirado en el Winamp clásico**, para Windows.
 - **Descarga a MP3** con carátula y datos de la canción.
 - **Instalador .exe** con accesos directos y opción de **iniciar con Windows**. No pide permisos de administrador.
 
+## 🆕 Novedades de la versión 1.1
+
+- El motor ahora es **un solo programa compilado** (`RetroAmp.exe`): ya no usa PowerShell ni compila código al abrirse. Arranca más rápido y evita las falsas alarmas de algunos antivirus.
+- Ya no descarga nada al iniciar. yt-dlp se actualiza **cuando tú lo pides**: clic derecho en el icono junto al reloj → *Actualizar el motor de YouTube (yt-dlp)*.
+- *Iniciar con Windows* viene **desactivado** en el instalador (lo activas si quieres; si ya lo tenías activado, se conserva).
+
 ## 📥 Descargar e instalar
 
 ### 👉 [Descargar RetroAmp 1.0 (instalador, 54 MB)](https://github.com/ElarCastro/RetroAmp/raw/main/descargas/RetroAmp-Instalador.zip)
@@ -44,15 +50,20 @@ Reproductor de música **retro, inspirado en el Winamp clásico**, para Windows.
 ## 🛠️ Cómo está hecho
 
 - **Interfaz:** HTML/CSS/JS (`RetroAmp.html`).
-- **Motor:** PowerShell (`servidor.ps1`). Sirve la interfaz solo en `127.0.0.1` y usa [yt-dlp](https://github.com/yt-dlp/yt-dlp) + [Deno](https://deno.com) para obtener el audio, y [ffmpeg](https://ffmpeg.org) para los MP3.
-- **Ventana:** WinForms + WebView2 (`host.cs`), compilada al iniciar.
-- **Lanzador:** `Lanzador.cs`, que se compila como `RetroAmp.exe`.
+- **Motor:** C# compilado en `RetroAmp.exe` (`Program.cs` + `Server.cs`). Sirve la interfaz solo en `127.0.0.1:8765` y usa [yt-dlp](https://github.com/yt-dlp/yt-dlp) + [Deno](https://deno.com) para obtener el audio, y [ffmpeg](https://ffmpeg.org) para los MP3 (se descarga de su página oficial la primera vez que guardas un MP3).
+- **Ventana:** WinForms + WebView2 (`Host.cs`), dentro del mismo ejecutable.
 - **Instalador:** NSIS (`instalador/RetroAmp.nsi`).
+
+### Compilar
+
+1. Copia `yt-dlp.exe` y `deno.exe` en la carpeta `bin\`.
+2. Ejecuta `compilar.bat` (usa el compilador de C# que ya trae Windows). Genera `instalador\app\`.
+3. Con [NSIS 3](https://nsis.sourceforge.io): `makensis instalador\RetroAmp.nsi` → `RetroAmp-Setup.exe`.
 
 ## 🙌 Créditos
 
 - Basado en un proyecto que descargué (antes llamado *WinampYT*):
-- Mejorado y empaquetado con la ayuda de **Claude (Anthropic)**: nuevo nombre, instalador, modo fantasma, diseño Cromo, temas, inicio con Windows y lanzador sin consola.
+- Mejorado y empaquetado con la ayuda de **Claude (Anthropic)**: nuevo nombre, instalador, modo fantasma, diseño Cromo, temas, inicio con Windows y, en la 1.1, el motor compilado en C#.
 - yt-dlp, Deno, ffmpeg y WebView2 pertenecen a sus respectivos autores.
 
 ## ⚠️ Aviso

@@ -1,11 +1,12 @@
-RETROAMP - Reproductor retro (inspirado en el Winamp clásico), solo audio,
+﻿RETROAMP - Reproductor retro (inspirado en el Winamp clásico), solo audio,
 con música de YouTube
 =======================================================================
 
 INSTALAR / ACTUALIZAR
 1. Ejecuta RetroAmp-Setup.exe y sigue los pasos (no pide permisos de
    administrador; se instala solo para tu usuario).
-2. Puedes elegir: acceso directo en el escritorio e iniciar con Windows.
+2. Puedes elegir: acceso directo en el escritorio e iniciar con Windows
+   (esta última opción viene desactivada; puedes activarla luego en OPC).
 3. Para actualizar, vuelve a ejecutar el instalador: tus listas, ajustes y
    caché se conservan.
 - ¿Tenías WinampYT instalado? El instalador de RetroAmp pasa tus listas y
@@ -64,7 +65,8 @@ GUARDAR EN MP3
   completa. Se guardan con nombre, artista y carátula en Música\RetroAmp
   (las listas completas, en una subcarpeta con el nombre de la lista).
 - 📁 abre la carpeta.
-- La primera vez se descarga el conversor ffmpeg (unos 150 MB, una sola vez).
+- La primera vez que guardas un MP3 se descarga el conversor ffmpeg desde su
+  página oficial en GitHub (unos 150 MB, una sola vez).
 - La conversión sigue en segundo plano mientras escuchas música.
 
 ECUALIZADOR
@@ -88,12 +90,17 @@ ATAJOS
   ← / → adelantar 5 s · ↑ / ↓ volumen · S aleatorio · R repetir · L buscar
   Ctrl+Alt+F modo fantasma (funciona desde cualquier programa) · Ctrl+W lo quita
 
+ACTUALIZAR EL MOTOR DE YOUTUBE
+- Si YouTube cambia algo y las canciones dejan de cargar: clic derecho en el
+  icono de RetroAmp junto al reloj > "Actualizar el motor de YouTube (yt-dlp)".
+
 SI ALGO FALLA
 - Para cerrar RetroAmp por completo: × en el reproductor, "Salir" en el
   icono junto al reloj, o Menú Inicio > RetroAmp > Cerrar RetroAmp.
-- Si la ventana propia no puede abrirse, RetroAmp se abre en Chrome/Edge como
-  antes (sin modo fantasma ni botones en la barra de tareas) y anota el motivo
-  en registro.txt. Envía ese archivo para revisarlo.
+- Si la ventana propia no puede abrirse, RetroAmp se abre en Chrome/Edge
+  (sin modo fantasma ni botones en la barra de tareas), deja su icono junto al
+  reloj para salir y anota el motivo en registro.txt. Envía ese archivo para
+  revisarlo.
 - La ventana propia usa WebView2, que ya viene en Windows 10 y 11.
 - Si Windows muestra "Windows protegió su PC" al instalar: "Más información"
   > "Ejecutar de todas formas" (el instalador no tiene firma digital de pago).

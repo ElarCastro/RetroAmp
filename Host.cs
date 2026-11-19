@@ -1,7 +1,9 @@
 // RetroAmp - ventana propia de Windows (WinForms + WebView2)
-// Compilado al vuelo por servidor.ps1 con Add-Type (C# 5, .NET Framework 4.x)
+// Compilado dentro de RetroAmp.exe (C# 5, .NET Framework 4.x)
 using System;
-using System.Collections;
+using System.Collections.Generic;
+using System.Threading;
+using Timer = System.Windows.Forms.Timer;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
@@ -79,7 +81,6 @@ namespace RetroAmp
         const int WS_EX_TRANSPARENT = 0x20;
 
         WebView2 web;
-        Hashtable ctx;
         string url, dataDir, root;
         bool ready, ghost, clickThrough, playing, docked, thumbsAdded;
         byte ghostAlpha = 190;
@@ -95,9 +96,9 @@ namespace RetroAmp
         public bool InitFailed;
         public string InitError;
 
-        public Host(string url, string dataDir, string root, Hashtable ctx)
+        public Host(string url, string dataDir, string root, bool startMinimized)
         {
-            this.url = url; this.dataDir = dataDir; this.root = root; this.ctx = ctx;
+            this.url = url; this.dataDir = dataDir; this.root = root;
             FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             StartPosition = FormStartPosition.Manual;
@@ -108,7 +109,7 @@ namespace RetroAmp
             Icon = LoadAppIcon(root, SystemInformation.IconSize) ?? Icon.FromHandle(MakeAppIcon());
             icoPrev = MakeIcon(0); icoPlay = MakeIcon(1); icoPause = MakeIcon(2); icoNext = MakeIcon(3);
             Location = LoadPos();
-            startMin = Environment.GetEnvironmentVariable("RETROAMP_INICIO") == "1";
+            startMin = startMinimized;
             if (startMin) WindowState = FormWindowState.Minimized;
             web = new WebView2();
             web.Dock = DockStyle.Fill;
@@ -139,7 +140,7 @@ namespace RetroAmp
             }
         }
 
-        public static string Run(string url, string dataDir, string root, Hashtable ctx, string loaderDir)
+        public static string Run(string url, string dataDir, string root, string loaderDir, bool startMinimized)
         {
             try { SetProcessDpiAwarenessContext(new IntPtr(-4)); }
             catch { try { SetProcessDPIAware(); } catch { } }
@@ -150,7 +151,7 @@ namespace RetroAmp
             }
             catch { }
             try { Application.EnableVisualStyles(); } catch { }
-            Host f = new Host(url, dataDir, root, ctx);
+            Host f = new Host(url, dataDir, root, startMinimized);
             Application.Run(f);
             if (f.InitFailed) return f.InitError ?? "error desconocido";
             return "";
@@ -348,10 +349,7 @@ namespace RetroAmp
 
         string LaunchCommand()
         {
-            string exe = Path.Combine(root, "RetroAmp.exe");
-            if (File.Exists(exe)) return "\"" + exe + "\" --inicio";
-            string ps = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), @"WindowsPowerShell\v1.0\powershell.exe");
-            return "\"" + ps + "\" -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File \"" + Path.Combine(root, "servidor.ps1") + "\"";
+            return "\"" + Path.Combine(root, "RetroAmp.exe") + "\" --inicio";
         }
 
         bool IsAutoStart()
@@ -542,6 +540,8 @@ namespace RetroAmp
             cm.Items.Add(miAuto);
             cm.Opening += delegate { try { miAuto.Checked = IsAutoStart(); } catch { } };
             cm.Items.Add(new ToolStripSeparator());
+            cm.Items.Add(new ToolStripMenuItem("Actualizar el motor de YouTube (yt-dlp)", null, delegate { UpdateYtdlp(); }));
+            cm.Items.Add(new ToolStripSeparator());
             cm.Items.Add(new ToolStripMenuItem("Mostrar reproductor", null, delegate { ShowMe(); }));
             cm.Items.Add(new ToolStripMenuItem("Salir", null, delegate { Close(); }));
             tray = new NotifyIcon();
@@ -550,6 +550,38 @@ namespace RetroAmp
             tray.ContextMenuStrip = cm;
             tray.Visible = true;
             tray.MouseClick += delegate (object s, MouseEventArgs e) { if (e.Button == MouseButtons.Left) ShowMe(); };
+        }
+
+        // yt-dlp ya no se actualiza solo en segundo plano: el usuario lo pide desde el menu
+        bool updating;
+        void UpdateYtdlp()
+        {
+            if (updating) return;
+            updating = true;
+            Balloon("Buscando actualizaciones de yt-dlp...", ToolTipIcon.Info);
+            Thread t = new Thread(delegate ()
+            {
+                string msg; ToolTipIcon icon = ToolTipIcon.Info;
+                try
+                {
+                    Server.RunResult r = Server.RunTool(App.Ytdlp, new[] { "-U" }, 180000);
+                    string all = (r.Out + "\n" + r.Err).Trim();
+                    if (r.Code == 0)
+                        msg = all.IndexOf("up to date", StringComparison.OrdinalIgnoreCase) >= 0
+                            ? "yt-dlp ya esta en la ultima version."
+                            : "yt-dlp se actualizo correctamente.";
+                    else { msg = "No se pudo actualizar yt-dlp: " + Server.ShortErr(all); icon = ToolTipIcon.Warning; }
+                }
+                catch (Exception ex) { msg = "No se pudo actualizar yt-dlp: " + ex.Message; icon = ToolTipIcon.Warning; }
+                try { BeginInvoke((MethodInvoker)delegate { updating = false; Balloon(msg, icon); }); } catch { updating = false; }
+            });
+            t.IsBackground = true;
+            t.Start();
+        }
+
+        void Balloon(string text, ToolTipIcon icon)
+        {
+            try { tray.ShowBalloonTip(4000, "RetroAmp", text, icon); } catch { }
         }
 
         void ShowMe()
@@ -567,10 +599,8 @@ namespace RetroAmp
             if (ghost) ApplyGhost(false);
             try
             {
-                object sv = ctx["Show"];
-                if (sv is bool && (bool)sv) { ctx["Show"] = false; ShowMe(); }
-                object st = ctx["Stop"];
-                if (st is bool && (bool)st) Close();
+                if (App.Show) { App.Show = false; ShowMe(); }
+                if (App.Stop) Close();
             }
             catch { }
         }
@@ -581,7 +611,7 @@ namespace RetroAmp
             try { timer.Stop(); } catch { }
             for (int i = 1; i <= 6; i++) { try { UnregisterHotKey(Handle, i); } catch { } }
             try { tray.Visible = false; tray.Dispose(); } catch { }
-            try { ctx["Stop"] = true; } catch { }
+            App.Stop = true;
         }
 
         // ---------- Iconos dibujados ----------
