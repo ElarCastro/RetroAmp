@@ -616,7 +616,7 @@
   body.skinned.skeq #eqWin{padding:0;border:0;background:none;box-shadow:none;height:auto !important}
   body.skinned .col:has(> #main), body.skinned.skeq .col:has(> #eqWin){min-width:calc(275px * var(--sk))}
   /* 1.4: si el reproductor está solo en su columna, la ventana mide justo lo que el skin (sin el cuadro vacío al lado) */
-  body.skinned:not(.shade) .col:has(> #main):not(:has(> .win:not(#main):not([hidden]))){width:calc(275px * var(--sk)) !important;min-width:0}
+  body.skinned:not(.shade) .col:has(> #mainSlot > #main){width:calc(275px * var(--sk)) !important;min-width:0 !important}
   body.skinned.shade .col{min-width:0 !important}  /* mini reproductor: que quepa en 380 px */
   .skwin{position:absolute;left:0;top:0;width:275px;height:116px;transform:scale(var(--sk));transform-origin:0 0;background-repeat:no-repeat;image-rendering:pixelated;user-select:none;overflow:hidden}
   .skwin .sk,.skwin .skth,.skTime i{position:absolute;background-repeat:no-repeat;image-rendering:pixelated}
@@ -1371,7 +1371,7 @@
   // 1.4: tamaños del skin. Cada píxel del skin ocupa un número ENTERO de píxeles reales (n), así nunca se ve borroso.
   const SK_NAMES = ['Pequeño', 'Mediano', 'Grande', 'Muy grande', 'Enorme'];
   function skDpr() { return window.devicePixelRatio || 1; }
-  function skN0() { return Math.max(1, Math.ceil(skDpr() * 0.95)); }
+  function skN0() { return Math.max(1, Math.ceil(skDpr() * 330 / 275 - 1e-6)); }   // el más chico que deja ver bien la lista (≥ 330 px)
   function skDefIdx() { const d = skDpr(), n0 = skN0(); let best = 0; for (let i = 0; i < 5; i++) if (Math.abs((n0 + i) / d - 1.71) < Math.abs((n0 + best) / d - 1.71) - 1e-9) best = i; return best; }   // el más parecido al ancho de la lista (470 px)
   function skIdxNow() { const i = S.skIdx; return Number.isInteger(i) && i >= 0 && i < 5 ? i : skDefIdx(); }
   function skScale() { return (skN0() + skIdxNow()) / skDpr(); }
