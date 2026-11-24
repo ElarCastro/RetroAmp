@@ -1,5 +1,5 @@
-﻿RetroAmp 1.3 - Reproductor retro de música, videos y películas (YouTube y tu PC)
-=================================================================================
+﻿RetroAmp 1.4 - Reproductor retro: YouTube, TV en vivo, radios y tu música
+=========================================================================
 Proyecto de Elar Castro: https://github.com/ElarCastro/RetroAmp
 
 ABRIR
@@ -15,13 +15,13 @@ SI WINDOWS PREGUNTA SI ESTÁS SEGURO DE EJECUTARLO
   clic derecho en el .zip > Propiedades > marca "Desbloquear" > Aceptar.
 - Si aparece "Windows protegió su PC": Más información > Ejecutar de todas formas.
 
-SI YA USABAS UNA VERSIÓN ANTERIOR (RetroAmp 1.1/1.2, WINAMP_Plus o WinampYT)
-- Con el instalador: ejecuta RetroAmp-1.3-Setup.exe. Se instala en la misma
-  carpeta que la 1.1/1.2 y conserva tus listas, ajustes y la opción de iniciar
+SI YA USABAS UNA VERSIÓN ANTERIOR (RetroAmp 1.1/1.2/1.3, WINAMP_Plus o WinampYT)
+- Con el instalador: ejecuta RetroAmp-1.4-Setup.exe. Se instala en la misma
+  carpeta que la anterior y conserva tus listas, ajustes y la opción de iniciar
   con Windows.
 - Con la versión portable: cierra el programa anterior y copia todo el
   contenido de este zip dentro de su carpeta (reemplazar).
-En los dos casos, al abrir RetroAmp 1.3 acomoda solo tus archivos en
+En los dos casos, al abrir RetroAmp 1.4 acomoda solo tus archivos en
 "datos" y "media" y borra únicamente los archivos viejos del programa
 (WinampYT.exe, WINAMP_Plus.exe y similares). No se pierde nada.
 Las canciones que la 1.1 guardaba en Música\RetroAmp se pueden copiar a
@@ -35,11 +35,12 @@ QUÉ HAY EN LA CARPETA
     musica\       tus MP3 (descargas y los que copies)
     video\        tus videos y películas
     playlists\    tus listas guardadas
-    grabaciones\  tv\ y radio\ (lo que grabas de YouTube en vivo, con
-                  imagen o solo audio) y Consola DJ\ (tus mezclas)
+    grabaciones\  tv\ y radio\ (lo que grabas con la GRABADORA) y
+                  Consola DJ\ (tus mezclas)
     perfil\       ajustes, biblioteca, lista actual y ventanas, y además:
-                  skins\ (los skins que tú agregas) y spotify\ (la
-                  conexión con Spotify)
+                  iptv\ (tus listas de canales y guías), skins\ (los
+                  skins que tú agregas), spotify\ (la conexión con
+                  Spotify) y web-envivo\ (sesiones de páginas en vivo)
   datos\         el programa; no hace falta abrirla:
     cache\     audio escuchado
     bin\       yt-dlp, Deno, ffmpeg y WebView2   fonts\  lib\  perfil\
@@ -119,26 +120,27 @@ MÚSICA DE TU PC (MP3, M4A, FLAC, OGG, WAV)
 - En la lista aparecen con ♪. Puedes mezclarlas con canciones de YouTube y
   guardarlas en tus listas como siempre.
 
+NOVEDADES 1.4
+- Vuelven la TV en vivo y las radios: Internet TV (canales de TV por
+  internet con guía de programación), radios por internet con buscador de
+  miles de emisoras, Favoritos ☆, REVISAR (✓/✗) y las páginas en vivo
+  (TV Azteca), además de YouTube en vivo.
+- La GRABADORA graba otra vez canales de TV y radios, con pausa para los
+  comerciales.
+- Tamaño del skin a tu gusto: PREF > Apariencia > TAMAÑO (Pequeño, Mediano,
+  Grande, Muy grande o Enorme) o Ctrl + rueda del mouse sobre el
+  reproductor. Ahora empieza en Mediano.
+- Se mantiene todo lo de la 1.3: skins nítidos que dicen RETROAMP e ícono
+  arreglado.
+
 NOVEDADES 1.3
-- Solo YouTube: RetroAmp reproduce videos, música y transmisiones en vivo
-  de YouTube, además de tu música y tus videos de la PC. Se quitaron los
-  canales de TV por internet (IPTV), las radios por internet y las páginas
-  de TV en vivo; si tenías alguno en tus listas, se quita solo al abrir.
-- Si abres por error el paquete "actualizacion" (que solo usa el
-  actualizador interno), RetroAmp te avisa en vez de abrirse a medias en
-  el navegador.
 - Skins en alta calidad: se amplían a píxel exacto según la escala de tu
-  pantalla, así se ven nítidos también con Windows al 125 % o 175 % (antes
-  se veían borrosos).
-- Los skins dicen RETROAMP: en las barras de título, el ecualizador, la
-  lista y el modo compacto ya no dice WINAMP. Hay uno nuevo (Bento
-  Classified) y otros con nombre más claro: Base 2.91 (antes BaseOLD),
-  Classified 3 y Classified 5. Son 24; si tenías uno elegido, sigue elegido.
-- Arreglado el ícono: la 1.2 borraba su propio ícono al abrirse y los
-  accesos directos (y el fijado en la barra de tareas) se veían como una
-  hoja en blanco.
-- Si tienes la 1.2, el aviso de versión nueva te ofrece actualizar con un
-  clic (la descarga se comprueba con su firma SHA-256).
+  pantalla, así se ven nítidos también con Windows al 125 % o 175 %.
+- Los skins dicen RETROAMP (ya no dice WINAMP). Son 24, con Bento
+  Classified, Base 2.91, Classified 3 y Classified 5.
+- Arreglado el ícono de los accesos directos y de la barra de tareas.
+- Si abres por error el paquete "actualizacion" (que solo usa el
+  actualizador interno), RetroAmp te avisa en vez de abrirse a medias.
 
 NOVEDADES 1.2
 - Nuevo nombre y versión: RetroAmp 1.2 reunió lo mejor de WINAMP_Plus 2.17
@@ -153,15 +155,21 @@ NOVEDADES 1.2
 - Instalador de nuevo, además de la versión portable.
 - "Iniciar con Windows" abre RetroAmp minimizado, como en la 1.1.
 
-YOUTUBE EN VIVO
-- Biblioteca > En vivo > YouTube en vivo: canales precargados de noticias,
-  deportes, caricaturas, juegos y música. Doble clic: con imagen en
-  Visualización (EN VIVO). SOLO AUDIO: solo el sonido (gasta menos internet).
-- Para agregar un canal, pega su dirección de YouTube o su @nombre en el
-  buscador de esa sección y pulsa Enter.
-- GRABADORA (en Visualización): graba la transmisión con pausa para los
-  comerciales. Se guarda en media\grabaciones\tv (con imagen, MP4) o
-  media\grabaciones\radio (solo audio, MP3).
+TV EN VIVO, RADIOS Y YOUTUBE EN VIVO
+- Biblioteca > Internet TV: canales de TV por internet por categoría
+  (listas gratuitas de iptv-org: México, En español, Música, Noticias y
+  Todo el mundo). Doble clic: se ve en Visualización (EN VIVO). Puedes
+  agregar tus listas .m3u en PREF > En vivo > Internet TV.
+- Biblioteca > Radios por internet > Buscar radios: miles de emisoras por
+  país o género. Doble clic para escuchar.
+- La estrella ☆ guarda un canal o una radio en Favoritos. REVISAR marca
+  con ✓ o ✗ cuáles transmiten.
+- Biblioteca > En vivo > YouTube en vivo: canales de noticias, deportes,
+  caricaturas y música, con imagen o con SOLO AUDIO.
+- Biblioteca > En vivo > Mis Páginas en Vivo: los canales de TV Azteca en
+  su página oficial, dentro de Visualización.
+- GRABADORA (en Visualización): graba TV (MP4 en media\grabaciones\tv) y
+  radio (MP3 en media\grabaciones\radio), con pausa para los comerciales.
 
 La historia completa de versiones anteriores está en
 https://github.com/ElarCastro/RetroAmp/releases

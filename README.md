@@ -1,6 +1,6 @@
 # RetroAmp 🎵
 
-Reproductor **retro, inspirado en el Winamp clásico**, para Windows: música, videos y transmisiones en vivo de YouTube, la música de tu PC, consola DJ, skins clásicos y más.
+Reproductor **retro, inspirado en el Winamp clásico**, para Windows: música, videos y transmisiones en vivo de YouTube, TV en vivo y radios por internet, la música de tu PC, consola DJ, skins clásicos y más.
 
 ![Captura de RetroAmp](docs/captura.png)
 
@@ -8,14 +8,14 @@ Reproductor **retro, inspirado en el Winamp clásico**, para Windows: música, v
 
 | Archivo | Para qué |
 |---|---|
-| 👉 [**RetroAmp-1.3-Instalador.zip**](https://github.com/ElarCastro/RetroAmp/releases/download/v1.3/RetroAmp-1.3-Instalador.zip) | Instalador con accesos directos. Actualiza RetroAmp 1.1 o 1.2 sin perder tus listas. |
-| [RetroAmp-1.3-portable.zip](https://github.com/ElarCastro/RetroAmp/releases/download/v1.3/RetroAmp-1.3-portable.zip) | Sin instalar: descomprime y abre `RetroAmp.exe`. Sirve en una USB. |
-| [SHA256SUMS.txt](https://github.com/ElarCastro/RetroAmp/releases/download/v1.3/SHA256SUMS.txt) | Firmas para comprobar que la descarga está completa y no fue alterada. |
+| 👉 [**RetroAmp-1.4-Instalador.zip**](https://github.com/ElarCastro/RetroAmp/releases/download/v1.4/RetroAmp-1.4-Instalador.zip) | Instalador con accesos directos. Actualiza RetroAmp 1.1, 1.2 o 1.3 sin perder tus listas. |
+| [RetroAmp-1.4-portable.zip](https://github.com/ElarCastro/RetroAmp/releases/download/v1.4/RetroAmp-1.4-portable.zip) | Sin instalar: descomprime y abre `RetroAmp.exe`. Sirve en una USB. |
+| [SHA256SUMS.txt](https://github.com/ElarCastro/RetroAmp/releases/download/v1.4/SHA256SUMS.txt) | Firmas para comprobar que la descarga está completa y no fue alterada. |
 
 Todas las versiones están en [Releases](https://github.com/ElarCastro/RetroAmp/releases).
 
 1. Descarga el instalador y descomprímelo.
-2. Ejecuta `RetroAmp-1.3-Setup.exe`. No pide permisos de administrador.
+2. Ejecuta `RetroAmp-1.4-Setup.exe`. No pide permisos de administrador.
 3. Si Windows muestra *"Windows protegió su PC"*, pulsa **Más información → Ejecutar de todas formas**. El programa no tiene firma digital de pago.
 
 **Requisitos:** Windows 10 u 11, de 64 bits.
@@ -25,19 +25,23 @@ Todas las versiones están en [Releases](https://github.com/ElarCastro/RetroAmp/
 En PowerShell, dentro de la carpeta donde descargaste el archivo:
 
 ```powershell
-Get-FileHash .\RetroAmp-1.3-Instalador.zip -Algorithm SHA256
+Get-FileHash .\RetroAmp-1.4-Instalador.zip -Algorithm SHA256
 ```
 
 El resultado debe coincidir con la línea correspondiente de `SHA256SUMS.txt`.
 
-## 🆕 Novedades de la versión 1.3
+## 🆕 Novedades de la versión 1.4
 
-- **Solo YouTube**: RetroAmp reproduce videos, música y transmisiones en vivo de YouTube, además de tu música de la PC. Se quitaron los canales de TV por internet (IPTV), las radios por internet y las páginas de TV en vivo. Si tenías alguno en tus listas, se quita solo al abrir.
-- Si se abre por error el paquete `actualizacion` (que solo usa el actualizador interno), RetroAmp avisa en vez de abrirse a medias en el navegador.
-- **Skins en alta calidad**: se amplían a píxel exacto según la escala de la pantalla, así se ven nítidos también con Windows al 125 % o 175 % (antes se veían borrosos).
-- **Los skins dicen RETROAMP**: en las barras de título, el ecualizador, la lista y el modo compacto ya no dice WINAMP. Hay uno nuevo (Bento Classified) y otros con nombre más claro: Base 2.91 (antes BaseOLD), Classified 3 y Classified 5. Son 24; si tenías uno elegido, sigue elegido.
-- **Ícono arreglado**: la 1.2 borraba su propio ícono al abrirse y los accesos directos (y el fijado en la barra de tareas) se veían como una hoja en blanco.
-- Si tienes la 1.2, el aviso de versión nueva te ofrece **actualizar con un clic**.
+- **Vuelven la TV en vivo y las radios**: Internet TV (canales de TV por internet con guía de programación), radios por internet con buscador de miles de emisoras, Favoritos ☆, REVISAR (✓/✗) y las páginas en vivo (TV Azteca), además de YouTube en vivo.
+- La **GRABADORA** graba otra vez canales de TV y radios, con pausa para los comerciales.
+- **Tamaño del skin a tu gusto**: PREF › Apariencia › TAMAÑO (Pequeño, Mediano, Grande, Muy grande o Enorme) o **Ctrl + rueda del mouse** sobre el reproductor.
+- Si tienes la 1.2 o la 1.3, el aviso de versión nueva te ofrece **actualizar con un clic**.
+
+## Novedades de la versión 1.3
+
+- **Skins en alta calidad**: se amplían a píxel exacto según la escala de la pantalla, así se ven nítidos también con Windows al 125 % o 175 %.
+- **Los skins dicen RETROAMP** (ya no dice WINAMP). Son 24, con Bento Classified, Base 2.91, Classified 3 y Classified 5.
+- **Ícono arreglado** en los accesos directos y la barra de tareas.
 
 ## Novedades de la versión 1.2
 
@@ -75,7 +79,7 @@ El manual completo con imágenes viene en `ManualUsuario.pdf`, y dentro del prog
 
 Para que el aviso de actualización de RetroAmp la encuentre, el Release debe tener:
 
-- Una etiqueta con el número de versión, por ejemplo `v1.3`, y la misma versión en `AssemblyVersion` (`Program.cs`).
+- Una etiqueta con el número de versión, por ejemplo `v1.4`, y la misma versión en `AssemblyVersion` (`Program.cs`).
 - `RetroAmp-X.Y-portable.zip` (completo) y, recomendado, `RetroAmp-X.Y-actualizacion.zip` (solo el programa, sin `datos\bin`).
 - `SHA256SUMS.txt` con la firma de cada archivo (`sha256sum *.zip > SHA256SUMS.txt`). **Sin este archivo, RetroAmp no instala la actualización.**
 

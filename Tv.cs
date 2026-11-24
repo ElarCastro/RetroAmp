@@ -327,13 +327,6 @@ namespace RetroAmp
                 SendBytes(s, 200, string.IsNullOrEmpty(type) ? "video/mp2t" : type, body, "Cache-Control: no-store\r\n");
                 return true;
             }
-            // 1.2: RetroAmp solo reproduce YouTube. Ya no se bajan listas de canales (IPTV), guías de programación
-            // ni el directorio de radios; YouTube en vivo (/api/yt/live, /hls, /api/check) sigue igual.
-            if (path == "/api/tv/get" || path == "/api/tv/epg" || path == "/api/tv/pick" || path == "/api/radio/search")
-            {
-                SendJson(s, "{\"ok\":false,\"error\":\"RetroAmp solo reproduce YouTube\"}");
-                return true;
-            }
             if (path == "/api/tv/get")
             {
                 // Una lista de canales: de internet (u) o de un archivo (p). Se guarda una copia en media\perfil\iptv para abrirla rápido y sin internet.

@@ -15,9 +15,9 @@ using System.Windows.Forms;
 [assembly: AssemblyCompany("Elar Castro")]
 [assembly: AssemblyCopyright("Elar Castro - github.com/ElarCastro/RetroAmp")]
 [assembly: AssemblyTrademark("")]
-[assembly: AssemblyVersion("1.3.0.0")]
-[assembly: AssemblyFileVersion("1.3.0.0")]
-[assembly: AssemblyInformationalVersion("1.3")]
+[assembly: AssemblyVersion("1.4.0.0")]
+[assembly: AssemblyFileVersion("1.4.0.0")]
+[assembly: AssemblyInformationalVersion("1.4")]
 
 namespace RetroAmp
 {

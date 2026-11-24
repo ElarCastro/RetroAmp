@@ -1,4 +1,4 @@
-; Instalador de RetroAmp 1.3 (NSIS 3)
+; Instalador de RetroAmp 1.4 (NSIS 3)
 ; Compilar:  makensis instalador\RetroAmp.nsi   (con la carpeta lista en instalador\app\RetroAmp)
 Unicode true
 SetCompressor /SOLID lzma
@@ -7,8 +7,8 @@ RequestExecutionLevel user
 ManifestDPIAware true
 
 !define APP       "RetroAmp"
-!define VERSION   "1.3"
-!define VERSION4  "1.3.0.0"
+!define VERSION   "1.4"
+!define VERSION4  "1.4.0.0"
 !define SRC       "app\RetroAmp"
 !define UNINSTKEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\RetroAmp"
 !define RUNKEY    "Software\Microsoft\Windows\CurrentVersion\Run"

@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RetroAmp</title>
-<link rel="icon" href="/favicon.ico">
 <style>
   @font-face{font-family:VT323;font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/VT323-Regular.ttf) format('truetype')}
   /* ---------- Temas ---------- */
@@ -737,9 +736,9 @@
       <span class="fsep"></span>
       <button class="cbtn sm" id="mVid" title="Ver el video (YouTube o archivos de video de tu PC)">VIDEO</button>
       <button class="cbtn sm" id="mCov" title="Carátula del álbum">CARÁTULA</button>
-      <button class="cbtn sm" id="mTv" title="EN VIVO: transmisiones en vivo de YouTube (están en Biblioteca › En vivo)">EN VIVO</button>
-      <button class="cbtn sm" id="mRecW" title="GRABADORA: graba YouTube en vivo, con pausa para los comerciales">● GRABADORA</button>
-      <button class="cbtn sm" id="mFav" hidden style="display:none!important">☆ FAVORITO</button>
+      <button class="cbtn sm" id="mTv" title="EN VIVO: canales de TV por internet, YouTube en vivo y páginas en vivo. Los canales están en Biblioteca › En vivo e Internet TV">EN VIVO</button>
+      <button class="cbtn sm" id="mRecW" title="GRABADORA: graba canales de TV, radios y YouTube en vivo, con pausa para los comerciales (TV en media\grabaciones\tv, radio en media\grabaciones\radio)">● GRABADORA</button>
+      <button class="cbtn sm" id="mFav" title="Guardar en Favoritos el canal o la radio que estás viendo" hidden>☆ FAVORITO</button>
       <select id="subSel" class="sel" title="Subtítulos de la película: se cargan solos si tienen el mismo nombre que el video" hidden></select>
       <span class="grow"></span>
       <button class="cbtn sm" id="bPip" title="Ventana flotante: el video en una ventanita siempre encima de todo, para verlo mientras trabajas (otra vez para regresarlo)">⧉ FLOTANTE</button>
@@ -818,8 +817,8 @@
     <div class="titlebar mbar" title="Arrastra para mover esta ventana"><span class="stripes"></span><span class="ttl">GRABADORA</span><span class="stripes"></span><span class="tbtns"><button class="tbtn mfloat" title="Separar: ponerla en su propia ventana, donde quieras">⧉</button><button class="tbtn mroll" title="Enrollar / desenrollar (doble clic en la barra)">▴</button><button class="tbtn mclose" title="Cerrar (lo que se graba sigue grabando)">×</button></span></div>
     <div class="rwbody">
       <div class="rwnow"><small>SUENA AHORA</small><b class="rwNow">—</b></div>
-      <div class="rclcd lcd rwSt"><b>LISTO PARA GRABAR</b><span class="rwT">00:00:00</span><i class="rwF">con imagen en media\grabaciones\tv · solo audio en media\grabaciones\radio</i></div>
-      <div class="rcbtns"><button class="cbtn rwGo" title="Grabar la transmisión en vivo que suena ahora">● GRABAR</button><button class="cbtn rwPa" title="Pausa (por ejemplo en los comerciales); al continuar sigue en el mismo archivo" disabled>❚❚ PAUSA</button><button class="cbtn rwEnd" title="Termina la grabación y la guarda en un solo archivo" disabled>■ TERMINAR</button><button class="cbtn rwDir" title="Abre la carpeta de las grabaciones">📁</button></div>
+      <div class="rclcd lcd rwSt"><b>LISTO PARA GRABAR</b><span class="rwT">00:00:00</span><i class="rwF">TV en media\grabaciones\tv · radio en media\grabaciones\radio</i></div>
+      <div class="rcbtns"><button class="cbtn rwGo" title="Grabar el canal o la radio que suena ahora">● GRABAR</button><button class="cbtn rwPa" title="Pausa (por ejemplo en los comerciales); al continuar sigue en el mismo archivo" disabled>❚❚ PAUSA</button><button class="cbtn rwEnd" title="Termina la grabación y la guarda en un solo archivo" disabled>■ TERMINAR</button><button class="cbtn rwDir" title="Abre la carpeta de las grabaciones">📁</button></div>
       <div class="rwhead"><span>Grabaciones recientes</span><small>clic: elegir · doble clic: ver o escuchar</small></div>
       <div class="rwlist lcd"></div>
     </div>
@@ -890,11 +889,11 @@
   <section class="win" id="helpWin" hidden>
     <div class="titlebar mbar" title="Arrastra para mover esta ventana"><span class="stripes"></span><span class="ttl">AYUDA</span><span class="stripes"></span><span class="tbtns"><button class="tbtn mfloat" title="Separar: ponerla en su propia ventana, donde quieras">⧉</button><button class="tbtn mroll" title="Enrollar / desenrollar (doble clic en la barra)">▴</button><button class="tbtn mclose" title="Cerrar la ayuda">×</button></span></div>
     <nav id="helpNav">
-      <a data-h="hInicio">Primeros pasos</a><a data-h="hNuevo">Novedades</a><a data-h="hControles">Reproductor</a><a data-h="hLista">Lista</a><a data-h="hYT">YouTube</a><a data-h="hPC">Música de tu PC</a><a data-h="hBib">Biblioteca</a><a data-h="hSpot">Spotify</a><a data-h="hTv">YouTube en vivo</a><a data-h="hRec">Grabadora</a><a data-h="hDesc">Descargas MP3/video</a><a data-h="hEq">Ecualizador</a><a data-h="hVid">Visualización</a><a data-h="hPeli">Películas y subtítulos</a><a data-h="hDj">Consola DJ</a><a data-h="hVent">Ventanas</a><a data-h="hOpc">Opciones</a><a data-h="hSkin">Skins</a><a data-h="hTeclas">Atajos</a><a data-h="hUSB">Portátil y archivos</a><a data-h="hProb">Problemas</a><a data-h="hAcerca">Acerca de</a>
+      <a data-h="hInicio">Primeros pasos</a><a data-h="hNuevo">Novedades</a><a data-h="hControles">Reproductor</a><a data-h="hLista">Lista</a><a data-h="hYT">YouTube</a><a data-h="hPC">Música de tu PC</a><a data-h="hBib">Biblioteca</a><a data-h="hSpot">Spotify</a><a data-h="hRadio">Radios</a><a data-h="hTv">Internet TV</a><a data-h="hRec">Grabadora</a><a data-h="hDesc">Descargas MP3/video</a><a data-h="hEq">Ecualizador</a><a data-h="hVid">Visualización</a><a data-h="hPeli">Películas y subtítulos</a><a data-h="hDj">Consola DJ</a><a data-h="hVent">Ventanas</a><a data-h="hOpc">Opciones</a><a data-h="hSkin">Skins</a><a data-h="hTeclas">Atajos</a><a data-h="hUSB">Portátil y archivos</a><a data-h="hProb">Problemas</a><a data-h="hAcerca">Acerca de</a>
     </nav>
     <div id="helpBody" class="hbody">
       <h3 id="hInicio">PRIMEROS PASOS</h3>
-      <p>Este es un reproductor de música para Windows con aspecto retro. Toca música, videos y transmisiones en vivo de YouTube, la música de tu PC y tus listas de Spotify. No se instala: es una carpeta que puedes copiar a una USB y usar en cualquier PC con Windows 10 u 11.</p>
+      <p>Este es un reproductor de música para Windows con aspecto retro. Toca música y videos de YouTube, la música de tu PC, radios por internet y tus listas de Spotify. No se instala: es una carpeta que puedes copiar a una USB y usar en cualquier PC con Windows 10 u 11.</p>
       <ol>
         <li>Abre el programa con doble clic en <b>RetroAmp.exe</b>.</li>
         <li>Escribe el nombre de una canción o artista en el cuadro de la ventana <b>BÚSQUEDA</b> y pulsa <kbd>Enter</kbd>.</li>
@@ -903,27 +902,40 @@
       </ol>
       <p>Cualquier botón muestra una explicación si dejas el mouse encima un momento.</p>
 
-      <h3 id="hNuevo">NOVEDADES DE ESTA VERSIÓN (1.3)</h3>
+      <h3 id="hNuevo">NOVEDADES DE ESTA VERSIÓN (1.4)</h3>
       <ul>
-        <li><b>Solo YouTube</b>: RetroAmp reproduce videos, música y transmisiones <b>en vivo de YouTube</b>, además de tu música y tus videos de la PC. Se quitaron los canales de TV por internet (IPTV), las radios por internet y las páginas de TV en vivo; si tenías alguno en tus listas, se quita solo al abrir el programa.</li>
-        <li>Si abres por error el paquete «actualizacion» (que solo usa el actualizador interno), RetroAmp te avisa en vez de abrirse a medias en el navegador.</li>
-        <li><b>Arreglado el ícono</b>: la versión 1.2 borraba su propio ícono al abrirse y los accesos directos (y el fijado en la barra de tareas) se veían como una hoja en blanco. Ahora los accesos usan el ícono del propio RetroAmp.exe.</li>
-        <li><b>Skins en alta calidad</b>: el skin se amplía a píxel exacto según la escala de tu pantalla, así se ve nítido también con Windows al 125 % o al 175 % (antes se veía borroso).</li>
-        <li><b>Los skins dicen RETROAMP</b>: en las barras de título, el ecualizador, la lista y el modo compacto ya no dice WINAMP. Hay uno nuevo, <b>Bento Classified</b>, y otros tienen nombre más claro: <b>Base 2.91</b> (antes BaseOLD), <b>Classified 3</b> y <b>Classified 5</b>. Son 24; si tenías uno elegido, sigue elegido.</li>
-        <li>Manual y ayuda actualizados, con capturas nuevas.</li>
+        <li><b>Vuelven la TV en vivo y las radios</b>: los canales de TV por internet (Internet TV), las radios por internet con su buscador de miles de emisoras, los <b>Favoritos ☆</b>, la <b>Guía de programación</b> y las páginas en vivo (TV Azteca) están otra vez en la Biblioteca, junto con YouTube en vivo.</li>
+        <li><b>Elige el tamaño del skin</b>: en <b>PREF › Apariencia › TAMAÑO</b> (Pequeño, Mediano, Grande, Muy grande o Enorme), o con <kbd>Ctrl</kbd> + rueda del mouse sobre el reproductor. Ahora empieza en Mediano, más parecido al ancho de la lista.</li>
+      </ul>
+      <p><b>De la versión 1.3:</b></p>
+      <ul>
+        <li><b>Skins en alta calidad</b>: el skin se amplía a píxel exacto según la escala de tu pantalla, así se ve nítido también con Windows al 125 % o al 175 %.</li>
+        <li><b>Los skins dicen RETROAMP</b> (ya no dice WINAMP). Son 24, con <b>Bento Classified</b>, <b>Base 2.91</b>, <b>Classified 3</b> y <b>Classified 5</b>.</li>
+        <li><b>Arreglado el ícono</b> de los accesos directos y de la barra de tareas.</li>
+        <li>Si abres por error el paquete «actualizacion» (que solo usa el actualizador interno), RetroAmp te avisa en vez de abrirse a medias.</li>
       </ul>
       <p><b>De la versión 1.2:</b></p>
       <ul>
-        <li><b>RetroAmp 1.2</b> reunió en un solo programa lo mejor de WINAMP_Plus (antes WinampYT) con el nombre <b>RetroAmp</b>. Si lo copias encima de RetroAmp 1.1, WINAMP_Plus o WinampYT, conserva tus listas, ajustes y descargas, y quita solo los archivos viejos del programa.</li>
-                <li><b>Actualizaciones más seguras</b>: la versión nueva se busca en GitHub (ElarCastro/RetroAmp) y, antes de instalarla, se comprueba su firma <b>SHA-256</b>. El cambio lo hace el propio RetroAmp.exe, sin scripts ocultos.</li>
+        <li><b>RetroAmp 1.2</b> reúne en un solo programa todo lo de WINAMP_Plus (antes WinampYT) con el nombre <b>RetroAmp</b>. Si lo copias encima de RetroAmp 1.1, WINAMP_Plus o WinampYT, conserva tus listas, ajustes y descargas, y quita solo los archivos viejos del programa.</li>
+        <li><b>Actualizaciones más seguras</b>: la versión nueva se busca en GitHub (ElarCastro/RetroAmp) y, antes de instalarla, se comprueba su firma <b>SHA-256</b>. El cambio lo hace el propio RetroAmp.exe, sin scripts ocultos.</li>
         <li>Menos falsas alarmas de antivirus: el programa ya no quita la marca «descargado de internet» de sus archivos y lleva sus datos de autor y versión.</li>
-        <li><b>YouTube en vivo</b>: canales en español precargados (noticias, deportes, caricaturas, música) en la Biblioteca › <b>En vivo</b>, con imagen o con <b>SOLO AUDIO</b>; puedes agregar otros con su dirección o su @nombre. Ver <a href="#" data-h="hTv">YouTube en vivo</a>.</li>
-        <li><b>● GRABADORA</b>: graba YouTube en vivo con pausa para los comerciales. <b>⧉ FLOTANTE</b>: el video en una ventanita encima de todo.</li>
+        <li><b>EN VIVO</b> (antes INTERNET TV) en Visualización: canales de TV, YouTube en vivo y páginas en vivo. <b>Favoritos ☆</b> de canales y radios, <b>REVISAR</b> para marcar cuáles transmiten (✓/✗), <b>Guía de programación</b> con avisos 🔔 y la columna <b>Ahora</b>. Ver <a href="#" data-h="hTv">Internet TV</a>.</li>
+        <li><b>YouTube en vivo</b>: canales en español precargados (noticias, deportes, caricaturas, música) en la Biblioteca › <b>En vivo</b>, con imagen o con <b>SOLO AUDIO</b>; puedes agregar otros con su dirección o @nombre.</li>
+        <li><b>Mis Páginas en Vivo</b>: los canales de <b>TV Azteca</b> (La Granja VIP 24/7, Azteca UNO, Azteca 7, adn Noticias…) se ven en su página oficial dentro de Visualización, llenando la ventana. Puedes agregar otros canales con su página en vivo y ocultar TV Azteca en <b>PREF › En vivo › Páginas en vivo</b>.</li>
+        <li><b>● GRABADORA</b>: graba canales de TV (MP4 en media\grabaciones\tv) y radios (MP3 en media\grabaciones\radio), con pausa para los comerciales. Se enciende solo con algo en vivo. Ver <a href="#" data-h="hRec">Grabadora</a>.</li>
+        <li><b>⧉ FLOTANTE</b>: el canal o video en una ventanita encima de todo.</li>
+        <li><b>Radios</b>: buscador con miles de emisoras (🔎 Buscar radios), favoritos, REVISAR y radios .m3u8.</li>
         <li><b>Consola DJ</b>: detecta el <b>TONO</b> (Camelot) de cada canción y graba tu mezcla con <b>● GRABAR</b> (MP3 en media\grabaciones\Consola DJ).</li>
-        <li><b>Biblioteca</b>: <b>Visto recientemente</b>, columnas que cambian de tamaño y lectura de <b>varias carpetas</b> de tu PC (PREF › Biblioteca › Medios locales).</li>
+        <li><b>Biblioteca</b>: <b>Visto recientemente</b> (las últimas 50, con LIMPIAR), columnas que cambian de tamaño con barra para moverse a los lados, «Reproduciendo ahora» siempre al día, y lee también media\musica y media\video.</li>
         <li><b>Descargas</b> con nombre <b>«Artista - Canción»</b> (sin VEVO, Topic ni Oficial).</li>
-        <li><b>Preferencias</b> (botón <b>PREF</b>) con una lista de secciones a la izquierda, y <b>skins con vista previa</b> en Apariencia.</li>
-        <li><b>Aviso de versión nueva</b>: al abrir el programa, si en GitHub hay una versión más reciente, sale una ventana con lo que trae de nuevo y los botones <b>ACTUALIZAR AHORA</b>, <b>VER EN GITHUB</b> y <b>MÁS TARDE</b>.</li>
+        <li><b>Ventanas</b>: siempre sueltas y con imanes (ya no hay UNIR ni apagar imanes). El programa abre ya acomodado, sin brincar de tamaño. PREF › IMPORTAR se quitó: para agregar tus MP3 o videos cópialos a media\musica o media\video y pulsa ESCANEAR en la Biblioteca.</li>
+        <li>El mini reproductor esconde las ventanas sueltas y al regresar las muestra como estaban.</li>
+        <li><b>Biblioteca más clara</b>: nueva rama <b>En vivo</b> con <b>YouTube en vivo</b> (ahora una sola vez, con imagen o con el botón <b>SOLO AUDIO</b>) y <b>Mis Páginas en Vivo</b>. Radios por internet e Internet TV quedan solo con sus radios y sus listas de canales.</li>
+        <li><b>BÚSQUEDA</b> (antes Resultados) tiene su propio cuadro para buscar en YouTube o pegar enlaces. El cuadro de la <b>Lista de reproducción</b> ahora busca solo entre las canciones de la lista.</li>
+        <li><b>Preferencias</b> (antes Opciones, botón <b>PREF</b>) con una lista de secciones a la izquierda como el Winamp clásico: General, Apariencia, Reproducción, Ventanas, Biblioteca › Medios locales, En vivo, Descargas, Spotify y Actualizaciones. En <b>Apariencia</b> los skins tienen <b>vista previa</b>.</li>
+        <li><b>Medios locales</b>: la Biblioteca lee <b>varias carpetas</b> que eliges en PREF › Biblioteca › Medios locales, con escanear al abrir y quitar los archivos que ya no existen. Los botones +ARCH y +CARP de la lista se quitaron: tu música se agrega desde ahí (o arrastrando archivos a la ventana).</li>
+        <li><b>Carpeta media más ordenada</b>: las grabaciones van juntas en media\grabaciones (tv, radio y Consola DJ) y lo que es configuración dentro de media\perfil (iptv, skins que tú agregas, spotify y web-envivo). Al abrir esta versión todo se pasa solo a su lugar nuevo, sin borrar nada. Ver <a href="#" data-h="hUSB">Qué hay en la carpeta</a>.</li>
+        <li><b>Aviso de versión nueva</b>: al abrir el programa, si en GitHub hay una versión más reciente, sale una ventana con lo que trae de nuevo y los botones <b>ACTUALIZAR AHORA</b>, <b>VER EN GITHUB</b> y <b>MÁS TARDE</b>. Con «No mostrar actualizaciones» ya no sale; se vuelve a activar en PREF › Actualizaciones › PROGRAMA.</li>
       </ul>
 
       <h3 id="hControles">EL REPRODUCTOR</h3>
@@ -943,13 +955,13 @@
         <li>El cuadro de la lista (<b>Buscar en esta lista</b>) solo busca entre las canciones que ya tienes en la lista: escribe parte del nombre y se quedan a la vista las que coinciden. <kbd>Enter</kbd> pone a sonar la primera, <kbd>Esc</kbd> o <b>✕</b> vuelven a mostrar toda la lista. Para traer canciones nuevas de YouTube usa la ventana <b>BÚSQUEDA</b>.</li>
         <li>Arriba eliges tus <b>listas guardadas</b>: <b>NUEVA</b>, <b>GUARDAR</b>, <b>GUARDAR COMO</b> y <b>BORRAR</b>.</li>
         <li><b>MÁS ▾</b> tiene más acciones: importar de Spotify, abrir o exportar listas .m3u / .pls, saltar a una canción, ordenar por título, artista, duración u origen, invertir o mezclar, quitar repetidas, quitar las que fallaron y guardar videos.</li>
-        <li>Marcas junto al nombre: ♪ archivo de tu PC, 🎬 video de tu PC, 📺/📻 YouTube en vivo (con imagen / solo audio), <span style="color:#1db954">●</span> canción traída de Spotify.</li>
+        <li>Marcas junto al nombre: ♪ archivo de tu PC, 🎬 video de tu PC, 📻 radio, <span style="color:#1db954">●</span> canción traída de Spotify.</li>
       </ul>
 
       <h3 id="hYT">YOUTUBE</h3>
       <ul>
         <li>En la ventana <b>BÚSQUEDA</b> escribe canción o artista y pulsa <kbd>Enter</kbd> (<b>⏏</b> o <kbd>L</kbd> la abren). Los resultados muestran <b>canciones</b> y también <b>listas de reproducción</b> de YouTube: clic en una lista para ver sus temas y añadirlos todos.</li>
-        <li>En ese mismo cuadro también puedes pegar un enlace de YouTube (de un video, de una lista completa o de una transmisión en vivo). <b>CERRAR</b> la esconde.</li>
+        <li>En ese mismo cuadro también puedes pegar un enlace de YouTube (de un video o de una lista completa) o la dirección de una radio. <b>CERRAR</b> la esconde.</li>
         <li>Lo que ya escuchaste se guarda un tiempo en la carpeta <i>cache</i> para que la siguiente vez empiece al instante.</li>
       </ul>
 
@@ -964,7 +976,7 @@
       <ul>
         <li>Lee toda tu música y tus videos de las carpetas que elijas en <b>PREF › Biblioteca › Medios locales</b> (al inicio, tu carpeta Música) y además, siempre, lo que está en <b>media\musica</b> y <b>media\video</b> del programa (lo que descargas). <b>CARPETAS…</b> abre esa sección y <b>ESCANEAR</b> vuelve a leer todo.</li>
         <li><b>Agregar tu música y videos</b> (MP3 y demás formatos de audio, MP4, MKV, AVI y demás videos) para verlos en la Biblioteca: hay dos caminos. <b>1)</b> Cópialos a la carpeta del programa, los audios en <b>media\musica</b> y los videos en <b>media\video</b> (pueden ir en subcarpetas), y pulsa <b>ESCANEAR</b>; así viajan contigo en la USB. <b>2)</b> Sin copiar nada: pulsa <b>CARPETAS…</b> › <b>AGREGAR CARPETA…</b> y elige la carpeta de tu PC donde ya los tienes (puedes agregar varias). Las etiquetas del archivo (artista, álbum) se usan para ordenarlos; si no tiene, se usa el nombre del archivo.</li>
-        <li>A la izquierda: <b>Reproduciendo ahora</b> (tu lista actual), <b>Visto recientemente</b>, Música local (audio y video), Listas guardadas y <b>En vivo</b> (YouTube en vivo). Luego puedes filtrar por <b>artista</b> y <b>álbum</b> (en YouTube en vivo: por <b>categoría</b>), o escribir en la caja para buscar.</li>
+        <li>A la izquierda: <b>Reproduciendo ahora</b> (tu lista actual), Música local (audio y video), Listas guardadas, Radios por internet, <b>Internet TV</b> y <b>En vivo</b>. Luego puedes filtrar por <b>artista</b> y <b>álbum</b> (en Internet TV: por <b>categoría</b> y <b>lista</b>), o escribir en la caja para buscar.</li>
         <li><b>REPRODUCIR</b>, <b>AÑADIR</b> y <b>REPRODUCIR TODO</b> pasan lo elegido a tu lista. Doble clic en una fila la escucha.</li>
       </ul>
 
@@ -982,26 +994,51 @@
       <p>Después: <b>MÁS ▾ › Importar de Spotify…</b> (o <b>MIS LISTAS</b> en PREF › Spotify). Clic en una lista para ver sus canciones y en <b>Añadir las N canciones</b> para pasarlas a tu lista.</p>
       <p>Notas: Spotify puede pedir cuenta Premium para crear la app. Una app nueva solo deja entrar a su dueño y a las cuentas que él agregue en <b>User Management</b> (pocas). Las listas que arma Spotify (Daily Mix, Descubrimiento semanal) a veces no se dejan leer. <b>SALIR</b> olvida la cuenta en este programa.</p>
 
-      <h3 id="hTv">YOUTUBE EN VIVO</h3>
+      <h3 id="hRadio">RADIOS POR INTERNET</h3>
       <ul>
-        <li><b>Dónde están</b>: en la Biblioteca › <b>En vivo › YouTube en vivo</b> hay canales precargados de noticias, deportes, caricaturas, juegos y música, agrupados por <b>categoría</b> a la izquierda. Arriba a la derecha hay búsquedas rápidas; también puedes escribir en la caja para buscar lo que está en vivo ahora en YouTube.</li>
-        <li><b>Con imagen o solo el audio</b>: doble clic (o REPRODUCIR) lo pone con imagen en la ventana <b>Visualización</b>, en el modo <b>EN VIVO</b>. <b>SOLO AUDIO</b>, abajo junto a REPRODUCIR, lo escucha solo con el sonido (gasta menos internet). También con clic derecho sobre el canal.</li>
-        <li><b>Agregar un canal</b>: pega en esa caja la dirección del canal de YouTube o su <b>@nombre</b> y pulsa <kbd>Enter</kbd>; queda en <i>Agregados por ti</i>. Para quitarlo, elígelo y pulsa <kbd>Supr</kbd>. También puedes pegar el enlace de una transmisión en la caja de <b>BÚSQUEDA</b>.</li>
-        <li><b>Ventana flotante</b>: con una transmisión o un video sonando, pulsa <b>⧉ FLOTANTE</b> en Visualización. El video pasa a una ventanita encima de todas tus ventanas mientras trabajas.</li>
-        <li><b>Grabar</b>: con la <b>● GRABADORA</b> grabas la transmisión mientras la ves, con pausa para los comerciales. Mira <a href="#" data-h="hRec">GRABADORA</a>.</li>
-        <li>Es en vivo: no se puede adelantar ni retroceder. Si una transmisión no abre, puede que ya haya terminado: prueba otra.</li>
+        <li><b>Buscar radios</b>: en la <b>Biblioteca › Radios por internet › 🔎 Buscar radios</b> hay miles de emisoras de todo el mundo (del directorio gratuito radio-browser). Al abrirlo salen las más escuchadas de México; elige otro <b>país</b> a la izquierda o un <b>género</b> (pop, rock, regional mexicano, noticias…) a la derecha, o escribe el nombre de la radio en la caja y pulsa <kbd>Enter</kbd>. Doble clic para escucharla.</li>
+        <li><b>Favoritos</b>: pulsa la estrella <b>☆</b> junto a una radio (en Radios por internet o en el buscador) y quedará en <b>Radios por internet › ⭐ Favoritos</b>. Pulsa la estrella otra vez para quitarla.</li>
+        <li><b>¿Cuáles funcionan?</b>: en Radios por internet, Favoritos o el buscador pulsa <b>REVISAR</b> y cada radio queda con <b style="color:#3c3">✓</b> (transmite) o <b style="color:#f44">✗</b> (no responde). <b>ocultar ✗</b> esconde las que fallan.</li>
+        <li>También puedes pegar en la caja de búsqueda de la lista la dirección de transmisión de la radio (por ejemplo, la que termina en .mp3, .aac, .m3u8 o .m3u / .pls) y pulsar <kbd>Enter</kbd>.</li>
+        <li><b>Grabar una radio</b>: con la <b>● GRABADORA</b> (en Visualización) se graba en MP3 en media\grabaciones\radio, con pausa y continuar. Mira <a href="#" data-h="hRec">GRABADORA</a>.</li>
+        <li>Las radios que usas quedan en la Biblioteca, en <i>Radios por internet</i>. Las radios .m3u8 (HLS) también se escuchan.</li>
+        <li>Algunas redes de trabajo o escuela bloquean las radios. Si no suena después de unos segundos, prueba en otra red.</li>
       </ul>
 
-      <h3 id="hRec">GRABADORA: GRABAR YOUTUBE EN VIVO</h3>
+      <h3 id="hTv">INTERNET TV (IPTV)</h3>
       <ul>
-        <li><b>Abrirla</b>: pulsa <b>● GRABADORA</b> en la ventana de Visualización, junto a EN VIVO. El botón se enciende solo cuando suena una transmisión de YouTube en vivo (con imagen o SOLO AUDIO).</li>
-        <li><b>Grabar</b>: pulsa <b>● GRABAR</b>. El tiempo grande cuenta lo grabado y abajo sale el nombre del archivo y cuánto pesa.</li>
-        <li><b>Comerciales</b>: pulsa <b>❚❚ PAUSA</b> y luego <b>▶ CONTINUAR</b> cuando regrese el programa. Al terminar, todo queda en un solo archivo.</li>
-        <li><b>Terminar</b>: <b>■ TERMINAR</b> guarda la grabación. <b>📁</b> abre la carpeta. Con imagen se guarda en <b>media\grabaciones\tv</b> (MP4) y solo audio en <b>media\grabaciones\radio</b> (MP3), con el nombre del canal y la fecha y hora.</li>
-        <li><b>Grabaciones recientes</b>: la lista de abajo muestra cada grabación (● grabando, ❚❚ en pausa, ✓ guardada). <b>Doble clic</b> en una ya guardada para verla en el programa. Puedes grabar hasta 5 a la vez.</li>
-        <li>Al cerrar el programa, las grabaciones se terminan y se guardan solas. Graba solo para tu uso personal y respeta los derechos de los canales.</li>
+        <li>Canales de televisión que se transmiten por internet. Están en la <b>Biblioteca › Internet TV</b>, agrupados por <b>categoría</b> (noticias, música, deportes…). Doble clic en un canal y se abre la ventana <b>Visualización</b> en el modo <b>EN VIVO</b> (aparte de VIDEO, que es para los videos musicales y películas); el sonido pasa por el ecualizador. Si pulsas EN VIVO sin un canal puesto, se abre la Biblioteca en Internet TV.</li>
+        <li>El programa trae listas gratuitas y legales de <b>iptv-org</b> (canales que se transmiten abiertos): México, En español, Música, Noticias y <b>Todo el mundo</b> (la lista global, con decenas de miles de canales de muchos países; elige una categoría o escribe en la caja para encontrar uno rápido).</li>
+        <li>En <b>PREF › En vivo › Internet TV</b>: <b>AGREGAR</b> una lista con su dirección (.m3u o .m3u8), <b>ARCHIVO…</b> para una lista guardada en tu computadora, <b>ACTUALIZAR</b> para volver a bajarla si los canales dejaron de funcionar, <b>BORRAR</b> para quitarla y <b>RESTAURAR INCLUIDAS</b> para recuperar las que trae el programa. Las listas que bajas se guardan en la carpeta <b>media\perfil\iptv</b>, así abren rápido aunque no haya internet. Si tu servicio te dio servidor, usuario y contraseña, usa el enlace que está debajo.</li>
+        <li><b>Favoritos</b>: pulsa la estrella <b>☆</b> junto a un canal y queda en <b>Internet TV › ⭐ Favoritos</b>, para tener a la mano los que sí te funcionan. Pulsa la estrella otra vez para quitarlo.</li>
+        <li><b>Grabar canales</b>: con la <b>● GRABADORA</b> grabas un canal mientras lo ves, con pausa para los comerciales. Mira <a href="#" data-h="hRec">GRABADORA</a>.</li>
+        <li><b>Ventana flotante</b>: con un canal o un video sonando, pulsa <b>⧉ FLOTANTE</b> en la ventana de Visualización. El video pasa a una ventanita que queda encima de todas tus ventanas (la puedes mover y cambiar de tamaño) mientras trabajas; el sonido sigue en el reproductor. Mientras tanto, la pantalla de Visualización avisa que el video está en la ventana flotante y los botones EFECTOS, VIDEO, CARÁTULA y EN VIVO se apagan para no confundir. Pulsa <b>⧉ REGRESAR</b>, <b>REGRESAR EL VIDEO AQUÍ</b> en la pantalla, o el botón de regresar de la ventanita, para volverlo a su lugar.</li>
+        <li><b>Avisos de la guía</b>: en <b>Internet TV › Guía de programación</b> haz clic en un programa que todavía no empieza y elige <b>🔔 AVISARME</b> (te avisa un minuto antes y al empezar, también con un aviso de Windows junto al reloj) o <b>🔔 AVISARME Y PONER EL CANAL</b> (además cambia solo a ese canal). Los programas con aviso se ven con 🔔; vuelve a hacer clic para quitarlo. El programa debe estar abierto (puede estar minimizado).</li>
+        <li><b>Visto recientemente</b>: en la Biblioteca, justo debajo de <i>Reproduciendo ahora</i>, están las últimas 50 cosas que viste u oíste (canciones, videos, radios y canales), con cuándo fue. Doble clic para volver a ponerla; <kbd>Supr</kbd> quita la elegida y <b>LIMPIAR</b> (abajo) borra toda la lista.</li>
+        <li><b>YouTube en vivo</b>: en la rama <b>En vivo › YouTube en vivo</b> de la Biblioteca hay canales precargados de noticias, deportes, caricaturas, juegos y música. En <b>Caricaturas</b> están los canales oficiales en español de Bluey, Bingo, Masha y el Oso, La Pequeña Lulú y El Chavo del 8, entre otros. A la derecha están las búsquedas rápidas, o escribe en la caja y pulsa <kbd>Enter</kbd> para buscar lo que está en vivo ahora. Los precargados son en español; para agregar otro canal (de cualquier idioma) pega en la caja su dirección de YouTube o su <b>@nombre</b> y pulsa <kbd>Enter</kbd>: queda en <b>Agregados por ti</b> (para quitarlo, elígelo y pulsa <kbd>Supr</kbd>). La columna <b>Estado</b> dice, después de <b>REVISAR</b>, si está <b>en vivo</b> o <b>sin transmitir</b>. La estrella guarda el canal: siempre abre su transmisión del momento, y si no está al aire te lo dice. Con la caja vacía y <kbd>Enter</kbd> regresas a los precargados.</li>
+        <li><b>Con imagen o solo el audio</b>: doble clic (o REPRODUCIR) lo pone con imagen en Visualización. <b>SOLO AUDIO</b>, abajo junto a REPRODUCIR, lo escucha solo con el sonido, como una radio (gasta menos internet). También con clic derecho sobre el canal: <b>Ver con imagen</b>, <b>Solo audio</b> o <b>Añadir a la lista</b>.</li>
+        <li><b>TV Azteca</b>: en <b>En vivo › Mis Páginas en Vivo</b> están los canales de TV Azteca en vivo (La Granja VIP 24/7, Azteca UNO, Azteca 7, adn Noticias y los demás). Con doble clic se abre la <b>página oficial</b> del canal dentro de Visualización, con su propio reproductor y sus anuncios: al abrirse, su video llena el recuadro de Visualización; para verlo en todo el monitor usa <b>⛶ COMPLETA</b> (o <kbd>F</kbd>) y <kbd>Esc</kbd> para regresar. El volumen y la pausa se manejan con los botones de esa página (su botón de pantalla completa lo hace más chico o lo vuelve a agrandar dentro del recuadro), y el ecualizador, los efectos y la GRABADORA no aplican. Algunos programas dicen «disponible solo por TV»: eso lo decide TV Azteca. Al pulsar EFECTOS, VIDEO, CARÁTULA o poner una canción, la página se cierra; si cierras Visualización, deja de sonar y al volver a abrirla regresa el canal. Si TV Azteca cambia sus canales, alguno puede dejar de abrir.</li>
+        <li><b>Quitar TV Azteca u otras páginas en vivo</b>: en <b>PREF › En vivo › Páginas en vivo</b> desmarca <b>TV Azteca</b> y sus canales dejan de verse en Mis Páginas en Vivo (vuelve a marcarla cuando quieras). Los canales de TV Azteca vienen con el programa y no se pueden borrar, solo ocultar. Ahí mismo puedes agregar otro canal que tenga su página oficial en vivo: escribe un nombre y la dirección de la página (https://…) y pulsa <b>AGREGAR</b>. También puedes pegar la dirección en el buscador de <b>Internet TV › Mis Páginas en Vivo</b> y pulsar <kbd>Enter</kbd>. Se ven igual que TV Azteca, llenando Visualización. Para quitar uno, elígelo y pulsa <kbd>Supr</kbd>, o <b>BORRAR</b> en Opciones. Si una página pide iniciar sesión, la sesión se guarda en <b>media\perfil\web-envivo</b> (viaja con el programa si lo copias a una USB). Algunas páginas con protección anticopia pueden no reproducirse.</li>
+        <li><b>¿Cuáles funcionan?</b>: en una lista de canales pulsa <b>REVISAR</b> (abajo de la Biblioteca). El programa prueba los canales que se ven, desde tu internet, y les pone <b style="color:#3c3">✓</b> si responden o <b style="color:#f44">✗</b> si no; pasa el ratón sobre la marca para ver cuándo y por qué. Marca <b>ocultar ✗</b> para no ver los que fallan. Al abrir un canal también se marca solo. Algunos canales fallan solo a ratos: puedes volver a revisar cuando quieras.</li>
+        <li><b>Guía de programación</b>: si la lista tiene guía, la columna <b>Ahora</b> dice qué programa pasa en cada canal, y al ver un canal sale qué pasa ahora y qué sigue. La lista México ya trae una guía; para otra lista pulsa <b>GUÍA</b> en PREF › En vivo › Internet TV y pega la dirección de su guía (formato XMLTV, .xml o .xml.gz). La guía se guarda en media\perfil\iptv y se vuelve a bajar cada 12 horas.</li>
+        <li>También puedes pegar en la caja de búsqueda la dirección de un canal (la que termina en .m3u8) y pulsar <kbd>Enter</kbd>.</li>
+        <li>Es TV en vivo: no se puede adelantar ni retroceder. Algunos canales cambian de dirección, dejan de transmitir o solo se ven en su país; si uno no abre, prueba otro o pulsa ACTUALIZAR en la lista.</li>
+        <li>Usa solo listas legales. Las listas "gratis" que ofrecen canales de paga (cable, deportes, películas de estreno) son piratas: suelen fallar, caducar pronto y pueden traer riesgos.</li>
       </ul>
 
+      <h3 id="hRec">GRABADORA: GRABAR TV Y RADIO</h3>
+      <ul>
+        <li><b>Abrirla</b>: pulsa <b>● GRABADORA</b> en la ventana de Visualización, junto a EN VIVO. Se abre su ventana, que dice arriba qué suena ahora. El botón se enciende solo cuando hay algo en vivo: un canal de TV o YouTube en vivo en <b>EN VIVO</b>, o una radio sonando. Con una canción o un video se ve apagado, aunque pulses EN VIVO.</li>
+        <li><b>Grabar</b>: con un canal de TV, una radio o YouTube en vivo sonando, pulsa <b>● GRABAR</b>. El tiempo grande cuenta lo grabado y abajo sale el nombre del archivo y cuánto pesa.</li>
+        <li><b>Comerciales</b>: pulsa <b>❚❚ PAUSA</b> y luego <b>▶ CONTINUAR</b> cuando regrese el programa. Al terminar, todo queda en un solo archivo, sin los comerciales.</li>
+        <li><b>Terminar</b>: <b>■ TERMINAR</b> guarda la grabación. <b>📁</b> abre la carpeta. Los canales se guardan en <b>media\grabaciones\tv</b> (MP4) y las radios en <b>media\grabaciones\radio</b> (MP3), con el nombre del canal y la fecha y hora en que pulsaste GRABAR (por ejemplo <i>Milenio 2026-11-21 22.11.59.mp4</i>). Nunca se mezclan con media\musica ni media\video.</li>
+        <li><b>Grabaciones recientes</b>: la lista de abajo muestra cada grabación con su nombre de archivo y su duración (● grabando, ❚❚ en pausa, ✓ guardada). Clic en una para pausarla o terminarla; <b>doble clic</b> en una ya guardada para verla o escucharla en el programa (lo que sonaba se detiene).</li>
+        <li><b>Varias a la vez</b>: puedes grabar <b>hasta 5 canales o radios al mismo tiempo</b> (las que están en pausa también cuentan), cada una en su propio archivo. El límite es para no saturar tu internet ni tu computadora: cada canal usa más o menos de 2 a 5 Mbps y cada hora de TV pesa de 1 a 2 GB. Con 5 grabaciones, GRABAR se apaga hasta que termines una.</li>
+        <li><b>Señales de que se graba</b>: el botón <b>● GRABADORA</b> se pone rojo (amarillo si todo está en pausa), el título del reproductor muestra <b>● REC</b> (o <b>❚❚ REC</b>; clic ahí abre la GRABADORA) y, en la Biblioteca y en la Guía de programación, el canal o la radio que se graba lleva <b>● REC</b> junto a su nombre (<b>◀ AL AIRE ● REC</b> si además lo estás viendo).</li>
+        <li><b>Mientras grabas</b>: la GRABADORA se queda a la vista (no se puede cerrar ni enrollar hasta que termines). Si grabas el canal que estás viendo, la pantalla se queda en EN VIVO: EFECTOS, VIDEO, CARÁTULA y AUTO se apagan. Puedes cambiar a otro canal: la grabación sigue por detrás.</li>
+        <li>Al cerrar el programa, las grabaciones se terminan y se guardan solas.</li>
+        <li>Graba solo para tu uso personal y respeta los derechos de los canales.</li>
+      </ul>
       <h3 id="hDesc">DESCARGAR MP3 Y VIDEO</h3>
       <ul>
         <li><b>MP3</b> guarda la canción elegida (o la que suena) y <b>MP3 TODO</b> la lista completa, con nombre y carátula.</li>
@@ -1021,9 +1058,9 @@
       <h3 id="hVid">VISUALIZACIÓN (VID)</h3>
       <ul>
         <li><b>EFECTOS</b> muestra efectos visuales que bailan con la música; junto a él eliges el efecto y <b>AUTO</b> los va cambiando solo. Los efectos también bailan con la mezcla de la <b>Consola DJ</b>: siguen lo que suena en los platos, con el crossfader, los FX y el sampler.</li>
-        <li><b>VIDEO</b> muestra el video de YouTube o de tu PC y <b>CARÁTULA</b> la portada del álbum. <b>EN VIVO</b> muestra las transmisiones en vivo de YouTube (mira <a href="#" data-h="hTv">YouTube en vivo</a>).</li>
+        <li><b>VIDEO</b> muestra el video de YouTube o de tu PC y <b>CARÁTULA</b> la portada del álbum. <b>EN VIVO</b> muestra los canales de TV por internet, YouTube en vivo y las páginas en vivo (mira <a href="#" data-h="hTv">Internet TV</a>).</li>
         <li><b>⧉ FLOTANTE</b> pone el video o el canal en una ventanita encima de todo. Mientras está flotando, la pantalla lo avisa y EFECTOS, VIDEO, CARÁTULA, EN VIVO y COMPLETA se apagan; <b>⧉ REGRESAR</b> lo vuelve a su lugar.</li>
-        <li><b>● GRABADORA</b> abre la ventana para grabar YouTube en vivo (mira <a href="#" data-h="hRec">GRABADORA</a>). Solo se enciende con una transmisión en vivo sonando (con una canción se ve apagado). Mientras grabas la transmisión que estás viendo, la pantalla se queda en EN VIVO.</li>
+        <li><b>● GRABADORA</b> abre la ventana para grabar TV y radio (mira <a href="#" data-h="hRec">GRABADORA</a>). Solo se enciende con un canal en EN VIVO o una radio sonando (con una canción se ve apagado). Mientras grabas el canal que estás viendo, la pantalla se queda en EN VIVO.</li>
         <li>Pantalla completa con <kbd>F</kbd>, con doble clic o con <b>⛶ COMPLETA</b>. <kbd>Esc</kbd> para salir.</li>
       </ul>
 
@@ -1046,7 +1083,7 @@
       <p>Pulsa <b>DJ</b> (junto a BIB) para abrir la consola: dos platos (A a la izquierda, B a la derecha) con un mezclador en medio para pasar de una canción a otra como un DJ. En el programa se abre en su propia ventana. Toda la consola se ajusta sola al tamaño de la ventana sin deformarse: agranda la ventana para verla más grande, y si la haces más alta, la lista de canciones de abajo muestra más renglones.</p>
       <ul>
         <li><b>TONO</b> (junto al BPM de cada plato): el tono de la canción (por ejemplo Am = La menor) y su número <b>Camelot</b> (8A). Dos canciones mezclan bien si tienen el mismo número, uno arriba o abajo con la misma letra, o el mismo número con la otra letra; cuando es así, el tono se pone verde.</li>
-        <li><b>Lista de canciones (abajo, a todo lo ancho)</b>: es tu lista de reproducción, con el BPM y el tono de las canciones que ya cargaste y en qué plato está cada una (A o B). Escribe en <b>Buscar canción</b> para filtrarla. Para cargar una canción pulsa el botón <b>A</b> o <b>B</b> de su renglón (columna CARGAR; se ilumina el del plato donde está), dale doble clic (va al plato libre) o arrástrala a un plato. Sirven canciones de tu PC, de YouTube y de Spotify; las transmisiones en vivo y las películas no se usan en la consola. Un plato que está sonando no se puede reemplazar: páusalo primero.</li>
+        <li><b>Lista de canciones (abajo, a todo lo ancho)</b>: es tu lista de reproducción, con el BPM y el tono de las canciones que ya cargaste y en qué plato está cada una (A o B). Escribe en <b>Buscar canción</b> para filtrarla. Para cargar una canción pulsa el botón <b>A</b> o <b>B</b> de su renglón (columna CARGAR; se ilumina el del plato donde está), dale doble clic (va al plato libre) o arrástrala a un plato. Sirven canciones de tu PC, de YouTube y de Spotify; las radios y las películas no se usan en la consola. Un plato que está sonando no se puede reemplazar: páusalo primero.</li>
         <li><b>Ondas (arriba)</b>: las dos canciones de cerca, A arriba y B abajo; la línea blanca es lo que suena y las marcas pequeñas son los golpes (beats). Si las marcas de A y B caen juntas, las canciones van al mismo ritmo. Arrastra una onda para moverte un poco.</li>
         <li><b>Contador de golpes</b> (a los lados de las ondas, A a la izquierda y B a la derecha): los 4 focos marcan el golpe del compás (el primero brilla en blanco) y abajo va el número de compás. <b>FASE</b> se pone amarilla cuando los BPM están cerca y verde cuando los dos platos suenan al mismo ritmo y con los golpes juntos.</li>
         <li><b>Barra de información</b> (bajo las ondas, A a la izquierda y B a la derecha): portada, nombre de la canción y artista, BPM (ya con el cambio de tempo), PITCH (% de velocidad), tiempo TRANSCURRIDO, lo que RESTA y la canción completa, donde un clic salta a esa parte.</li>
@@ -1092,7 +1129,7 @@
         <li><b>Reproducción</b>: <b>FUNDIDO</b> mezcla el final de una canción con la siguiente; <b>DORMIR</b> detiene la música después de un tiempo o al terminar la canción o la lista.</li>
         <li><b>Ventanas</b>: <b>ORDEN ORIGINAL</b> regresa las ventanas a su lugar.</li>
         <li><b>Biblioteca › Medios locales</b>: las carpetas con tu música y tus videos que lee la Biblioteca. <b>AGREGAR CARPETA…</b> suma una (y la lee en ese momento), <b>QUITAR</b> la saca de la lista sin borrar tus archivos y <b>ESCANEAR AHORA</b> vuelve a leer todas. media\musica y media\video del programa siempre se leen. Casillas: <b>volver a escanear al abrir el programa</b> y <b>quitar de la Biblioteca los archivos que ya no existen</b>. Si una carpeta no se encuentra (era de otra PC o de una USB) sale «no encontrada» y se salta sin borrar nada. El botón <b>CARPETAS…</b> de la Biblioteca abre esta sección.</li>
-        <li><b>En vivo</b>: cómo usar YouTube en vivo.</li>
+        <li><b>En vivo › Internet TV</b>: tus listas de canales (AGREGAR, ARCHIVO…, GUÍA, ACTUALIZAR, BORRAR, RESTAURAR INCLUIDAS). <b>En vivo › Páginas en vivo</b>: la casilla <b>TV Azteca</b> la muestra u oculta en Mis Páginas en Vivo, y ahí agregas (nombre + dirección) o borras tus propias páginas en vivo.</li>
         <li><b>Descargas</b>: dónde se guarda cada cosa dentro de la carpeta media.</li>
         <li><b>Spotify</b>: ver su sección en esta ayuda.</li>
         <li><b>Actualizaciones</b>: <b>YT-DLP › BUSCAR ACTUALIZACIÓN</b> muestra la versión de yt-dlp (lo que lee YouTube) y, si hay una más nueva, la instala. <b>PROGRAMA › BUSCAR VERSIÓN NUEVA</b>: revisa en GitHub (github.com/ElarCastro/RetroAmp) si hay una versión más reciente de RetroAmp. Si la hay, el botón cambia a <b>ACTUALIZAR A …</b>: la descarga y, cuando está lista, <b>REINICIAR Y ACTUALIZAR</b> cierra el programa, cambia sus archivos y lo vuelve a abrir solo. Tus listas, ajustes, favoritos y descargas (carpeta <b>media</b>) no se tocan. Una vez al día el programa revisa solo y te avisa, pero nunca descarga nada sin tu clic. La casilla de abajo (activada de fábrica) hace que, al abrir el programa, salga una ventana cuando haya una versión nueva, con su descripción; si en esa ventana marcas «No mostrar actualizaciones», aquí se desmarca y ya no sale hasta que la vuelvas a marcar.</li>
@@ -1102,8 +1139,8 @@
       <p>Además de los temas, RetroAmp puede usar <b>skins clásicos de Winamp 2</b> (archivos <b>.wsz</b>). El programa ya trae una colección lista para elegir en <b>PREF › Apariencia</b>, y hay miles más gratis en internet, por ejemplo en <b><a href="https://skins.webamp.org/" class="xlink" data-ext title="Abrir en el navegador">skins.webamp.org</a></b>.</p>
       <ul>
         <li><b>Agregar un skin</b>: descarga el archivo .wsz y arrástralo a la ventana de RetroAmp, o ve a <b>PREF › Apariencia › CARGAR…</b> y elígelo. Se guarda una copia en <b>media\perfil\skins</b> y se aplica de inmediato. Los 24 skins que trae el programa están en datos\skins y no se pueden borrar; los que agregas tú sí (BORRAR). También puedes copiar varios .wsz a esa carpeta y elegirlos después en la lista.</li>
-        <li><b>Qué cambia</b>: el reproductor y el ecualizador se dibujan con las imágenes del skin, igual que en el Winamp clásico (al doble de tamaño para que se vean bien). La lista y las demás ventanas toman los colores y la barra de título del skin.</li>
-        <li><b>Cómo se usa el reproductor con skin</b>: los botones de abajo son anterior, reproducir, pausa, detener, siguiente y ⏏ (buscar / añadir). Las barras pequeñas son el volumen y el balance; la barra larga es la posición (arrástrala). <b>EQ</b> y <b>PL</b> abren el ecualizador y la lista. Los botones de aleatorio y repetir están a la derecha. Clic en el tiempo cambia entre transcurrido y restante. La rueda del mouse sube o baja el volumen.</li>
+        <li><b>Qué cambia</b>: el reproductor y el ecualizador se dibujan con las imágenes del skin, igual que en el Winamp clásico, nítidos a la escala de tu pantalla. El <b>tamaño</b> se elige en <b>PREF › Apariencia › TAMAÑO</b> (Pequeño, Mediano, Grande, Muy grande o Enorme) o con <kbd>Ctrl</kbd> + rueda del mouse sobre el reproductor. La lista y las demás ventanas toman los colores y la barra de título del skin.</li>
+        <li><b>Cómo se usa el reproductor con skin</b>: los botones de abajo son anterior, reproducir, pausa, detener, siguiente y ⏏ (buscar / añadir). Las barras pequeñas son el volumen y el balance; la barra larga es la posición (arrástrala). <b>EQ</b> y <b>PL</b> abren el ecualizador y la lista. Los botones de aleatorio y repetir están a la derecha. Clic en el tiempo cambia entre transcurrido y restante. La rueda del mouse sube o baja el volumen (con <kbd>Ctrl</kbd> cambia el tamaño).</li>
         <li><b>Letras O A I D V</b> (a la izquierda del tiempo): cada una abre o cierra una ventana y se ve hundida mientras esa ventana está abierta. <b>O</b> Preferencias, <b>A</b> Ayuda, <b>I</b> Biblioteca, <b>D</b> Consola DJ y <b>V</b> Visualización. Si pasas el mouse encima te dice qué hace cada una.</li>
         <li><b>Menú del skin</b>: el botón de arriba a la izquierda o clic derecho sobre el reproductor abre un menú con todas las ventanas (lista, ecualizador, video, biblioteca, consola DJ, preferencias, ayuda), el mini reproductor, siempre visible, modo fantasma y <b>Quitar el skin</b>.</li>
         <li><b>Ecualizador con skin</b>: ON lo enciende o apaga, <b>AUTO</b> es «Nivelar volumen», <b>PRESETS</b> abre los ajustes predefinidos y cada barra se arrastra (doble clic: 0 dB).</li>
@@ -1117,7 +1154,7 @@
       <ul>
         <li>Copia la carpeta completa a una USB u otra PC y funciona igual, con tus listas, ajustes y descargas.</li>
         <li>Junto a <b>RetroAmp.exe</b> solo verás <b>LEEME.txt</b>, <b>ManualUsuario.pdf</b> (esta ayuda con imágenes, para leer o imprimir) y dos carpetas. Para respaldar todo o pasarlo a otra PC o a una versión nueva basta copiar <b>media</b>.</li>
-        <li><b>media</b>, todo lo tuyo:<br><b>musica\</b> tus MP3 (descargas y los que copies) · <b>video\</b> tus videos y películas · <b>playlists\</b> tus listas guardadas · <b>grabaciones\</b> con <b>tv\</b> y <b>radio\</b> (lo que grabas con la GRABADORA) y <b>Consola DJ\</b> (tus mezclas) · <b>perfil\</b> tu lista actual, ajustes, biblioteca y posición de las ventanas, y dentro <b>skins\</b> (los skins que tú agregas) y <b>spotify\</b> (la conexión con Spotify).</li>
+        <li><b>media</b>, todo lo tuyo:<br><b>musica\</b> tus MP3 (descargas y los que copies) · <b>video\</b> tus videos y películas · <b>playlists\</b> tus listas guardadas · <b>grabaciones\</b> con <b>tv\</b> y <b>radio\</b> (lo que grabas con la GRABADORA) y <b>Consola DJ\</b> (tus mezclas) · <b>perfil\</b> tu lista actual, ajustes, biblioteca y posición de las ventanas, y dentro <b>iptv\</b> (tus listas de canales y guías), <b>skins\</b> (los skins que tú agregas), <b>spotify\</b> (la conexión con Spotify) y <b>web-envivo\</b> (sesiones de las páginas en vivo).</li>
         <li><b>datos</b>, lo del programa (no hace falta abrirla): <b>cache\</b> audio ya escuchado · <b>bin\</b> herramientas (yt-dlp, Deno, ffmpeg, WebView2) · <b>skins\</b> los 24 skins que trae el programa (no se borran) · <b>fonts\</b>, <b>lib\</b>, <b>perfil\</b> (lo interno de la ventana, no tus ajustes) y <b>registro.txt</b> (errores).</li>
         <li><b>media\perfil\spotify</b> guarda tu conexión con Spotify: <b>no la compartas</b>. Si le pasas el programa a alguien, borra esa carpeta antes (o pulsa SALIR en PREF › Spotify).</li>
         <li>El programa ya trae todas las herramientas (yt-dlp, Deno y ffmpeg): no descarga nada para empezar. Si faltara alguna, la descarga sola la primera vez.</li>
@@ -1128,7 +1165,7 @@
         <li><b>Windows pregunta «¿Está seguro de que desea ejecutar este software?» cada vez que lo abres</b>: pasa porque el programa vino en un .zip de internet. Ciérralo, y antes de descomprimir haz clic derecho en el .zip › <b>Propiedades</b> › marca <b>Desbloquear</b> › Aceptar; luego descomprime de nuevo. Si Windows SmartScreen dice «Windows protegió su PC», pulsa <b>Más información › Ejecutar de todas formas</b>.</li>
         <li><b>No abre</b>: Windows necesita "WebView2" (ya viene en Windows 10 y 11 actualizados). Si falta, el programa te lleva a la página para instalarlo.</li>
         <li><b>Una canción de YouTube no suena</b>: pulsa ⏭ y vuelve a intentar más tarde. Si fallan todas, YouTube cambió algo: abre <b>PREF › Actualizaciones › YT-DLP › BUSCAR ACTUALIZACIÓN</b>. El programa revisa si hay una versión nueva de yt-dlp, la descarga, comprueba su firma, reemplaza solo ese archivo y se recarga. (Además, cada vez que abres el programa intenta actualizar yt-dlp por su cuenta, sin avisar.)</li>
-        <li><b>Una transmisión en vivo se queda cargando</b>: puede que ya haya terminado o que tu red la bloquee; prueba otra.</li>
+        <li><b>La radio se queda cargando</b>: tu red puede bloquearla o la dirección ya no funciona.</li>
         <li><b>Spotify dice que no tienes permiso</b>: revisa que la Redirect URI sea exacta y que tu correo esté en User Management de tu app.</li>
         <li><b>Quedó abierto en segundo plano</b>: clic derecho en su icono junto al reloj › Salir, o usa <b>datos\Detener-RetroAmp.bat</b>.</li>
         <li><b>Una película no abre o se ve trabada</b>: la primera vez se prepara y, si el formato hay que convertirlo, una PC lenta puede ir más despacio que la película; pausa un momento y sigue. Si dice que no pudo prepararla, el archivo puede estar dañado o incompleto.</li>
@@ -1137,9 +1174,9 @@
       </ul>
 
       <h3 id="hAcerca">ACERCA DE</h3>
-      <p id="helpVer">RetroAmp · Versión 1.3 · gratuito, para uso personal · <a href="https://github.com/ElarCastro/RetroAmp" class="xlink" data-ext title="Abrir en el navegador">github.com/ElarCastro/RetroAmp</a></p>
+      <p id="helpVer">RetroAmp · Versión 1.4 · gratuito, para uso personal · <a href="https://github.com/ElarCastro/RetroAmp" class="xlink" data-ext title="Abrir en el navegador">github.com/ElarCastro/RetroAmp</a></p>
       <p>Proyecto de Elar Castro, basado en WinampYT / WINAMP_Plus y mejorado con la ayuda de Claude (Anthropic).</p>
-      <p>Usa yt-dlp, Deno, FFmpeg, hls.js (licencia Apache 2.0, en lib) y Microsoft WebView2, y la fuente VT323 (licencia OFL). No tiene relación con YouTube, Google, Spotify ni con ningún otro reproductor; sus marcas son de sus dueños.</p>
+      <p>Usa yt-dlp, Deno, FFmpeg, hls.js (licencia Apache 2.0, en lib) y Microsoft WebView2, y la fuente VT323 (licencia OFL). Las listas de TV incluidas son de iptv-org. No tiene relación con YouTube, Google, Spotify ni con ningún otro reproductor; sus marcas son de sus dueños.</p>
     </div>
     <div class="mgrip" title="Arrastra para cambiar el tamaño (doble clic: tamaño original)"></div>
   </section>
@@ -1154,7 +1191,8 @@
         <li data-p="bib">Biblioteca</li>
         <li data-p="loc" class="sub">Medios locales</li>
         <li data-p="viv">En vivo</li>
-
+        <li data-p="tv" class="sub">Internet TV</li>
+        <li data-p="web" class="sub hostonly">Páginas en vivo</li>
         <li data-p="des">Descargas</li>
         <li data-p="spo">Spotify</li>
         <li data-p="act">Actualizaciones</li>
@@ -1176,6 +1214,7 @@
       </div>
       <div class="prefpage" data-p="apa" hidden><h4>Apariencia</h4>
     <div class="opt"><label>TEMA</label><div class="themes" id="themes"></div></div>
+    <div class="opt"><label>TAMAÑO</label><select id="oSkSize" class="sel" title="Tamaño del reproductor con skin (también con Ctrl + rueda del mouse sobre el reproductor)"><option value="1">Pequeño</option><option value="1.5">Mediano</option><option value="2">Grande</option><option value="2.5">Muy grande</option><option value="3">Enorme</option></select></div>
     <div class="opt skrow"><label>SKIN</label><select id="oSkin" class="sel" hidden title="Skin clásico (.wsz) que usa el reproductor"></select><button class="cbtn sm" id="oSkUse" title="Usar el skin elegido (también con doble clic en la lista)">USAR ESTE</button><button class="cbtn sm" id="oSkinAdd" title="Agregar un skin .wsz que descargaste">CARGAR…</button><button class="cbtn sm" id="oSkinDel" title="Quitar de la lista el skin elegido">BORRAR</button><input type="file" id="oSkinFile" accept=".wsz,.zip" hidden></div>
     <div class="opt skpick"><div class="sklist list" id="oSkList" tabindex="0" title="Clic: ver cómo se ve · Doble clic: usarlo"></div>
       <div class="skside"><div class="skprev" id="oSkPrevBox"><img id="oSkPrev" alt=""><span id="oSkPrevTxt"></span></div><div class="skinfo" id="oSkInfo"></div></div></div>
@@ -1208,9 +1247,9 @@
     <div class="opt"><label></label><span style="flex:1" id="oLocTxt">La música y los videos de estas carpetas (con sus subcarpetas) aparecen en Biblioteca › Música local. media\musica y media\video del programa siempre se leen. Si una carpeta no se encuentra (por ejemplo, era de otra PC o de una USB), se salta sin borrar nada.</span></div>
       </div>
       <div class="prefpage" data-p="viv" hidden><h4>En vivo</h4>
-    <div class="opt"><label></label><span style="flex:1">RetroAmp reproduce transmisiones en vivo de YouTube: en la Biblioteca › En vivo › YouTube en vivo (con imagen, o con el botón SOLO AUDIO). Para agregar un canal, pega su dirección o su @nombre en el buscador de esa sección.</span></div>
+    <div class="opt"><label></label><span style="flex:1">Canales en vivo: <a href="#" data-pref="tv">Internet TV</a> (tus listas de canales y guías) y <a href="#" data-pref="web" class="hostonly">Páginas en vivo</a>.</span></div>
       </div>
-      <div class="prefpage" data-p="tv" hidden style="display:none!important"><h4>Internet TV</h4>
+      <div class="prefpage" data-p="tv" hidden><h4>Internet TV</h4>
     <div class="opt" style="align-items:flex-start"><label style="padding-top:3px">INTERNET TV</label><div class="tvlists" id="oTvLists"></div></div>
     <div class="opt"><label></label><input id="oTvName" class="lcdinput grow" style="flex:0 0 96px" placeholder="Nombre" maxlength="40" spellcheck="false" autocomplete="off"><input id="oTvUrl" class="lcdinput grow" placeholder="Dirección de la lista: http://…/lista.m3u" spellcheck="false" autocomplete="off"><button class="cbtn sm" id="oTvAdd" title="Agregar esta lista de canales">AGREGAR</button><button class="cbtn sm" id="oTvFile" title="Agregar una lista .m3u o .m3u8 que tengas guardada en tu computadora">ARCHIVO…</button></div>
     <div class="opt"><label></label><span style="flex:1">Listas M3U de canales (IPTV). Se ven en Biblioteca › Internet TV. <a href="#" id="oTvXtL">¿Tu servicio te dio servidor, usuario y contraseña?</a></span><button class="cbtn sm" id="oTvReset" title="Volver a poner las listas que trae el programa (no borra las tuyas)">RESTAURAR INCLUIDAS</button></div>
@@ -1221,13 +1260,13 @@
       <button class="cbtn sm" id="oTvXAdd">AGREGAR</button>
       <span>Úsalo solo con un servicio que tengas contratado de forma legal. Los datos se guardan en este equipo, dentro de la dirección de la lista.</span></div>
       </div>
-      <div class="prefpage hostonly" data-p="web" hidden style="display:none!important"><h4>Páginas en vivo</h4>
+      <div class="prefpage hostonly" data-p="web" hidden><h4>Páginas en vivo</h4>
     <div class="opt hostonly" style="align-items:flex-start"><label style="padding-top:3px">PÁGINAS EN VIVO</label><div class="tvlists" id="oWebList"></div></div>
     <div class="opt hostonly"><label></label><input id="oWebName" class="lcdinput grow" style="flex:0 0 96px" placeholder="Nombre" maxlength="60" spellcheck="false" autocomplete="off"><input id="oWebUrl" class="lcdinput grow" placeholder="Dirección de la página en vivo: https://…" spellcheck="false" autocomplete="off"><button class="cbtn sm" id="oWebAdd" title="Agregar este canal (se abre su página oficial dentro de Visualización)">AGREGAR</button></div>
     <div class="opt hostonly"><label></label><span style="flex:1">Canales que se ven en su página oficial dentro de Visualización (Biblioteca › En vivo › Mis Páginas en Vivo). Desmarca TV Azteca para no ver sus canales; los tuyos se borran con BORRAR. Si una página pide iniciar sesión, la sesión queda guardada en media\perfil\web-envivo.</span></div>
       </div>
       <div class="prefpage" data-p="des" hidden><h4>Descargas</h4>
-    <div class="opt"><label>DESCARGAS</label><span id="oMediaDir">Se guardan dentro de RetroAmp: media\musica (MP3), media\video (videos), media\playlists (tus listas guardadas), media\grabaciones\tv y media\grabaciones\radio (lo que grabas de YouTube en vivo) y media\grabaciones\Consola DJ (tus mezclas).</span></div>
+    <div class="opt"><label>DESCARGAS</label><span id="oMediaDir">Se guardan dentro de RetroAmp: media\musica (MP3), media\video (videos), media\playlists (tus listas guardadas), media\perfil\iptv (listas de canales), media\grabaciones\tv y media\grabaciones\radio (grabaciones) y media\grabaciones\Consola DJ (tus mezclas).</span></div>
       </div>
       <div class="prefpage" data-p="spo" hidden><h4>Spotify</h4>
     <div class="opt spopt"><label>SPOTIFY</label><input id="oSpId" class="lcdinput spid" placeholder="Pega aquí tu Client ID de Spotify" spellcheck="false" autocomplete="off" maxlength="40"><button class="cbtn sm" id="oSpLogin" title="Abre Spotify en tu navegador para dar permiso (solo lectura de tus listas)">CONECTAR</button><button class="cbtn sm" id="oSpLists" title="Ver tus listas de Spotify y añadirlas">MIS LISTAS</button><button class="cbtn sm" id="oSpOut" title="Olvidar la cuenta de Spotify en este programa">SALIR</button></div>
@@ -1274,7 +1313,7 @@
         <ul id="libList" class="list" tabindex="0"></ul>
         <div class="foot">
           <button class="cbtn sm" id="libPlay" title="Escuchar la canción elegida">REPRODUCIR</button>
-          <button class="cbtn sm" id="libAudio" title="Escuchar solo el audio de la transmisión elegida (gasta menos internet)" hidden>SOLO AUDIO</button>
+          <button class="cbtn sm" id="libAudio" title="Escuchar solo el audio del canal elegido (como una radio; gasta menos internet)" hidden>SOLO AUDIO</button>
           <button class="cbtn sm" id="libAdd" title="Añadir a la lista la elegida (o todas las que se ven)">AÑADIR</button>
           <button class="cbtn sm" id="libPlayAll" title="Añadir todas las que se ven y empezar a escucharlas">REPRODUCIR TODO</button>
           <button class="cbtn sm" id="libChk" title="Probar si funcionan los canales o radios que se ven: ✓ responde, ✗ no responde" hidden>REVISAR</button>
@@ -1329,7 +1368,7 @@
   const S = { items: [], cur: -1, sel: -1, vol: 80, shuffle: false, repeat: true, remaining: false, vizMode: 0,
     theme: 'clasico', eq: { on: true, pre: 0, bands: [0,0,0,0,0,0,0,0,0,0], preset: 'Plano' },
     showEq: true, showPl: true, showOpt: false, showHelp: false, shade: false, top: false, ghostAlpha: 75, taskProg: true, dockMini: true, mp3App: false,
-    xfade: 0, level: false, bal: 0, eqUser: {}, showScr: false, showLib: false, scrMode: 'fx', fxMode: 0, fxAuto: false, libDir: '', layout: null, rolled: {}, radios: [], libNode: 'all', tvLists: null, showDj: false, dj: null, skin: '',
+    xfade: 0, level: false, bal: 0, eqUser: {}, showScr: false, showLib: false, scrMode: 'fx', fxMode: 0, fxAuto: false, libDir: '', layout: null, rolled: {}, radios: [], libNode: 'all', tvLists: null, showDj: false, dj: null, skin: '', skSize: 1.5,
     plName: '', dirty: false };
   let ghostOn = false;
   try { Object.assign(S, JSON.parse(localStorage.getItem('winampyt') || '{}')); } catch (e) {}
@@ -1383,15 +1422,6 @@
     if (!(S.tvVer >= 3)) { S.tvVer = 3; TV_DEFAULT.forEach(D => { if (D.guide) S.tvLists.forEach(L => { if (L.url === D.url && !L.guide) L.guide = D.guide; }); }); }   // guía de programación de México
     S.tvLists = S.tvLists.filter(x => x && typeof x.name === 'string' && (typeof x.url === 'string' && /^https?:\/\//i.test(x.url) || typeof x.file === 'string' && x.file.length > 3)).slice(0, 60);
     S.tvLists.forEach(L => { if (L.guide && !/^https?:\/\/\S+$/i.test(L.guide)) delete L.guide; });
-    // 1.2: RetroAmp solo reproduce YouTube (videos, audio y en vivo) y tu música de la PC.
-    // Se quitan los canales de TV por internet, las radios y las páginas en vivo (también de las listas viejas).
-    const keepIt = x => x && typeof x.id === 'string' && (/^[\w-]{11}$/.test(x.id) || /^[fs]:/.test(x.id) || isYtId(x.id));
-    const curId = S.items[S.cur] && S.items[S.cur].id;
-    S.items = S.items.filter(keepIt); S.hist = S.hist.filter(keepIt);
-    S.cur = curId ? S.items.findIndex(x => x.id === curId) : -1; if (!(S.sel < S.items.length)) S.sel = -1;
-    S.tvLists = []; S.rem = []; S.tvFav = []; S.radioFav = []; S.radios = []; S.webMine = []; S.chk = {};
-    if (/^(radio|rfav|rsearch|tv|tvfav|tvguide|tvl:.*|webm|ytr)$/.test(S.libNode || '')) S.libNode = 'ytl';
-    if (S.prefPage === 'tv' || S.prefPage === 'web') S.prefPage = 'viv';
   }
   // Listas públicas y gratuitas de iptv-org (canales que se transmiten abiertos por internet de forma legal)
   const TV_DEFAULT = [
@@ -1605,7 +1635,7 @@
   }
   function histAdd(it) {
     if (!it || !it.id) return;
-    const kind = isTv(it) ? 'YouTube en vivo' : isRadio(it) ? 'YouTube en vivo (solo audio)' : isLocal(it) ? (isVideoFile(it) ? 'Video de la PC' : 'Música de la PC') : isSp(it) ? 'Spotify' : 'YouTube';
+    const kind = isTv(it) ? (isYtId(it.id) ? 'YouTube en vivo' : 'Internet TV') : isRadio(it) ? (isYtId(it.id) ? 'YouTube en vivo (radio)' : 'Radio por internet') : isLocal(it) ? (isVideoFile(it) ? 'Video de la PC' : 'Música de la PC') : isSp(it) ? 'Spotify' : 'YouTube';
     const t = Math.round(Date.now() / 60000);
     if (S.hist[0] && S.hist[0].id === it.id) { S.hist[0].t = t; save(); return; }
     S.hist = S.hist.filter(x => x.id !== it.id);
@@ -1644,7 +1674,7 @@
   });
   onA('ended', () => { if (!xfading) next(true); });
   onA('error', () => { if ((state === 'load' || state === 'play') && !hlsOf.has(audio)) failCurrent('el archivo de audio no se pudo leer'); });
-  onA('tvfail', e => { if (state === 'load' || state === 'play') failCurrent(isRadio(curItem()) ? 'la transmisión no está en vivo o no se puede escuchar desde aquí' : 'la transmisión no está en vivo o no se puede ver desde aquí'); });
+  onA('tvfail', e => { if (state === 'load' || state === 'play') failCurrent(isRadio(curItem()) ? 'la radio no está transmitiendo o no se puede escuchar desde aquí' : 'el canal no está transmitiendo o no se puede ver desde aquí'); });
 
   function failCurrent(why) {
     const it = curItem(); if (it) { it.err = true; scheduleRender(); }
@@ -1751,7 +1781,7 @@
       if (!ok) { failCurrent(it.spErr || 'no apareció en YouTube'); return; }
       scheduleRender(true); updateMediaSession();
     }
-    if (!isLocal(it)) msg(isRadio(it) || isTv(it) ? 'Conectando con la transmisión en vivo…' : 'Preparando audio… (la primera vez tarda unos segundos)', 0);
+    if (!isLocal(it)) msg(isRadio(it) ? 'Conectando con la radio…' : isTv(it) ? 'Conectando con el canal…' : 'Preparando audio… (la primera vez tarda unos segundos)', 0);
     let r = isTv(it) ? { ok: true, url: tvUrl(it) + (isYtId(it.id) ? '&a=1' : ''), tv: true, video: true, size: 0 } : null;   // YouTube: el sonido por su lado
     while (!r) {
       try { r = await api(prepUrl(it)); }
@@ -1781,7 +1811,7 @@
     }, 25000);
     if (isRadio(it)) setTimeout(() => {
       if (token === playToken && state === 'load' && !(audio.currentTime > 0))
-        msg('La transmisión no responde. Puede que ya no esté en vivo o que tu red la bloquee.', 12000);
+        msg('La radio no responde. Puede que tu red (por ejemplo, la del trabajo) bloquee las radios por internet, o que la dirección ya no funcione.', 12000);
     }, 25000);
     try { await audio.play(); }
     catch (e) {
@@ -1812,7 +1842,7 @@
     }
   }
   const isLive = () => !!(lastPrep && (lastPrep.live || lastPrep.tv || lastPrep.hls));
-  function liveNoSeek() { if (lastPrep && lastPrep.hls) { msg('Es una transmisión en vivo: no se puede adelantar ni retroceder.', 4000); return; } if (lastPrep && lastPrep.tv) { msg('Es una transmisión en vivo: no se puede adelantar ni retroceder.', 4000); return; } msg(`La película se sigue preparando (${lastPrep.pct || 0}%). Cuando termine podrás adelantar o retroceder.`, 5000); }
+  function liveNoSeek() { if (lastPrep && lastPrep.hls) { msg('Es radio en vivo: no se puede adelantar ni retroceder.', 4000); return; } if (lastPrep && lastPrep.tv) { msg('Es TV en vivo: no se puede adelantar ni retroceder.', 4000); return; } msg(`La película se sigue preparando (${lastPrep.pct || 0}%). Cuando termine podrás adelantar o retroceder.`, 5000); }
   function prefetchNext() {
     if (S.shuffle || S.items.length < 2) return;
     const n = S.items[(S.cur + 1) % S.items.length];
@@ -2058,7 +2088,6 @@
     if (paths) { el.addInput.value = ''; el.addInput.blur(); addLocalPaths(paths); return; }
     if (/^https?:\/\/\S+$/i.test(raw) && !parseToken(raw)) {
       el.addInput.value = ''; el.addInput.blur();
-      if (!/^https?:\/\/(www\.|m\.|music\.)?(youtube\.com|youtu\.be)\//i.test(raw)) { msg('RetroAmp solo reproduce enlaces de YouTube (videos, listas y transmisiones en vivo).', 7000); return; }
       if (/\.m3u8(\?|$)/i.test(raw.split('#')[0])) {   // canal de TV en vivo (HLS)
         const id = 'tv:' + raw;
         const j = S.items.findIndex(x => x.id === id);
@@ -2067,9 +2096,9 @@
         return;
       }
       const id = 'u:' + raw;
-      if (S.items.some(x => x.id === id)) { msg('Ya está en la lista.', 3000); return; }
+      if (S.items.some(x => x.id === id)) { msg('Esa radio ya está en la lista.', 3000); return; }
       const autoplay = state === 'stop'; addItem({ id, title: '' }); rememberRadio({ id, title: '' }); save(); scheduleRender();
-      msg('Transmisión de YouTube añadida (solo audio). Doble clic para escucharla.', 4000); if (autoplay) playIndex(S.items.length - 1);
+      msg('Radio añadida. Doble clic para escucharla.', 4000); if (autoplay) playIndex(S.items.length - 1);
       return;
     }
     const toks = raw.split(/\s+/).map(parseToken);
@@ -2131,7 +2160,7 @@
         p.songs.forEach((it, k) => h.push(songRow(it, `data-pv="${j}:${k}"`, 'sub')));
       }
     });
-    if (!spMode && !searchGen) { el.resList.innerHTML = '<li class="note">Escribe arriba el nombre de una canción o artista y pulsa Enter para buscar en YouTube. También puedes pegar el enlace de un video, de una lista o de una transmisión en vivo de YouTube.</li>'; return; }
+    if (!spMode && !searchGen) { el.resList.innerHTML = '<li class="note">Escribe arriba el nombre de una canción o artista y pulsa Enter para buscar en YouTube. También puedes pegar el enlace de un video, de una lista de YouTube o de una radio.</li>'; return; }
     if (!spMode) h.push(`<li class="hdr">CANCIONES${songsLoading ? ' · buscando…' : ''}</li>`);
     if (!spMode && !songsLoading && !results.length) h.push(`<li class="note">Sin canciones. ${searchErr ? '(' + escapeHtml(searchErr) + ')' : ''}</li>`);
     results.forEach((it, i) => h.push(songRow(it, `data-v="${i}"`)));
@@ -2445,6 +2474,16 @@ mp3Busy = true; msg(`${video ? 'Video' : 'MP3'}: ${n} ${n > 1 ? 'descargas' : 'd
     else if (e.key === 'Enter') { e.preventDefault(); e.stopPropagation(); skUse(); }
   });
   oq('#oSkUse').onclick = skUse;
+  // 1.4: tamaño del skin
+  const skSizeName = f => ({ 1: 'Pequeño', 1.5: 'Mediano', 2: 'Grande', 2.5: 'Muy grande', 3: 'Enorme' })[f] || 'Mediano';
+  function setSkSize(f) { f = Math.min(3, Math.max(1, f)); oq('#oSkSize').value = String(f); SKIN.resize(f); msg('Tamaño del skin: ' + skSizeName(f), 2000); }
+  oq('#oSkSize').value = String([1, 1.5, 2, 2.5, 3].includes(+S.skSize) ? +S.skSize : 1.5);
+  oq('#oSkSize').onchange = () => setSkSize(+oq('#oSkSize').value);
+  document.addEventListener('wheel', e => {
+    if (!e.ctrlKey || !document.body.classList.contains('skinned') || !e.target.closest || !e.target.closest('#skWrap,#skEqWrap')) return;
+    e.preventDefault(); const L = [1, 1.5, 2, 2.5, 3], i = Math.max(0, L.indexOf(+S.skSize));
+    setSkSize(L[Math.min(L.length - 1, Math.max(0, i + (e.deltaY < 0 ? 1 : -1)))]);
+  }, { passive: false });
   // Biblioteca › Medios locales: varias carpetas (S.libDirs), escanear al abrir (S.libScanStart) y quitar lo que ya no existe (S.libPrune)
   let locSel = -1, locInfo = null;
   async function locRender(ask) {
@@ -3230,7 +3269,7 @@ mp3Busy = true; msg(`${video ? 'Video' : 'MP3'}: ${n} ${n > 1 ? 'descargas' : 'd
     // con una canción o un video (nada en vivo) la GRABADORA no aplica: si estaba abierta se cierra
     if (!busy && it && !isTv(it) && !isRadio(it) && !/^Grabación de/.test(it.ch || '') && (S.showRec || FLOAT.recWin)) { if (FLOAT.recWin) dockMod('recWin', true); else { S.showRec = false; applyPanels(); save(); } }
     el.mRecW.disabled = !ok;
-    el.mRecW.title = ok ? 'GRABADORA: graba YouTube en vivo, con pausa para los comerciales (con imagen en media\\grabaciones\\tv, solo audio en media\\grabaciones\\radio)' : 'La GRABADORA se usa con YouTube en vivo: elige una transmisión en Biblioteca › En vivo';
+    el.mRecW.title = ok ? 'GRABADORA: graba canales de TV, radios y YouTube en vivo, con pausa para los comerciales (TV en media\\grabaciones\\tv, radio en media\\grabaciones\\radio)' : 'La GRABADORA se usa con algo en vivo: pon un canal en EN VIVO (TV o YouTube en vivo) o una radio';
   }
   function setScrMode(m) {
     if (m !== 'tv') webTvClose();
@@ -3238,9 +3277,9 @@ mp3Busy = true; msg(`${video ? 'Video' : 'MP3'}: ${n} ${n > 1 ? 'descargas' : 'd
     if (m === 'tv' && webTv) { webSig = ''; webTvSync(); return; }
     if (m === 'vid' || m === 'tv') {
       const it = curItem();
-      if (m === 'tv' && !isTv(it)) { scrNote('Elige una transmisión en Biblioteca › En vivo › YouTube en vivo (doble clic para verla).', 6000); tvOpenLib(); }
+      if (m === 'tv' && !isTv(it)) { scrNote('Elige un canal en Biblioteca › En vivo o Internet TV (doble clic para verlo).', 6000); tvOpenLib(); }
       else if (!it) scrNote('Pon a sonar una canción o un video.');
-      else if (m === 'vid' && isTv(it)) scrNote('Es una transmisión en vivo: se ve con el botón EN VIVO.', 5000);
+      else if (m === 'vid' && isTv(it)) scrNote('Esto es un canal de TV: se ve con el botón EN VIVO.', 5000);
       else if (vidFor !== it.id) loadVideoFor(it);
     }
     if (m === 'cov' && !(coverFor && el.cover.dataset.ok === '1')) scrNote('Esta canción no tiene carátula: se muestran efectos.');
@@ -3262,7 +3301,7 @@ mp3Busy = true; msg(`${video ? 'Video' : 'MP3'}: ${n} ${n > 1 ? 'descargas' : 'd
     if (!it) return;
     r = r || (lastPrep && loadedId === it.id ? lastPrep : null);
     if (isTv(it)) {
-      if (!(S.scrMode === 'tv' && scrVisible())) { if (S.scrMode === 'vid' && scrVisible()) scrNote('Es una transmisión en vivo: se ve con el botón EN VIVO.', 5000); return; }
+      if (!(S.scrMode === 'tv' && scrVisible())) { if (S.scrMode === 'vid' && scrVisible()) scrNote('Esto es un canal de TV: se ve con el botón EN VIVO.', 5000); return; }
       try { await setMediaSrc(el.vid, tvUrl(it) + (isYtId(it.id) ? '&v=1' : ''), true); } catch (e) { scrNote('No se puede ver el canal: ' + e.message, 8000); return; }
       if (!curItem() || curItem().id !== it.id) { dropHls(el.vid); return; }
       vidFor = it.id;
@@ -3522,9 +3561,17 @@ mp3Busy = true; msg(`${video ? 'Video' : 'MP3'}: ${n} ${n > 1 ? 'descargas' : 'd
     if (libOpen.all) { rows.push(['aud', 1, '', 'Audio', n - nv]); rows.push(['vid', 1, '', 'Video', nv]); }
     rows.push(['pls', 0, libOpen.pls ? '▾' : '▸', 'Listas guardadas', plNames.length]);
     if (libOpen.pls) plNames.forEach(nm => rows.push(['pl:' + nm, 1, '', nm, '']));
+    rows.push(['radio', 0, libOpen.radio ? '▾' : '▸', 'Radios por internet', libRadios().length]);
+    if (libOpen.radio) { rows.push(['rfav', 1, '', 'Favoritos', S.radioFav.length]); rows.push(['rsearch', 1, '', 'Buscar radios', rs.items ? rs.items.length : '']); }
+    const tvN = S.tvLists.map(L => tvData[tvKey(L)]), tvAll = tvN.every(d => d) ? tvN.reduce((a, d) => a + d.items.length, 0) : '';
+    rows.push(['tv', 0, libOpen.tv ? '▾' : '▸', 'Internet TV', tvAll]);
+    if (libOpen.tv) rows.push(['tvfav', 1, '', 'Favoritos', S.tvFav.length]);
+    if (libOpen.tv && S.tvLists.length) rows.push(['tvguide', 1, '', 'Guía de programación', S.rem.length ? '🔔' + S.rem.length : '']);
+    if (libOpen.tv) S.tvLists.forEach((L, i) => { const d = tvN[i]; rows.push(['tvl:' + i, 1, '', L.name, d ? (d.err && !d.items.length ? '!' : d.items.length) : '']); });
     // 2.17: lo que no es radio ni lista de TV va junto en "En vivo" (YouTube en vivo una sola vez: con imagen o SOLO AUDIO)
-    rows.push(['live', 0, libOpen.live ? '▾' : '▸', 'En vivo', ytItems('tv').length]);
+    rows.push(['live', 0, libOpen.live ? '▾' : '▸', 'En vivo', ytItems('tv').length + (HOST ? webAllItems().length : 0)]);
     if (libOpen.live) rows.push(['ytl', 1, '', 'YouTube en vivo', ytItems('tv').length]);
+    if (libOpen.live && HOST) rows.push(['webm', 1, '', 'Mis Páginas en Vivo', webAllItems().length]);
     const frag = document.createDocumentFragment();
     rows.forEach(([k, lv, tw, label, cnt]) => {
       const li = document.createElement('li'); li.dataset.k = k; li.dataset.lv = lv;
@@ -3538,7 +3585,7 @@ mp3Busy = true; msg(`${video ? 'Video' : 'MP3'}: ${n} ${n > 1 ? 'descargas' : 'd
   async function libSelectNode(k, keep) {
     if (k.startsWith('pl:') && !plNames.includes(k.slice(3))) k = 'all';
     if (k.startsWith('tvl:') && !S.tvLists[+k.slice(4)]) k = 'tv';
-    if (/^(tva|radio|rfav|rsearch|tv|tvfav|tvguide|tvl:.*|webm|ytr)$/.test(k)) k = 'ytl';   // 1.2: solo YouTube en vivo
+    if (k === 'tva') k = 'webm';   // antes TV Azteca tenía su propia sección
     if (k === 'ytr' || k === 'live') k = 'ytl';   // 2.17: YouTube en vivo ya no se repite en Radios; "En vivo" abre YouTube en vivo
     if (k === 'webm' && !HOST) k = 'ytl';
     if ((k === 'ytl' || k === 'webm') && !libOpen.live) { libOpen.live = true; libTreeRender(); }
@@ -3657,8 +3704,8 @@ mp3Busy = true; msg(`${video ? 'Video' : 'MP3'}: ${n} ${n > 1 ? 'descargas' : 'd
         li.title = isLocal(x) ? localPath(x) : isRadio(x) ? x.id.slice(2) : isTv(x) ? (x.title || '') : (x.title || '');
         if (isTv(x)) { const g = epgFind(x); if (g) { li.children[3].textContent = g.now[2] || ''; li.children[3].className = 'd ep'; li.title += '\n' + epgText(g); li.children[3].title = epgText(g); } }
         if (k === 'hist' && x.t) { li.children[3].textContent = histWhen(x.t); li.children[3].className = 'd'; li.children[3].title = new Date(x.t * 60000).toLocaleString('es-MX'); }
-        if (isRadio(x) && k !== 'now' && !x.rs) li.children[1].insertAdjacentHTML('afterbegin', '<span class="vi">📻</span>');   // 1.2: sin favoritos de radio
-        if (isTv(x)) li.children[1].insertAdjacentHTML('afterbegin', '<span class="vi">📺</span>');   // 1.2: sin favoritos (no hay sección de TV)
+        if (isRadio(x) && k !== 'now') { const f = radioIsFav(x.id); if (!x.rs) li.children[1].insertAdjacentHTML('afterbegin', '<span class="vi">📻</span>'); li.children[1].insertAdjacentHTML('afterbegin', `<span class="fav${f ? ' on' : ''}" title="${f ? 'Quitar de favoritos' : 'Guardar en favoritos'}">${f ? '★' : '☆'}</span>`); }
+        if (isTv(x)) { const f = tvIsFav(x.id); li.children[1].insertAdjacentHTML('afterbegin', `<span class="fav${f ? ' on' : ''}" title="${f ? 'Quitar de favoritos' : 'Guardar en favoritos'}">${f ? '★' : '☆'}</span><span class="vi">📺</span>`); }
         if (isTv(x) || isRadio(x)) chkPaint(li, x);
         if (isWeb(x)) { li.children[1].insertAdjacentHTML('afterbegin', '<span class="vi">🌐</span>'); li.title = x.title + '\nSe ve en su página oficial dentro de Visualización: ' + x.id.slice(4); if (webTv && webTv.id === x.id) li.classList.add('now'); }
         if (isPlayingId(x.id)) li.classList.add('now');
@@ -4109,7 +4156,7 @@ mp3Busy = true; msg(`${video ? 'Video' : 'MP3'}: ${n} ${n > 1 ? 'descargas' : 'd
     if (tvLock && S.scrMode !== 'tv') setScrMode('tv');
     recMarkLib(); recBtnState();
     // ventana
-    rw$('.rwNow').textContent = live ? (isTv(it) ? '📺 ' : '📻 ') + (it.title || nameOf(it)) : 'Pon una transmisión de YouTube en vivo';
+    rw$('.rwNow').textContent = live ? (isTv(it) ? '📺 ' : '📻 ') + (it.title || nameOf(it)) : 'Pon un canal de TV, una radio o YouTube en vivo';
     const r = rwShown(), st = rw$('.rwSt'), stt = r ? r.state : '';
     if (r) rwSel = r.id;
     st.classList.toggle('on', stt === 'rec'); st.classList.toggle('pau', stt === 'pause' || stt === 'pausing');
@@ -4738,6 +4785,7 @@ mp3Busy = true; msg(`${video ? 'Video' : 'MP3'}: ${n} ${n > 1 ? 'descargas' : 'd
   function init22() {
     applyLayout(); applySizes(); setTimeout(restoreFloats, 700);
     eqOptions(); routeLevel(); el.bal.value = S.bal || 0;
+    { const z = el.optWin.querySelector('#oSkSize'); if (z) z.value = String([1, 1.5, 2, 2.5, 3].includes(+S.skSize) ? +S.skSize : 1.5); }
     el.oXfade.value = String(S.xfade || 0); if (!el.oXfade.value) el.oXfade.value = '0';
     S.fxMode = Math.max(0, Math.min(FX.length - 1, +S.fxMode || 0));
     if (!['fx', 'vid', 'cov', 'tv'].includes(S.scrMode)) S.scrMode = 'fx';
@@ -5113,7 +5161,7 @@ mp3Busy = true; msg(`${video ? 'Video' : 'MP3'}: ${n} ${n > 1 ? 'descargas' : 'd
         dragVal(e, pos, 248, x => { pos._v = Math.max(0, Math.min(1, (x - 14) / (248 - 29))); el.seek.value = Math.round(pos._v * 1000); el.seek.dispatchEvent(new Event('input')); },
           () => { pos._v = null; el.seek.dispatchEvent(new Event('change')); });
       });
-      M.addEventListener('wheel', e => { e.preventDefault(); setVol(S.vol + (e.deltaY < 0 ? 5 : -5)); }, { passive: false });
+      M.addEventListener('wheel', e => { if (e.ctrlKey) return; e.preventDefault(); setVol(S.vol + (e.deltaY < 0 ? 5 : -5)); }, { passive: false });
       E.querySelectorAll('.skSl').forEach(s => s.addEventListener('pointerdown', e => {
         dragVal(e, s, 14, (x, y) => {
           let v = Math.round((12 - (y - 5.5) / (63 - 11) * 24) * 2) / 2; v = Math.max(-12, Math.min(12, v)); if (Math.abs(v) < 0.75) v = 0; s._v = v;
@@ -5125,7 +5173,13 @@ mp3Busy = true; msg(`${video ? 'Video' : 'MP3'}: ${n} ${n > 1 ? 'descargas' : 'd
 
     // ---------- Activar / quitar ----------
     // Ampliación del skin a píxel exacto: con la pantalla al 125 % queda en 2,4 (3 píxeles reales por píxel del skin)
-    function skK() { const d = window.devicePixelRatio || 1; return Math.max(1, Math.round(2 * d)) / d; }
+    // 1.4: el tamaño lo elige la persona (PREF › Apariencia › TAMAÑO, o Ctrl + rueda del mouse sobre el skin)
+    const SK_SIZES = [1, 1.5, 2, 2.5, 3];
+    function skK() {   // si el tamaño cae casi justo en píxeles reales enteros se ajusta (nítido); si no, se usa tal cual
+      const d = window.devicePixelRatio || 1, f = SK_SIZES.includes(+S.skSize) ? +S.skSize : 1.5, n = f * d, r = Math.round(n);
+      return Math.abs(n - r) <= 0.15 && r >= 1 ? r / d : f;
+    }
+    function resize(f) { if (f != null) { S.skSize = f; save(); } if (cur && skLastCss) { setCss(skLastCss); reportSize(); } }
     let skLastCss = '';
     (function watchDpr() {   // al pasar la ventana a otro monitor (otra escala) se vuelve a calcular
       try { matchMedia(`(resolution: ${window.devicePixelRatio || 1}dppx)`).addEventListener('change', () => { if (skLastCss) setCss(skLastCss); watchDpr(); }, { once: true }); } catch (e) {}
@@ -5228,7 +5282,7 @@ mp3Busy = true; msg(`${video ? 'Video' : 'MP3'}: ${n} ${n > 1 ? 'descargas' : 'd
       })().catch(e => { delete prevCache[name]; throw e; }));
     }
     window.__wytSkin = { cur: () => cur, list: () => list, load, preview, st: () => ({ state, S, at: audio.currentTime }), paint: () => paint(performance.now()) };
-    return { init, add, off, active: () => !!cur, kick, preview };
+    return { init, add, off, active: () => !!cur, kick, preview, resize, SK_SIZES };
   })();
   // soltar un .wsz sobre la ventana
   window.addEventListener('drop', e => {
