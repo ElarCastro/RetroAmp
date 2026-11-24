@@ -7,21 +7,19 @@ body = body[:body.rstrip().rfind('</div>')].strip()
 body = re.sub(r'<a href="#" data-h="(\w+)">([^<]*)</a>', r'<a href="#\1">\2</a>', body)
 body = re.sub(r'<a href="#" class="spHelp">[^<]*</a>', '', body)
 FIG = {
- 'hInicio': [('general.png','Vista general del programa con el tema Clásico y las ventanas unidas: reproductor, lista, ecualizador, búsqueda, biblioteca y Visualización.', 'big')],
+ 'hInicio': [('general.png','Vista general del programa con el tema Clásico: reproductor, lista, ecualizador, biblioteca y Visualización.', 'big')],
  'hTeclas': [('ayuda.png','La ventana de Ayuda (botón ? o tecla F1). Este manual tiene el mismo contenido.', '')],
  'hControles': [('reproductor.png','El reproductor: pantalla con el tiempo y la gráfica, nombre de la canción, volumen, balance, barra de posición y botones.', ''), ('mini.png','El mini reproductor: una barra pequeña con los controles básicos.', 'small')],
  'hLista': [('lista.png','La lista de reproducción con canciones de la PC (♪) y una película (🎬). Arriba, el cuadro «Buscar en esta lista», que busca solo entre sus canciones.', '')],
  'hYT': [('busqueda.png','La ventana BÚSQUEDA: arriba su cuadro para buscar en YouTube o pegar un enlace; abajo los resultados (clic para añadir, doble clic para escuchar).', '')],
- 'hBib': [('biblioteca.png','La biblioteca: a la izquierda Reproduciendo ahora, Música local, Listas guardadas, Radios por internet, Internet TV y En vivo; arriba artistas y álbumes y abajo la tabla de canciones.', '')],
+ 'hBib': [('biblioteca.png','La biblioteca: a la izquierda Reproduciendo ahora, Visto recientemente, Música local, Listas guardadas y En vivo; arriba artistas y álbumes y abajo la tabla de canciones.', '')],
  'hSpot': [('opciones-spotify.png','Preferencias › Spotify, con los pasos para configurarlo.', '')],
  'hEq': [('ecualizador.png','El ecualizador con el tema Clásico: ON, curva, ajustes predefinidos y 10 bandas de +12 a -12 dB.', '')],
- 'hVid': [('efectos.png','La ventana Visualización mostrando el efecto Espectro. Abajo: EFECTOS, VIDEO, CARÁTULA, EN VIVO y GRABADORA (apagada fuera de EN VIVO).', ''), ('flotante-aviso.png','Con el video en la ventana flotante, la pantalla lo avisa y los botones que no aplican se apagan.', '')],
+ 'hVid': [('efectos.png','La ventana Visualización mostrando el efecto Espectro. Abajo: EFECTOS, VIDEO, CARÁTULA, EN VIVO y GRABADORA (apagada fuera de EN VIVO).', '')],
  'hPeli': [('pelicula.png','Una película con subtítulos. Abajo a la derecha, el selector SUB.', '')],
  'hDj': [('dj.png','La consola DJ: arriba las ondas y los datos de cada plato; a los lados LOOPS, EFECTOS, SAMPLES y HOT CUES, tempo y los platos con su carátula; al centro el mezclador; abajo REV, BRK, SYNC, CUE y PLAY, la lista de canciones y el sampler.', 'big'), ('dj-grabar.png','La pestaña GRABAR de la consola grabando una mezcla en MP3.', 'small')],
- 'hRec': [('grabadora.png','La GRABADORA en pausa: arriba lo que suena, el tiempo grabado y el archivo; los botones GRABAR, CONTINUAR, TERMINAR y la carpeta; abajo las grabaciones recientes.', '')],
- 'hTv': [('tv-biblioteca.png','Internet TV en la Biblioteca: los canales de una lista agrupados por categoría.', ''), ('tv-visualizacion.png','Un canal de TV en la ventana Visualización, con el botón EN VIVO encendido.', ''), ('paginas-en-vivo.png','En vivo › Mis Páginas en Vivo: los canales de TV Azteca y, al final, uno agregado por ti. Arriba, la rama En vivo también tiene YouTube en vivo. Doble clic abre su página oficial dentro de Visualización.', '')],
- 'hNuevo': [('actualizacion.png','Al abrir el programa, si hay una versión nueva en GitHub, esta ventana muestra lo que trae de nuevo. «No mostrar actualizaciones» la apaga (se vuelve a activar en Preferencias › Actualizaciones).', '')],
- 'hOpc': [('opciones.png','La ventana PREFERENCIAS: a la izquierda el árbol de secciones y a la derecha las opciones de la elegida (aquí Páginas en vivo).', ''), ('pref-apariencia.png','Preferencias › Apariencia: temas, la lista de skins y la vista previa del skin elegido con sus datos. Doble clic o USAR ESTE lo aplica.', ''), ('pref-medios.png','Preferencias › Medios locales: tus carpetas de música y video para la Biblioteca, más las del programa (media\\musica y media\\video).', '')],
+ 'hTv': [('youtube-en-vivo.png','Biblioteca › En vivo › YouTube en vivo: categorías a la izquierda, búsquedas rápidas a la derecha y los canales abajo. Doble clic: con imagen; SOLO AUDIO: solo el sonido.', '')],
+ 'hOpc': [('opciones.png','La ventana PREFERENCIAS: a la izquierda el árbol de secciones y a la derecha las opciones de la elegida (aquí En vivo).', ''), ('pref-apariencia.png','Preferencias › Apariencia: temas, la lista de skins y la vista previa del skin elegido con sus datos. Doble clic o USAR ESTE lo aplica.', ''), ('pref-medios.png','Preferencias › Medios locales: tus carpetas de música y video para la Biblioteca, más las del programa (media\\musica y media\\video).', '')],
 }
 toc = []
 def fig(f):
@@ -76,7 +74,7 @@ figcaption {{ font-size: 9pt; color: #555; font-style: italic; margin-top: 1.5mm
 </style></head><body>
 <div class="cover"><h1>RetroAmp</h1><div class="bar"></div>
 <div class="lcd">MANUAL DE USUARIO</div>
-<p>Reproductor de música, videos y películas para Windows con aspecto retro: YouTube, la música de tu PC, radios por internet, tus listas de Spotify y películas con subtítulos.</p>
+<p>Reproductor de música, videos y películas para Windows con aspecto retro: videos, música y transmisiones en vivo de YouTube, la música de tu PC, tus listas de Spotify y películas con subtítulos.</p>
 <img src="general.png"><p style="margin-top:8mm">Versión {ver} · gratuito, para uso personal</p></div>
 <div class="toc"><h2>Contenido</h2><ol>{tochtml}</ol>
 <div class="note"><b>Cómo usar este manual.</b> Cada capítulo explica una parte del programa, con una imagen de la ventana correspondiente. Las imágenes usan el tema Clásico; con otros temas solo cambian los colores. Dentro del programa tienes la misma información en el botón <b>?</b> (o la tecla <kbd>F1</kbd>).</div></div>

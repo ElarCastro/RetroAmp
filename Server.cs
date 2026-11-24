@@ -431,6 +431,11 @@ namespace RetroAmp
                 byte[] html = File.Exists(P.Html) ? File.ReadAllBytes(P.Html) : Encoding.UTF8.GetBytes("<h1>Falta RetroAmp.html</h1>");
                 SendBytes(s, 200, "text/html; charset=utf-8", html, cookie);
             }
+            else if (path == "/favicon.ico")   // icono de la página (en el modo navegador ya no sale el globo)
+            {
+                string ico = Path.Combine(Path.GetDirectoryName(P.Html), "RetroAmp.ico");
+                if (File.Exists(ico)) SendBytes(s, 200, "image/x-icon", File.ReadAllBytes(ico), null); else Send404(s);
+            }
             else if (path.StartsWith("/fonts/"))
             {
                 string name = path.Substring(7);

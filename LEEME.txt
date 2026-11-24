@@ -35,12 +35,11 @@ QUÉ HAY EN LA CARPETA
     musica\       tus MP3 (descargas y los que copies)
     video\        tus videos y películas
     playlists\    tus listas guardadas
-    grabaciones\  tv\ (lo que grabas de TV), radio\ (lo que grabas de
-                  radio) y Consola DJ\ (tus mezclas)
+    grabaciones\  tv\ y radio\ (lo que grabas de YouTube en vivo, con
+                  imagen o solo audio) y Consola DJ\ (tus mezclas)
     perfil\       ajustes, biblioteca, lista actual y ventanas, y además:
-                  iptv\ (tus listas de canales y guías), skins\ (los skins
-                  que tú agregas), spotify\ (la conexión con Spotify) y
-                  web-envivo\ (sesiones de las páginas en vivo)
+                  skins\ (los skins que tú agregas) y spotify\ (la
+                  conexión con Spotify)
   datos\         el programa; no hace falta abrirla:
     cache\     audio escuchado
     bin\       yt-dlp, Deno, ffmpeg y WebView2   fonts\  lib\  perfil\
@@ -121,9 +120,16 @@ MÚSICA DE TU PC (MP3, M4A, FLAC, OGG, WAV)
   guardarlas en tus listas como siempre.
 
 NOVEDADES 1.2
-- Nuevo nombre y versión: RetroAmp 1.2 reúne todo lo de WINAMP_Plus 2.17
-  (reproductor, video, películas, radios, Internet TV, grabadora, consola DJ,
+- Nuevo nombre y versión: RetroAmp 1.2 reúne lo mejor de WINAMP_Plus 2.17
+  (reproductor, video, películas, YouTube en vivo, grabadora, consola DJ,
   skins y Spotify) con el nombre RetroAmp.
+- Solo YouTube: RetroAmp reproduce videos, música y transmisiones en vivo
+  de YouTube, además de tu música y tus videos de la PC. Se quitaron los
+  canales de TV por internet (IPTV), las radios por internet y las páginas
+  de TV en vivo; si tenías alguno en tus listas, se quita solo al abrir.
+- Si abres por error el paquete "actualizacion" (que solo usa el
+  actualizador interno), RetroAmp te avisa en vez de abrirse a medias en
+  el navegador.
 - Actualizaciones más seguras: la versión nueva se busca en
   github.com/ElarCastro/RetroAmp y se comprueba su firma SHA-256 antes de
   instalarla. El cambio lo hace el propio RetroAmp.exe, sin scripts ocultos.
@@ -133,304 +139,26 @@ NOVEDADES 1.2
 - Instalador de nuevo (RetroAmp-1.2-Setup.exe), además de la versión portable.
 - "Iniciar con Windows" abre RetroAmp minimizado, como en la 1.1.
 
-NOVEDADES DE WINAMP_Plus 2.17 (incluidas en RetroAmp 1.2)
-- EN VIVO: el botón INTERNET TV de Visualización ahora se llama EN VIVO
-  (TV, YouTube en vivo y páginas en vivo).
-- INTERNET TV: Favoritos (☆), REVISAR para marcar qué canales transmiten
-  (✓ / ✗, con "ocultar ✗"), Guía de programación (XMLTV) con la columna
-  "Ahora", pantalla de guía y avisos 🔔 que cambian solos de canal.
-  ☆ FAVORITO y "◀ AL AIRE" también en Visualización.
-- YOUTUBE EN VIVO: canales en español precargados (noticias, deportes,
-  caricaturas, música) en Biblioteca > En vivo, con imagen o con el botón
-  SOLO AUDIO (también con clic derecho). Se agregan otros pegando su
-  dirección o @nombre.
-- MIS PÁGINAS EN VIVO: los canales de TV Azteca (La Granja VIP 24/7,
-  Azteca UNO, Azteca 7, adn Noticias y más) se ven en su página oficial
-  dentro de Visualización, llenando la ventana (⛶ COMPLETA para todo el
-  monitor). Puedes agregar otros canales con su página en vivo y ocultar
-  TV Azteca en PREF > Páginas en vivo (no se pueden borrar).
-- GRABADORA: graba canales de TV (MP4 en media\grabaciones\tv) y radios
-  (MP3 en media\grabaciones\radio) con PAUSA / CONTINUAR para los comerciales y TERMINAR.
-  Se enciende solo cuando hay algo en vivo.
-- ⧉ FLOTANTE: el canal o video en una ventanita encima de todo.
-- RADIOS: buscador con miles de emisoras (🔎 Buscar radios, de
-  radio-browser), Favoritos, REVISAR y radios .m3u8. "Radios por
-  internet" se puede plegar.
-- CONSOLA DJ: TONO de cada canción (notación Camelot) y ● GRABAR tu
-  mezcla en MP3 (media\grabaciones\Consola DJ), con pausa.
-- BIBLIOTECA: "Visto recientemente" (las últimas 50, con LIMPIAR y Supr),
-  columnas que cambian de ancho con barra para moverse a los lados,
-  "Reproduciendo ahora" siempre al día, y siempre lee media\musica y
-  media\video además de tu carpeta.
-- DESCARGAS: se guardan como "Artista - Canción".
-- VENTANAS: siempre sueltas y con imanes (se quitaron UNIR TODAS / SEPARAR
-  TODAS y el botón para apagar los imanes). El programa abre ya acomodado,
-  sin brincar de tamaño. ORDEN ORIGINAL también regresa el reproductor si
-  quedó fuera de la pantalla. El mini reproductor esconde las ventanas
-  sueltas y al volver las muestra como estaban.
-- PREFERENCIAS: se quitó IMPORTAR (ver "GUARDAR EN MP3 Y EN VIDEO" para agregar tus
-  archivos); nueva sección PÁGINAS EN VIVO; YT-DLP y PROGRAMA al final.
-- AVISO DE VERSIÓN NUEVA: al abrir el programa, si hay una versión más
-  reciente en GitHub sale una ventana con lo que trae de nuevo y los botones
-  ACTUALIZAR AHORA, VER EN GITHUB y MÁS TARDE. "No mostrar actualizaciones"
-  lo apaga; se vuelve a activar en PREF > Actualizaciones.
-- Actualizar desde PREF > Actualizaciones ahora también instala datos\lib (hls.js).
-- BIBLIOTECA: nueva rama "En vivo" con YouTube en vivo (una sola vez) y
-  Mis Páginas en Vivo. Radios por internet e Internet TV quedan solo con
-  sus radios y sus listas de canales.
-- BÚSQUEDA (antes Resultados) tiene su propio cuadro para buscar en YouTube
-  o pegar enlaces. El cuadro de la Lista de reproducción ahora busca solo
-  entre las canciones de la lista.
-- PREFERENCIAS (antes Opciones; botón PREF y letra O): ahora como las de
-  Winamp, con un árbol de secciones a la izquierda (General, Apariencia,
-  Reproducción, Ventanas, Biblioteca, Medios locales, En vivo, Internet TV,
-  Páginas en vivo, Descargas, Spotify y Actualizaciones) y sus opciones a la
-  derecha. Recuerda la última sección que abriste.
-- SKINS CON VISTA PREVIA: en PREF > Apariencia eliges el skin de una lista
-  y ves cómo se ve el reproductor y sus datos antes de usarlo (doble clic o
-  USAR ESTE).
-- MEDIOS LOCALES: en PREF > Medios locales agregas varias carpetas de
-  música y video para la Biblioteca (AGREGAR CARPETA…, QUITAR, ESCANEAR
-  AHORA), con casillas para escanear al abrir el programa y para quitar de
-  la Biblioteca lo que ya no existe. Se quitaron +ARCH y +CARP de la lista
-  de reproducción: las carpetas se configuran aquí.
-- CARPETA MEDIA MÁS ORDENADA: todo lo tuyo queda en media. Las grabaciones
-  van juntas en media\grabaciones (tv, radio y Consola DJ); las listas de
-  canales en media\perfil\iptv; los skins que tú agregas en
-  media\perfil\skins (los 23 incluidos siguen en datos\skins y no se
-  borran); Spotify en media\perfil\spotify; y las sesiones de las páginas
-  en vivo en media\perfil\web-envivo. Al abrir la 2.17 todo se pasa solo
-  a su lugar nuevo, sin borrar nada, y tus listas guardadas siguen
-  encontrando tus grabaciones.
+YOUTUBE EN VIVO
+- Biblioteca > En vivo > YouTube en vivo: canales precargados de noticias,
+  deportes, caricaturas, juegos y música. Doble clic: con imagen en
+  Visualización (EN VIVO). SOLO AUDIO: solo el sonido (gasta menos internet).
+- Para agregar un canal, pega su dirección de YouTube o su @nombre en el
+  buscador de esa sección y pulsa Enter.
+- GRABADORA (en Visualización): graba la transmisión con pausa para los
+  comerciales. Se guarda en media\grabaciones\tv (con imagen, MP4) o
+  media\grabaciones\radio (solo audio, MP3).
 
-NOVEDADES DE WINAMP_Plus 2.16
-- INTERNET TV (IPTV): canales de TV por internet en Biblioteca > Internet TV,
-  agrupados por categoría y lista. Doble clic en un canal y se ve en la
-  ventana Visualización con el botón INTERNET TV (aparte de VIDEO, que es
-  para videos musicales y películas). Es TV en vivo: no se adelanta.
-- Trae listas gratuitas y legales de iptv-org: México, En español, Música,
-  Noticias y Todo el mundo (decenas de miles de canales). En OPC >
-  INTERNET TV puedes agregar listas (dirección o archivo .m3u), ACTUALIZAR
-  las que caduquen, BORRAR y RESTAURAR INCLUIDAS. También acepta servicios
-  con servidor, usuario y contraseña. Algunos canales dejan de transmitir o
-  solo se ven en su país: si uno no abre, prueba otro.
-- Biblioteca: nuevo "Reproduciendo ahora" (tu lista actual).
-- Ventanas sueltas con imanes: cada ventana (lista, ecualizador,
-  biblioteca, Visualización, Consola DJ, Ayuda, Opciones) se abre suelta.
-  La primera vez quedan el reproductor, debajo el ecualizador y debajo la
-  lista; luego se recuerda donde las dejes. Se pegan entre sí y a la orilla
-  de la pantalla, y al mover el reproductor se mueven las que tiene pegadas.
-  OPC > VENTANAS: SEPARAR TODAS / UNIR TODAS; OPC > IMANES los apaga.
-- Consola DJ renovada: ondas con datos de cada plato (BPM, velocidad,
-  tiempo), contador de tiempos y FASE, carátula en el plato como disco
-  ilustrado, bloques LOOPS / EFECTOS / SAMPLES / HOT CUES por plato,
-  scratch de vinilo, KILL, REVERB y sampler con 2 bancos y pestañas
-  SAMPLER / AUTOMIX / INFO.
-- La ventana "Video y efectos" ahora se llama Visualización.
-- Todo lo tuyo queda en la carpeta media: musica, video, playlists (tus
-  listas guardadas), iptv (listas de canales) y perfil (lista actual,
-  ajustes, biblioteca, Spotify y posición de las ventanas). Para respaldar
-  o pasar a otra versión basta copiar media. Si copias la 2.16 encima de
-  tu carpeta anterior, al abrirla pasa sola tus listas y ajustes de datos
-  a media (no se pierde nada).
-- Radio por internet arreglada: en equipos donde se quedaba "cargando"
-  (por ejemplo, laptops de empresa con filtro de red o antivirus) ahora
-  suena. En datos\registro.txt queda anotado cada paso de la conexión.
-- Si un canal de TV no se puede ver, el aviso sale también en rojo en
-  Visualización y se queda hasta que eliges otro canal.
-- Opciones abre del tamaño de su contenido (sin espacio vacío) y el
-  reproductor abre donde lo dejaste, con sus ventanas pegadas.
-
-NOVEDADES DE WINAMP_Plus 2.15
-- Vienen 23 skins clásicos listos para elegir en OPC > SKIN. Si a un skin le
-  falta alguna pieza (números, letras, balance), se toma del skin BaseOLD,
-  como hace Winamp, y se respeta la forma de la ventana (esquinas).
-- Letras O A I D V del reproductor con skin: O Opciones, A Ayuda,
-  I Biblioteca, D Consola DJ, V Video. Cada una abre y cierra su ventana y
-  se ve encendida mientras está abierta.
-- La Ayuda se abre en su propia ventana grande, como la Consola DJ, y se
-  acomoda al cambiar su tamaño.
-- Mini reproductor con skin: ya caben todos los botones (antes el botón
-  para regresar quedaba fuera). Probado con los 7 temas y los 23 skins.
-- Textos de los skins siempre legibles (si el color se parece al fondo,
-  se ajusta).
-- Video: con VIDEO puesto, el video de la siguiente canción de YouTube se
-  baja antes, así entra de inmediato al cambiar de canción. Mientras baja,
-  el botón VIDEO parpadea y la pantalla lo avisa.
-- Opciones: skins.webamp.org y developer.spotify.com son enlaces, la
-  carpeta de IMPORTAR se abre con un clic y la dirección de Spotify tiene
-  botón COPIAR.
-- Ya solo hay un zip: el portable completo.
-
-NOVEDADES DE WINAMP_Plus 2.14: SKINS CLÁSICOS (.WSZ)
-- Ahora puedes usar skins clásicos de Winamp 2 (.wsz), por ejemplo de
-  skins.webamp.org: arrastra el .wsz a la ventana o usa OPC > SKIN >
-  CARGAR... Se guardan en media\perfil\skins (desde 2.17).
-- El reproductor y el ecualizador se dibujan con las imágenes del skin;
-  la lista y las demás ventanas toman sus colores.
-- El menú del skin (botón de arriba a la izquierda o clic derecho) abre
-  todas las ventanas y tiene "Quitar el skin" para volver a los temas.
-- Trae una colección de skins clásicos lista para elegir en OPC > SKIN.
-
-NOVEDADES DE WINAMP_Plus 2.13: CONSOLA DJ
-- El crossfader ya no se encima con los controles del mezclador.
-- Rayitas de escala junto a todos los controles deslizables (tempo, filtro,
-  agudos/medios/graves, canales, crossfader y master).
-- Nuevo efecto SCRATCH: rasguños de ida y vuelta al ritmo de la canción.
-- Corregido: el doble clic en la lista de la consola no cargaba la canción.
-
-NOVEDADES DE WINAMP_Plus 2.12: CONSOLA DJ RENOVADA
-- Nuevo diseño con el orden clásico de una consola de DJ: lista de
-  canciones arriba, las dos ondas en medio, efectos, loops y tempo a los
-  lados, platos grandes con carátula, mezclador al centro y los botones
-  REV, BRK, SYNC, CUE-PLAY, CUE y PLAY abajo.
-- Se ajusta sola al tamaño de la ventana sin deformarse.
-- Carga canciones con CARGAR A / CARGAR B, doble clic o arrastrándolas.
-- AUTOMIX corregido: respeta la canción que cargas en el otro plato, sigue
-  el orden de tu lista y ya no repite la misma canción en los dos platos.
-
-NOVEDADES DE WINAMP_Plus 2.11: CONSOLA DJ
-- Nuevo botón DJ (junto a BIB): una consola con dos platos (A y B) y un
-  mezclador para mezclar canciones de tu lista como un DJ.
-- Cada plato: forma de onda, BPM automático, reproducir/pausa, CUE, SYNC,
-  tempo (±8, ±16 o ±50 %), hot cues, loops (IN/OUT y de 1/2 a 16 golpes),
-  reversa, freno, filtro y efectos ECO, FLANGER, PAN y LOFI.
-- Mezclador: agudos/medios/graves por plato, volumen con medidor,
-  crossfader y volumen general.
-- AUTOMIX: mezcla sola tu lista, una canción tras otra, igualando el BPM.
-- Todo explicado en la Ayuda (Consola DJ) y en ManualUsuario.pdf.
-
-NOVEDADES DE WINAMP_Plus 2.10: TEMA CLÁSICO RENOVADO Y MANUAL EN PDF
-- El tema Clásico se renovó con un aspecto más retro: ventanas azul
-  grisáceo con relieve, líneas doradas en los títulos y botones metálicos.
-- El ecualizador en Clásico: ON con lucecita, la curva arriba al centro,
-  los ajustes a la derecha y barras verticales de colores con escala
-  +12 dB / 0 dB / -12 dB.
-- Nuevo ManualUsuario.pdf junto al programa: toda la Ayuda explicada con
-  imágenes de cada ventana.
-
-NOVEDADES DE WINAMP_Plus 2.9: PELÍCULAS, SUBTÍTULOS Y CARPETAS EN MINÚSCULAS
-- Abre casi todos los formatos de video que abre VLC: MP4, MKV, AVI, MOV,
-  WMV, ASF, FLV, F4V, MPG/MPEG, M1V, M2V, VOB, EVO, TS, MTS, M2TS (AVCHD y
-  Blu-ray), TOD, MOD, 3GP, OGV, OGX, OGM, WEBM, DivX, XviD, DV, MJPEG, MXF,
-  GXF, NUT, BIK, RM/RMVB, WTV, HDMOV, AMV y otros. Y en música, además de
-  MP3, WAV, FLAC, AAC, OGG y M4A: WMA, AC3, DTS, APE, MKA, AIFF y más.
-- Las películas que el reproductor no abre tal cual se preparan solas la
-  primera vez, pero ya no hay que esperar: empiezan a verse a los pocos
-  segundos. Mientras se termina de preparar no se puede adelantar; al
-  terminar cambia sola a la copia lista y ya puedes moverte por toda la
-  película. La copia queda en datos\cache (máximo unos 20 GB; se borran
-  solas las más viejas, tus archivos originales no se tocan).
-- Si la película trae varios idiomas, elige el audio en español.
-- Subtítulos SRT, VTT, ASS/SSA, SBV y SUB: se cargan solos si tienen el
-  mismo nombre que la película (Pelicula.mkv + Pelicula.srt, Pelicula.es.srt,
-  Pelicula.Spanish.ass), junto a ella o en una carpeta Subs o Subtitulos.
-  También los que vienen dentro del MKV/MP4. En la ventana VID, el selector
-  SUB los cambia o apaga, y "Cargar subtítulos..." elige uno a mano (o
-  arrastra el archivo sobre el reproductor).
-- Las carpetas de descargas ahora van en minúsculas: media\musica y
-  media\video. Si ya tenías Media\Musica y Media\Video, se renombran solas
-  al abrir el programa (no se pierde nada).
-- Todo esto está explicado en la Ayuda (botón ?, sección "Películas y
-  subtítulos").
-
-NOVEDADES DE WINAMP_Plus 2.8: CARPETA ORDENADA
-- Junto a RetroAmp.exe solo quedan LEEME.txt, media y la carpeta "datos"
-  con todo lo demás. Ya no hace falta WinampYT.exe.config.
-- Si la carpeta venía de una versión anterior, se ordena sola al abrirla.
-
-NOVEDADES DE WINAMP_Plus 2.7: ACTUALIZAR YT-DLP DESDE EL PROGRAMA
-- OPC > YT-DLP > BUSCAR ACTUALIZACIÓN: muestra la versión instalada de
-  yt-dlp y la última publicada. Si hay una nueva, la descarga, comprueba su
-  firma SHA-256, la prueba, reemplaza solo bin\yt-dlp.exe y recarga
-  RetroAmp (si hay música sonando no recarga: la nueva ya se usa sola).
-- Además, al abrir el programa se sigue intentando actualizar yt-dlp en
-  segundo plano, sin avisar.
-
-NOVEDADES DE WINAMP_Plus 2.6: AYUDA DENTRO DEL PROGRAMA
-- Botón  ?  (junto a OPC) o tecla F1: abre la ayuda con todo lo que hace el
-  programa, con un índice por temas (YouTube, tu PC, biblioteca, Spotify,
-  radios, descargas, ecualizador, ventanas, atajos, problemas…).
-
-NOVEDADES DE WINAMP_Plus 2.5: TUS LISTAS DE SPOTIFY
-- MÁS ▾ > Importar de Spotify… muestra tus listas de Spotify (y "Canciones
-  que te gustan"). Clic en una lista para ver sus canciones; clic en
-  "Añadir las N canciones" para pasarlas a tu lista de RetroAmp.
-- El sonido sale de YouTube: cada canción se busca en YouTube la primera vez
-  que suena (se elige la versión de duración parecida, de preferencia la
-  oficial) y se recuerda en spotify-youtube.txt. Se marcan con un punto verde.
-- Funciona con MP3, MP3 TODO y Guardar video: primero se buscan en YouTube.
-- Nada se descarga de Spotify y RetroAmp solo puede LEER tus listas.
-- Configuración (una sola vez): OPC > SPOTIFY > "¿Cómo lo configuro?".
-  Hay que crear una app gratis en developer.spotify.com/dashboard con la
-  Redirect URI  http://127.0.0.1:8765/spotify  , pegar su Client ID y pulsar
-  CONECTAR. La conexión queda en media\perfil\spotify (viaja en la
-  USB); no compartas ese archivo. SALIR la borra.
-- Las listas creadas por Spotify (Descubrimiento semanal, Daily Mix, etc.)
-  puede que no se dejen leer: Spotify no las comparte con apps externas.
-
-NOVEDADES DE WINAMP_Plus 2.4
-- Las descargas se guardan dentro de RetroAmp: media\musica (MP3) y
-  media\video (MP4, desde MÁS ▾). Ya no van a Música\WinampYT.
-- Tamaño libre: cada ventana (lista, ecualizador, video, biblioteca,
-  búsqueda y opciones) tiene una esquina rayada abajo a la derecha.
-  Arrástrala para hacerla más alta o más baja; hacia los lados cambia el
-  ancho de toda la columna. Doble clic en la esquina: tamaño original.
-- Ventanas separadas: el botón ⧉ de la barra de título saca la ventana a
-  su propia ventana de Windows, que puedes poner en cualquier parte de la
-  pantalla (o en otro monitor) y estirar como quieras. El botón ⧈ la
-  regresa a la ventana principal. Se recuerda dónde las dejaste.
-- La radio usa el proxy de Windows y avisa si no responde.
-
-NOVEDADES DE WINAMP_Plus 2.3
-- Nueva distribución en dos columnas, al estilo de los reproductores
-  clásicos: a la izquierda REPRODUCTOR, LISTA DE REPRODUCCIÓN y ECUALIZADOR;
-  a la derecha la BIBLIOTECA (y VISUALIZACIÓN).
-- Cada ventana es un módulo: los botones EQ, PL, VID, BIB y OPC la muestran
-  u ocultan; en su barra de título, ▴ la enrolla (o doble clic en la barra)
-  y × la cierra. Arrastra la barra de título para moverla arriba, abajo o a
-  la otra columna. El orden se recuerda. OPC > VENTANAS > ORDEN ORIGINAL
-  vuelve a la distribución de fábrica.
-- BIBLIOTECA renovada: árbol a la izquierda (Música local > Audio / Video,
-  Listas guardadas, Radios por internet), paneles de Artista y Álbum,
-  buscador y tabla con Artista, Título, Álbum y duración. Botones
-  REPRODUCIR, AÑADIR y REPRODUCIR TODO. Clic: elegir · doble clic o Enter:
-  escuchar. ESCANEAR ahora también encuentra tus videos.
-- BAL (balance) pasó a la ventana principal, junto a VOL.
-- Las radios que pegas en el buscador quedan guardadas en la biblioteca.
-
-NOVEDADES DE WINAMP_Plus 2.2
-- VID (pantalla): efectos visuales que bailan con la música (Espectro,
-  Osciloscopio, Túnel, Estrellas, Círculo, Plasma; AUTO los va cambiando),
-  el VIDEO de la canción y la CARÁTULA. Doble clic o F: pantalla completa;
-  Esc para salir. Clic sobre los efectos: siguiente efecto.
-- Video: los videos de YouTube se descargan al abrir VIDEO (hasta 720p).
-  Archivos de video de tu PC: MP4, WebM, MKV, AVI, MOV, WMV, FLV, MPG, TS,
-  3GP, VOB... Los que Windows no reproduce directamente se convierten a MP4
-  una sola vez (con el ffmpeg incluido) y quedan en la caché.
-- BIB (biblioteca): ESCANEAR lee tu carpeta Música (o CARPETA... para otra);
-  busca por título, artista, álbum o carpeta y filtra por artista.
-  Clic: añadir a la lista · doble clic: escuchar.
-- Radios por internet: pega en el buscador el enlace de la radio
-  (http://... o una lista .pls/.m3u de la radio) y pulsa Enter.
-- MÁS ▾ (en la lista): abrir y exportar listas .m3u/.pls, ordenar por
-  título, artista, duración o archivo, invertir, mezclar, quitar repetidas
-  y quitar las que fallaron.
-- J: saltar a canción (escribe parte del nombre y Enter).
-- EQ: NIVELAR (las canciones suaves y
-  fuertes suenan parecido), + PRESET para guardar tus ajustes (★).
-- OPC > FUNDIDO: mezcla el final de una canción con la siguiente (2 a 12 s),
-  o "Sin silencios entre canciones".
-- OPC > DORMIR: detiene la música en 15 min a 2 horas, al terminar la
-  canción o al terminar la lista (baja el volumen poco a poco).
-- El visualizador pequeño tiene 4 modos: clic para cambiar.
+La historia completa de versiones anteriores está en
+https://github.com/ElarCastro/RetroAmp/releases
 
 BUSCAR MÚSICA
 - En la ventana BÚSQUEDA (⏏ o L la abren) escribe canción o artista y
   pulsa Enter. Debajo aparecen canciones y listas.
 - Clic: añadir a la lista. Doble clic: escuchar ya.
 - Clic en una lista: muestra sus canciones; "Añadir las N canciones" la suma entera.
-- También puedes pegar enlaces de videos o listas de YouTube, o de radios.
+- También puedes pegar enlaces de videos, listas o transmisiones en vivo
+  de YouTube.
 - El cuadro de la LISTA DE REPRODUCCIÓN solo busca entre las canciones que
   ya tienes en la lista (Enter: escuchar la primera · Esc o ✕: ver toda la
   lista; también J).

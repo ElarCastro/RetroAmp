@@ -363,6 +363,16 @@ namespace RetroAmp
             try { SetProcessDpiAwarenessContext(new IntPtr(-4)); }
             catch { try { SetProcessDPIAware(); } catch { } }
             try { Application.EnableVisualStyles(); } catch { }
+            // 1.2: el paquete "_actualizacion.zip" es solo para el actualizador interno (no trae datos\bin).
+            // Si alguien lo abre directo, se avisa en vez de abrir el reproductor a medias en el navegador.
+            if (!Directory.Exists(Path.Combine(root, "datos\\bin\\webview2")) && Environment.GetEnvironmentVariable("RETROAMP_NAVEGADOR") == null)
+            {
+                MessageBox.Show("A esta copia de RetroAmp le falta la carpeta datos\\bin (la ventana del programa y sus herramientas).\n\n" +
+                    "Seguramente abriste el paquete «actualizacion», que solo usa el actualizador interno.\n\n" +
+                    "Instala RetroAmp con «RetroAmp-1.2-Instalador.zip» o usa «RetroAmp-1.2-portable.zip», de github.com/ElarCastro/RetroAmp/releases",
+                    "RetroAmp", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return 1;
+            }
             Paths p = MakePaths(root);
 
             if (Deps.Missing(p) && !Deps.EnsureWithSplash(p)) return 1;

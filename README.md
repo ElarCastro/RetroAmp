@@ -1,6 +1,6 @@
 # RetroAmp 🎵
 
-Reproductor **retro, inspirado en el Winamp clásico**, para Windows: música y videos de YouTube, la música de tu PC, radios por internet, Internet TV, consola DJ, skins clásicos y más.
+Reproductor **retro, inspirado en el Winamp clásico**, para Windows: música, videos y transmisiones en vivo de YouTube, la música de tu PC, consola DJ, skins clásicos y más.
 
 ![Captura de RetroAmp](docs/captura.png)
 
@@ -32,7 +32,8 @@ El resultado debe coincidir con la línea correspondiente de `SHA256SUMS.txt`.
 
 ## 🆕 Novedades de la versión 1.2
 
-- **Todo lo de WINAMP_Plus 2.17 dentro de RetroAmp**: video y películas con subtítulos, radios (buscador con miles de emisoras), Internet TV con guía de programación, YouTube en vivo, grabadora de TV y radio, consola DJ, 23 skins clásicos (.wsz), importar listas de Spotify, biblioteca y preferencias con árbol de secciones.
+- **Lo mejor de WINAMP_Plus 2.17 dentro de RetroAmp**: video y películas con subtítulos, YouTube en vivo (con imagen o solo audio) y su grabadora, consola DJ, 23 skins clásicos (.wsz), importar listas de Spotify, biblioteca y preferencias con árbol de secciones.
+- **Solo YouTube**: RetroAmp reproduce videos, música y transmisiones en vivo de YouTube, además de tu música de la PC. Se quitaron los canales de TV por internet (IPTV), las radios por internet y las páginas de TV en vivo.
 - **Actualizaciones más seguras**: el programa busca versiones nuevas en este repositorio y **comprueba la firma SHA-256** antes de instalarlas. El cambio de archivos lo hace el propio `RetroAmp.exe`, **sin scripts `.cmd` ni PowerShell ocultos**.
 - **Menos falsas alarmas de antivirus**: ya no borra la marca "descargado de internet" de sus archivos, y el `.exe` lleva sus datos de autor y versión.
 - **Iniciar con Windows** abre RetroAmp minimizado, como en la 1.1.
@@ -53,7 +54,7 @@ El manual completo con imágenes viene en `ManualUsuario.pdf`, y dentro del prog
 
 - **Interfaz:** HTML/CSS/JS (`RetroAmp.html`), mostrada con Microsoft WebView2.
 - **Motor:** C# compilado en `RetroAmp.exe`. Atiende la interfaz solo en `127.0.0.1`, protegido con una clave aleatoria por sesión.
-- **Herramientas:** [yt-dlp](https://github.com/yt-dlp/yt-dlp) + [Deno](https://deno.com) para YouTube, [FFmpeg](https://ffmpeg.org) para MP3/MP4 y grabaciones, [hls.js](https://github.com/video-dev/hls.js) para Internet TV.
+- **Herramientas:** [yt-dlp](https://github.com/yt-dlp/yt-dlp) + [Deno](https://deno.com) para YouTube, [FFmpeg](https://ffmpeg.org) para MP3/MP4 y grabaciones, [hls.js](https://github.com/video-dev/hls.js) para YouTube en vivo.
 - **Instalador:** NSIS (`instalador/RetroAmp.nsi`).
 
 ### Compilar
