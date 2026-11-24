@@ -129,7 +129,10 @@ NOVEDADES 1.4
   comerciales.
 - Tamaño del skin a tu gusto: PREF > Apariencia > TAMAÑO (Pequeño, Mediano,
   Grande, Muy grande o Enorme) o Ctrl + rueda del mouse sobre el
-  reproductor. Ahora empieza en Mediano.
+  reproductor. Todos los tamaños son nítidos.
+- Ventanas con skin más limpias: la ventana del reproductor mide justo lo
+  que el skin y las barras de título de la lista y las demás ventanas se
+  ven nítidas, con botones que sí funcionan.
 - Se mantiene todo lo de la 1.3: skins nítidos que dicen RETROAMP e ícono
   arreglado.
 

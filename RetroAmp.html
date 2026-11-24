@@ -615,6 +615,8 @@
   body.skinned.skeq #eqWin > :not(#skEqWrap){display:none !important}
   body.skinned.skeq #eqWin{padding:0;border:0;background:none;box-shadow:none;height:auto !important}
   body.skinned .col:has(> #main), body.skinned.skeq .col:has(> #eqWin){min-width:calc(275px * var(--sk))}
+  /* 1.4: si el reproductor está solo en su columna, la ventana mide justo lo que el skin (sin el cuadro vacío al lado) */
+  body.skinned:not(.shade) .col:has(> #main):not(:has(> .win:not(#main):not([hidden]))){width:calc(275px * var(--sk)) !important;min-width:0}
   body.skinned.shade .col{min-width:0 !important}  /* mini reproductor: que quepa en 380 px */
   .skwin{position:absolute;left:0;top:0;width:275px;height:116px;transform:scale(var(--sk));transform-origin:0 0;background-repeat:no-repeat;image-rendering:pixelated;user-select:none;overflow:hidden}
   .skwin .sk,.skwin .skth,.skTime i{position:absolute;background-repeat:no-repeat;image-rendering:pixelated}
@@ -905,7 +907,8 @@
       <h3 id="hNuevo">NOVEDADES DE ESTA VERSIÓN (1.4)</h3>
       <ul>
         <li><b>Vuelven la TV en vivo y las radios</b>: los canales de TV por internet (Internet TV), las radios por internet con su buscador de miles de emisoras, los <b>Favoritos ☆</b>, la <b>Guía de programación</b> y las páginas en vivo (TV Azteca) están otra vez en la Biblioteca, junto con YouTube en vivo.</li>
-        <li><b>Elige el tamaño del skin</b>: en <b>PREF › Apariencia › TAMAÑO</b> (Pequeño, Mediano, Grande, Muy grande o Enorme), o con <kbd>Ctrl</kbd> + rueda del mouse sobre el reproductor. Ahora empieza en Mediano, más parecido al ancho de la lista.</li>
+        <li><b>Elige el tamaño del skin</b>: en <b>PREF › Apariencia › TAMAÑO</b> (Pequeño, Mediano, Grande, Muy grande o Enorme), o con <kbd>Ctrl</kbd> + rueda del mouse sobre el reproductor. Todos los tamaños son nítidos: cada punto del skin cae justo en puntos de tu pantalla.</li>
+        <li><b>Ventanas con skin más limpias</b>: la ventana del reproductor mide justo lo que el skin (sin el recuadro vacío al lado) y las barras de título de la lista y las demás ventanas se ven nítidas, con los colores del skin y botones que sí funcionan.</li>
       </ul>
       <p><b>De la versión 1.3:</b></p>
       <ul>
@@ -1214,7 +1217,7 @@
       </div>
       <div class="prefpage" data-p="apa" hidden><h4>Apariencia</h4>
     <div class="opt"><label>TEMA</label><div class="themes" id="themes"></div></div>
-    <div class="opt"><label>TAMAÑO</label><select id="oSkSize" class="sel" title="Tamaño del reproductor con skin (también con Ctrl + rueda del mouse sobre el reproductor)"><option value="1">Pequeño</option><option value="1.5">Mediano</option><option value="2">Grande</option><option value="2.5">Muy grande</option><option value="3">Enorme</option></select></div>
+    <div class="opt"><label>TAMAÑO</label><select id="oSkSize" class="sel" title="Tamaño del reproductor con skin (también con Ctrl + rueda del mouse sobre el reproductor). Siempre nítido: cada punto del skin cae en puntos enteros de tu pantalla."><option value="0">Pequeño</option><option value="1">Mediano</option><option value="2">Grande</option><option value="3">Muy grande</option><option value="4">Enorme</option></select></div>
     <div class="opt skrow"><label>SKIN</label><select id="oSkin" class="sel" hidden title="Skin clásico (.wsz) que usa el reproductor"></select><button class="cbtn sm" id="oSkUse" title="Usar el skin elegido (también con doble clic en la lista)">USAR ESTE</button><button class="cbtn sm" id="oSkinAdd" title="Agregar un skin .wsz que descargaste">CARGAR…</button><button class="cbtn sm" id="oSkinDel" title="Quitar de la lista el skin elegido">BORRAR</button><input type="file" id="oSkinFile" accept=".wsz,.zip" hidden></div>
     <div class="opt skpick"><div class="sklist list" id="oSkList" tabindex="0" title="Clic: ver cómo se ve · Doble clic: usarlo"></div>
       <div class="skside"><div class="skprev" id="oSkPrevBox"><img id="oSkPrev" alt=""><span id="oSkPrevTxt"></span></div><div class="skinfo" id="oSkInfo"></div></div></div>
@@ -1365,10 +1368,17 @@
   };
   const THEMES = [['clasico','Clásico'],['medianoche','Medianoche'],['matrix','Matrix'],['ambar','Ámbar'],['vaporwave','Vaporwave'],['plata','Plata'],['fuego','Fuego']];
 
+  // 1.4: tamaños del skin. Cada píxel del skin ocupa un número ENTERO de píxeles reales (n), así nunca se ve borroso.
+  const SK_NAMES = ['Pequeño', 'Mediano', 'Grande', 'Muy grande', 'Enorme'];
+  function skDpr() { return window.devicePixelRatio || 1; }
+  function skN0() { return Math.max(1, Math.ceil(skDpr() * 0.95)); }
+  function skDefIdx() { const d = skDpr(), n0 = skN0(); let best = 0; for (let i = 0; i < 5; i++) if (Math.abs((n0 + i) / d - 1.71) < Math.abs((n0 + best) / d - 1.71) - 1e-9) best = i; return best; }   // el más parecido al ancho de la lista (470 px)
+  function skIdxNow() { const i = S.skIdx; return Number.isInteger(i) && i >= 0 && i < 5 ? i : skDefIdx(); }
+  function skScale() { return (skN0() + skIdxNow()) / skDpr(); }
   const S = { items: [], cur: -1, sel: -1, vol: 80, shuffle: false, repeat: true, remaining: false, vizMode: 0,
     theme: 'clasico', eq: { on: true, pre: 0, bands: [0,0,0,0,0,0,0,0,0,0], preset: 'Plano' },
     showEq: true, showPl: true, showOpt: false, showHelp: false, shade: false, top: false, ghostAlpha: 75, taskProg: true, dockMini: true, mp3App: false,
-    xfade: 0, level: false, bal: 0, eqUser: {}, showScr: false, showLib: false, scrMode: 'fx', fxMode: 0, fxAuto: false, libDir: '', layout: null, rolled: {}, radios: [], libNode: 'all', tvLists: null, showDj: false, dj: null, skin: '', skSize: 1.5,
+    xfade: 0, level: false, bal: 0, eqUser: {}, showScr: false, showLib: false, scrMode: 'fx', fxMode: 0, fxAuto: false, libDir: '', layout: null, rolled: {}, radios: [], libNode: 'all', tvLists: null, showDj: false, dj: null, skin: '', skIdx: null,
     plName: '', dirty: false };
   let ghostOn = false;
   try { Object.assign(S, JSON.parse(localStorage.getItem('winampyt') || '{}')); } catch (e) {}
@@ -2475,14 +2485,13 @@ mp3Busy = true; msg(`${video ? 'Video' : 'MP3'}: ${n} ${n > 1 ? 'descargas' : 'd
   });
   oq('#oSkUse').onclick = skUse;
   // 1.4: tamaño del skin
-  const skSizeName = f => ({ 1: 'Pequeño', 1.5: 'Mediano', 2: 'Grande', 2.5: 'Muy grande', 3: 'Enorme' })[f] || 'Mediano';
-  function setSkSize(f) { f = Math.min(3, Math.max(1, f)); oq('#oSkSize').value = String(f); SKIN.resize(f); msg('Tamaño del skin: ' + skSizeName(f), 2000); }
-  oq('#oSkSize').value = String([1, 1.5, 2, 2.5, 3].includes(+S.skSize) ? +S.skSize : 1.5);
+  function skSizeSync() { const z = oq('#oSkSize'); if (!z) return; [...z.options].forEach((o, i) => { o.textContent = SK_NAMES[i] + ' (' + Math.round(275 * (skN0() + i) / skDpr()) + ' px)'; }); z.value = String(skIdxNow()); }
+  function setSkSize(i) { i = Math.min(4, Math.max(0, i)); S.skIdx = i; skSizeSync(); SKIN.resize(i); msg('Tamaño del skin: ' + SK_NAMES[i], 2000); }
+  skSizeSync();
   oq('#oSkSize').onchange = () => setSkSize(+oq('#oSkSize').value);
   document.addEventListener('wheel', e => {
     if (!e.ctrlKey || !document.body.classList.contains('skinned') || !e.target.closest || !e.target.closest('#skWrap,#skEqWrap')) return;
-    e.preventDefault(); const L = [1, 1.5, 2, 2.5, 3], i = Math.max(0, L.indexOf(+S.skSize));
-    setSkSize(L[Math.min(L.length - 1, Math.max(0, i + (e.deltaY < 0 ? 1 : -1)))]);
+    e.preventDefault(); setSkSize(skIdxNow() + (e.deltaY < 0 ? 1 : -1));
   }, { passive: false });
   // Biblioteca › Medios locales: varias carpetas (S.libDirs), escanear al abrir (S.libScanStart) y quitar lo que ya no existe (S.libPrune)
   let locSel = -1, locInfo = null;
@@ -4785,7 +4794,7 @@ mp3Busy = true; msg(`${video ? 'Video' : 'MP3'}: ${n} ${n > 1 ? 'descargas' : 'd
   function init22() {
     applyLayout(); applySizes(); setTimeout(restoreFloats, 700);
     eqOptions(); routeLevel(); el.bal.value = S.bal || 0;
-    { const z = el.optWin.querySelector('#oSkSize'); if (z) z.value = String([1, 1.5, 2, 2.5, 3].includes(+S.skSize) ? +S.skSize : 1.5); }
+    try { skSizeSync(); } catch (e) {}
     el.oXfade.value = String(S.xfade || 0); if (!el.oXfade.value) el.oXfade.value = '0';
     S.fxMode = Math.max(0, Math.min(FX.length - 1, +S.fxMode || 0));
     if (!['fx', 'vid', 'cov', 'tv'].includes(S.scrMode)) S.scrMode = 'fx';
@@ -4914,14 +4923,14 @@ mp3Busy = true; msg(`${video ? 'Video' : 'MP3'}: ${n} ${n > 1 ? 'descargas' : 'd
         --v1:${v ? v[16] : nfg};--v2:${v ? v[9] : curc};--v3:${v ? v[2] : '#ff4030'};--peak:${v && v[23] ? v[23] : '#cccccc'};--link:${curc};--txt:${nfg};--help:${mix(nfg, nbg, .25)}`;
       let s = `body[data-theme=skin]{${vars}}
   body[data-theme=skin] .win{background:${side};border-color:${mix(side, '#ffffff', .3)} ${mix(side, '#000000', .5)} ${mix(side, '#000000', .5)} ${mix(side, '#ffffff', .3)}}`;
-      if (tl && tf && tr) s += `
-  body[data-theme=skin] .win > .titlebar{height:20px;margin:-3px -6px 4px;padding:0 4px 0 26px;background:url(${tl}) left top/auto 20px no-repeat,url(${tr}) right top/auto 20px no-repeat,url(${tf}) left top/auto 20px repeat-x;image-rendering:pixelated;border:0;box-shadow:none}
-  body[data-theme=skin] .win > .titlebar .stripes{visibility:hidden}
-  body[data-theme=skin] .win > .titlebar .ttl{color:${P.normal && lum(f2) < 0.5 ? P.normal : ttl};text-shadow:0 1px 1px rgba(0,0,0,.6);background:${mix(side, '#000000', .15)};padding:0 6px;border-radius:2px}
-  body[data-theme=skin] .win > .titlebar .tbtn{background:rgba(0,0,0,.25);border-color:rgba(0,0,0,.5);color:#fff}`;
-      if (tt) s += `
-  body[data-theme=skin] #plWin > .titlebar{background:url(${tl}) left top/auto 20px no-repeat,url(${tr}) right top/auto 20px no-repeat,url(${tt}) center top/auto 20px no-repeat,url(${tf}) left top/auto 20px repeat-x}
-  body[data-theme=skin] #plWin > .titlebar .ttl{visibility:hidden}`;
+      // 1.4: las barras de título de las demás ventanas ya no copian el dibujo del skin (sus botoncitos no
+      // funcionaban y al ampliarse se veían borrosos): se dibujan nítidas con los colores del skin.
+      const t1 = mix(f1, '#ffffff', .12), t3 = mix(f3, '#000000', .2), tfg = lum(mix(f1, f3, .5)) > 0.5 ? '#101018' : '#f4f4fa';
+      s += `
+  body[data-theme=skin] .win > .titlebar{background:linear-gradient(to bottom,${t1},${mix(f1, f3, .5)} 55%,${t3});margin:-3px -6px 5px;padding:2px 4px;height:18px;border-bottom:1px solid ${mix(f3, '#000000', .45)}}
+  body[data-theme=skin] .win > .titlebar .stripes{background:repeating-linear-gradient(to bottom,${mix(tfg, f1, .35)} 0 1px,transparent 1px 3px);opacity:.6}
+  body[data-theme=skin] .win > .titlebar .ttl{color:${tfg};text-shadow:none}
+  body[data-theme=skin] .win > .titlebar .tbtn{background:linear-gradient(${b1},${b2} 60%,${b3});border:1px solid ${mix(b3, '#000000', .4)};color:${btx}}`;
       return s;
     }
 
@@ -5174,12 +5183,8 @@ mp3Busy = true; msg(`${video ? 'Video' : 'MP3'}: ${n} ${n > 1 ? 'descargas' : 'd
     // ---------- Activar / quitar ----------
     // Ampliación del skin a píxel exacto: con la pantalla al 125 % queda en 2,4 (3 píxeles reales por píxel del skin)
     // 1.4: el tamaño lo elige la persona (PREF › Apariencia › TAMAÑO, o Ctrl + rueda del mouse sobre el skin)
-    const SK_SIZES = [1, 1.5, 2, 2.5, 3];
-    function skK() {   // si el tamaño cae casi justo en píxeles reales enteros se ajusta (nítido); si no, se usa tal cual
-      const d = window.devicePixelRatio || 1, f = SK_SIZES.includes(+S.skSize) ? +S.skSize : 1.5, n = f * d, r = Math.round(n);
-      return Math.abs(n - r) <= 0.15 && r >= 1 ? r / d : f;
-    }
-    function resize(f) { if (f != null) { S.skSize = f; save(); } if (cur && skLastCss) { setCss(skLastCss); reportSize(); } }
+    function skK() { return skScale(); }
+    function resize(i) { if (i != null) { S.skIdx = i; save(); } if (cur && skLastCss) { setCss(skLastCss); reportSize(); } }
     let skLastCss = '';
     (function watchDpr() {   // al pasar la ventana a otro monitor (otra escala) se vuelve a calcular
       try { matchMedia(`(resolution: ${window.devicePixelRatio || 1}dppx)`).addEventListener('change', () => { if (skLastCss) setCss(skLastCss); watchDpr(); }, { once: true }); } catch (e) {}
@@ -5282,7 +5287,7 @@ mp3Busy = true; msg(`${video ? 'Video' : 'MP3'}: ${n} ${n > 1 ? 'descargas' : 'd
       })().catch(e => { delete prevCache[name]; throw e; }));
     }
     window.__wytSkin = { cur: () => cur, list: () => list, load, preview, st: () => ({ state, S, at: audio.currentTime }), paint: () => paint(performance.now()) };
-    return { init, add, off, active: () => !!cur, kick, preview, resize, SK_SIZES };
+    return { init, add, off, active: () => !!cur, kick, preview, resize };
   })();
   // soltar un .wsz sobre la ventana
   window.addEventListener('drop', e => {

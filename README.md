@@ -34,7 +34,8 @@ El resultado debe coincidir con la línea correspondiente de `SHA256SUMS.txt`.
 
 - **Vuelven la TV en vivo y las radios**: Internet TV (canales de TV por internet con guía de programación), radios por internet con buscador de miles de emisoras, Favoritos ☆, REVISAR (✓/✗) y las páginas en vivo (TV Azteca), además de YouTube en vivo.
 - La **GRABADORA** graba otra vez canales de TV y radios, con pausa para los comerciales.
-- **Tamaño del skin a tu gusto**: PREF › Apariencia › TAMAÑO (Pequeño, Mediano, Grande, Muy grande o Enorme) o **Ctrl + rueda del mouse** sobre el reproductor.
+- **Tamaño del skin a tu gusto**: PREF › Apariencia › TAMAÑO (Pequeño, Mediano, Grande, Muy grande o Enorme) o **Ctrl + rueda del mouse** sobre el reproductor. Todos los tamaños son nítidos.
+- **Ventanas con skin más limpias**: la ventana del reproductor mide justo lo que el skin y las barras de título de las demás ventanas se ven nítidas, con botones que sí funcionan.
 - Si tienes la 1.2 o la 1.3, el aviso de versión nueva te ofrece **actualizar con un clic**.
 
 ## Novedades de la versión 1.3
