@@ -1,73 +1,81 @@
 # RetroAmp 🎵
 
-Reproductor de música **retro, inspirado en el Winamp clásico**, para Windows. Solo audio: reproduce canciones y listas de YouTube.
+Reproductor **retro, inspirado en el Winamp clásico**, para Windows: música y videos de YouTube, la música de tu PC, radios por internet, Internet TV, consola DJ, skins clásicos y más.
 
 ![Captura de RetroAmp](docs/captura.png)
 
-## ✨ Funciones
+## 📥 Descargar
 
-- **Ventana propia** del tamaño exacto del reproductor, con esquinas redondeadas en Windows 11.
-- **Diseño "Cromo"** plateado con pantalla azul, y **12 temas**: Cromo, Clásico, Medianoche, Matrix, Ámbar, Vaporwave, Plata, Fuego, Océano, Sakura, Carbón y Ártico.
-- **👻 Modo fantasma**: el reproductor queda encima de todo, semitransparente, y el mouse lo atraviesa para que no estorbe mientras trabajas.
-  - Mantén **Ctrl** o **Alt** para poder tocarlo.
-  - **Ctrl+Alt+F** lo activa y **Ctrl+W** lo desactiva.
-- **Mini reproductor** de una línea, acoplado junto a la barra de tareas.
-- **Botones ⏮ ▶ ⏭ en la miniatura** de la barra de tareas, y el avance de la canción en el icono.
-- **Teclas multimedia** del teclado.
-- **Ecualizador de 10 bandas** con ajustes listos.
-- **Listas de reproducción** guardables.
-- **Descarga a MP3** con carátula y datos de la canción.
-- **Instalador .exe** con accesos directos y opción de **iniciar con Windows**. No pide permisos de administrador.
+| Archivo | Para qué |
+|---|---|
+| 👉 [**RetroAmp-1.2-Instalador.zip**](https://github.com/ElarCastro/RetroAmp/releases/download/v1.2/RetroAmp-1.2-Instalador.zip) | Instalador con accesos directos. Actualiza RetroAmp 1.1 sin perder tus listas. |
+| [RetroAmp-1.2-portable.zip](https://github.com/ElarCastro/RetroAmp/releases/download/v1.2/RetroAmp-1.2-portable.zip) | Sin instalar: descomprime y abre `RetroAmp.exe`. Sirve en una USB. |
+| [SHA256SUMS.txt](https://github.com/ElarCastro/RetroAmp/releases/download/v1.2/SHA256SUMS.txt) | Firmas para comprobar que la descarga está completa y no fue alterada. |
 
-## 🆕 Novedades de la versión 1.1
+Todas las versiones están en [Releases](https://github.com/ElarCastro/RetroAmp/releases).
 
-- El motor ahora es **un solo programa compilado** (`RetroAmp.exe`): ya no usa PowerShell ni compila código al abrirse. Arranca más rápido y evita las falsas alarmas de algunos antivirus.
-- Ya no descarga nada al iniciar. yt-dlp se actualiza **cuando tú lo pides**: clic derecho en el icono junto al reloj → *Actualizar el motor de YouTube (yt-dlp)*.
-- *Iniciar con Windows* viene **desactivado** en el instalador (lo activas si quieres; si ya lo tenías activado, se conserva).
-
-## 📥 Descargar e instalar
-
-### 👉 [Descargar RetroAmp (última versión, instalador de 54 MB)](https://github.com/ElarCastro/RetroAmp/releases/latest/download/RetroAmp-1.1-Instalador.zip)
-
-También puedes ver todas las versiones y sus novedades en [Releases](https://github.com/ElarCastro/RetroAmp/releases).
-
-1. Descarga el archivo `RetroAmp-1.1-Instalador.zip` con el enlace de arriba.
-2. Descomprímelo y ejecuta `RetroAmp-Setup.exe`.
-3. Si Windows muestra *"Windows protegió su PC"*, pulsa **Más información → Ejecutar de todas formas**. El instalador no tiene firma digital de pago.
+1. Descarga el instalador y descomprímelo.
+2. Ejecuta `RetroAmp-1.2-Setup.exe`. No pide permisos de administrador.
+3. Si Windows muestra *"Windows protegió su PC"*, pulsa **Más información → Ejecutar de todas formas**. El programa no tiene firma digital de pago.
 
 **Requisitos:** Windows 10 u 11, de 64 bits.
 
-## ⌨️ Atajos
+### Comprobar la descarga (opcional)
 
-| Tecla | Acción |
-|---|---|
-| Z / X / C / V / B | Anterior / Reproducir / Pausa / Detener / Siguiente |
-| ← → | Adelantar o retroceder 5 s |
-| ↑ ↓ | Volumen |
-| S / R | Aleatorio / Repetir |
-| L | Buscar canción |
-| Ctrl+Alt+F | Activar el modo fantasma (desde cualquier programa) |
-| Ctrl+W | Desactivar el modo fantasma |
+En PowerShell, dentro de la carpeta donde descargaste el archivo:
+
+```powershell
+Get-FileHash .\RetroAmp-1.2-Instalador.zip -Algorithm SHA256
+```
+
+El resultado debe coincidir con la línea correspondiente de `SHA256SUMS.txt`.
+
+## 🆕 Novedades de la versión 1.2
+
+- **Todo lo de WINAMP_Plus 2.17 dentro de RetroAmp**: video y películas con subtítulos, radios (buscador con miles de emisoras), Internet TV con guía de programación, YouTube en vivo, grabadora de TV y radio, consola DJ, 23 skins clásicos (.wsz), importar listas de Spotify, biblioteca y preferencias con árbol de secciones.
+- **Actualizaciones más seguras**: el programa busca versiones nuevas en este repositorio y **comprueba la firma SHA-256** antes de instalarlas. El cambio de archivos lo hace el propio `RetroAmp.exe`, **sin scripts `.cmd` ni PowerShell ocultos**.
+- **Menos falsas alarmas de antivirus**: ya no borra la marca "descargado de internet" de sus archivos, y el `.exe` lleva sus datos de autor y versión.
+- **Iniciar con Windows** abre RetroAmp minimizado, como en la 1.1.
+- Si lo instalas encima de RetroAmp 1.1, WINAMP_Plus o WinampYT, **conserva tus listas, ajustes y descargas**.
+
+## ✨ Funciones principales
+
+- **Ventana propia** del tamaño del reproductor, con ventanas sueltas e imanes (ecualizador, lista, biblioteca, visualización…).
+- **👻 Modo fantasma**: queda encima de todo, semitransparente, y el mouse lo atraviesa. Mantén **Ctrl** o **Alt** para tocarlo; **Ctrl+Alt+F** lo activa o desactiva desde cualquier programa.
+- **Mini reproductor**, botones ⏮ ▶ ⏭ en la miniatura de la barra de tareas y **teclas multimedia**.
+- **Ecualizador de 10 bandas**, temas y **skins clásicos** con vista previa.
+- **Descargas a MP3 y MP4** con carátula y nombre "Artista - Canción".
+- **Todo lo tuyo en la carpeta `media`** (música, videos, listas, grabaciones y ajustes), para respaldarlo o pasarlo a otra PC.
+
+El manual completo con imágenes viene en `ManualUsuario.pdf`, y dentro del programa con el botón **?** (o **F1**).
 
 ## 🛠️ Cómo está hecho
 
-- **Interfaz:** HTML/CSS/JS (`RetroAmp.html`).
-- **Motor:** C# compilado en `RetroAmp.exe` (`Program.cs` + `Server.cs`). Sirve la interfaz solo en `127.0.0.1:8765` y usa [yt-dlp](https://github.com/yt-dlp/yt-dlp) + [Deno](https://deno.com) para obtener el audio, y [ffmpeg](https://ffmpeg.org) para los MP3 (se descarga de su página oficial la primera vez que guardas un MP3).
-- **Ventana:** WinForms + WebView2 (`Host.cs`), dentro del mismo ejecutable.
+- **Interfaz:** HTML/CSS/JS (`RetroAmp.html`), mostrada con Microsoft WebView2.
+- **Motor:** C# compilado en `RetroAmp.exe`. Atiende la interfaz solo en `127.0.0.1`, protegido con una clave aleatoria por sesión.
+- **Herramientas:** [yt-dlp](https://github.com/yt-dlp/yt-dlp) + [Deno](https://deno.com) para YouTube, [FFmpeg](https://ffmpeg.org) para MP3/MP4 y grabaciones, [hls.js](https://github.com/video-dev/hls.js) para Internet TV.
 - **Instalador:** NSIS (`instalador/RetroAmp.nsi`).
 
 ### Compilar
 
-1. Copia `yt-dlp.exe` y `deno.exe` en la carpeta `bin\`.
-2. Ejecuta `compilar.bat` (usa el compilador de C# que ya trae Windows). Genera `instalador\app\`.
-3. Con [NSIS 3](https://nsis.sourceforge.io): `makensis instalador\RetroAmp.nsi` → `RetroAmp-Setup.exe`.
+1. Copia `yt-dlp.exe`, `deno.exe`, `ffmpeg.exe` y `ffprobe.exe` en la carpeta `bin\`.
+2. Ejecuta `compilar.bat` (usa el compilador de C# que ya trae Windows). Genera `build\RetroAmp` (la versión portable).
+3. Instalador: con [NSIS 3](https://nsis.sourceforge.io), `makensis instalador\RetroAmp.nsi`.
+
+### Publicar una versión nueva
+
+Para que el aviso de actualización de RetroAmp la encuentre, el Release debe tener:
+
+- Una etiqueta con el número de versión, por ejemplo `v1.3`, y la misma versión en `AssemblyVersion` (`Program.cs`).
+- `RetroAmp-X.Y-portable.zip` (completo) y, recomendado, `RetroAmp-X.Y-actualizacion.zip` (solo el programa, sin `datos\bin`).
+- `SHA256SUMS.txt` con la firma de cada archivo (`sha256sum *.zip > SHA256SUMS.txt`). **Sin este archivo, RetroAmp no instala la actualización.**
 
 ## 🙌 Créditos
 
-- Basado en un proyecto que descargué (antes llamado *WinampYT*):
-- Mejorado y empaquetado con la ayuda de **Claude (Anthropic)**: nuevo nombre, instalador, modo fantasma, diseño Cromo, temas, inicio con Windows y, en la 1.1, el motor compilado en C#.
-- yt-dlp, Deno, ffmpeg y WebView2 pertenecen a sus respectivos autores.
+- Basado en *WinampYT* / *WINAMP_Plus*, un proyecto que descargué y fui mejorando.
+- Mejorado y empaquetado con la ayuda de **Claude (Anthropic)**.
+- yt-dlp, Deno, FFmpeg, hls.js (Apache 2.0), WebView2 y la fuente VT323 (OFL) pertenecen a sus respectivos autores. Los skins clásicos son de sus autores originales.
 
 ## ⚠️ Aviso
 
-Proyecto personal y sin fines de lucro. **No está afiliado a Winamp** (marca de sus respectivos dueños) **ni a YouTube/Google**; "inspirado en Winamp" solo describe su estilo visual. Úsalo respetando los términos de servicio de YouTube y los derechos de autor de la música.
+Proyecto personal y sin fines de lucro. **No está afiliado a Winamp** (marca de sus respectivos dueños) **ni a YouTube/Google ni a Spotify**; "inspirado en Winamp" solo describe su estilo visual. Úsalo respetando los términos de servicio de YouTube y los derechos de autor de la música.

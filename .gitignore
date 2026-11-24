@@ -1,16 +1,12 @@
-# Se descargan solos o van en el instalador (no subir: son muy pesados)
+# Herramientas pesadas: van en el portable y en el instalador (no subir al repositorio)
 bin/yt-dlp.exe
 bin/deno.exe
 bin/ffmpeg.exe
 bin/ffprobe.exe
-# Datos de cada usuario
-cache/
-perfil/
-playlists/
-estado.json
-registro.txt
-ventana.txt
-# Compilados
-*.exe
-!RetroAmp.exe
+# Compilados y paquetes
+build/
 instalador/app/
+*.exe
+*.zip
+manual/manual.html
+manual/ManualUsuario.pdf

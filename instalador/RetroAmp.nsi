@@ -1,45 +1,48 @@
-; Instalador de RetroAmp (NSIS 3)
+; Instalador de RetroAmp 1.2 (NSIS 3)
+; Compilar:  makensis instalador\RetroAmp.nsi   (con la carpeta lista en instalador\app\RetroAmp)
 Unicode true
 SetCompressor /SOLID lzma
 SetCompressorDictSize 64
 RequestExecutionLevel user
 ManifestDPIAware true
 
-!define APP      "RetroAmp"
-!define VERSION  "1.1.0"
+!define APP       "RetroAmp"
+!define VERSION   "1.2"
+!define VERSION4  "1.2.0.0"
+!define SRC       "app\RetroAmp"
 !define UNINSTKEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\RetroAmp"
-!define RUNKEY   "Software\Microsoft\Windows\CurrentVersion\Run"
+!define RUNKEY    "Software\Microsoft\Windows\CurrentVersion\Run"
 
 Name "${APP}"
 Caption "Instalar ${APP} ${VERSION}"
-OutFile "RetroAmp-Setup.exe"
+OutFile "RetroAmp-${VERSION}-Setup.exe"
 InstallDir "$LOCALAPPDATA\Programs\RetroAmp"
 InstallDirRegKey HKCU "Software\RetroAmp" "InstallDir"
 BrandingText "RetroAmp ${VERSION}"
 
-VIProductVersion "1.1.0.0"
+VIProductVersion "${VERSION4}"
 VIAddVersionKey /LANG=1034 "ProductName" "RetroAmp"
 VIAddVersionKey /LANG=1034 "FileDescription" "Instalador de RetroAmp"
-VIAddVersionKey /LANG=1034 "FileVersion" "${VERSION}"
+VIAddVersionKey /LANG=1034 "FileVersion" "${VERSION4}"
 VIAddVersionKey /LANG=1034 "ProductVersion" "${VERSION}"
-VIAddVersionKey /LANG=1034 "LegalCopyright" "RetroAmp"
+VIAddVersionKey /LANG=1034 "LegalCopyright" "Elar Castro"
 VIAddVersionKey /LANG=1034 "CompanyName" "Elar Castro"
 VIAddVersionKey /LANG=1034 "Comments" "github.com/ElarCastro/RetroAmp"
 
 !include "MUI2.nsh"
 !include "FileFunc.nsh"
 
-!define MUI_ICON   "app\RetroAmp.ico"
-!define MUI_UNICON "app\RetroAmp.ico"
+!define MUI_ICON   "${SRC}\datos\RetroAmp.ico"
+!define MUI_UNICON "${SRC}\datos\RetroAmp.ico"
 !define MUI_ABORTWARNING
 !define MUI_COMPONENTSPAGE_SMALLDESC
 
 !define MUI_WELCOMEPAGE_TITLE "Bienvenido a RetroAmp ${VERSION}"
-!define MUI_WELCOMEPAGE_TEXT "Reproductor retro inspirado en el Winamp clásico, solo audio, con música de YouTube.$\r$\n$\r$\nVersión 1.1: motor compilado, más rápido y sin PowerShell.$\r$\n$\r$\nIncluye: ventana propia ajustada al reproductor, modo fantasma, mini reproductor junto a la barra de tareas, botones en la miniatura de la barra de tareas, ecualizador de 10 bandas, 12 temas (diseño Cromo nuevo) y descarga a MP3.$\r$\n$\r$\nSe instala solo para tu usuario (no pide permisos de administrador). Si RetroAmp (o la versión anterior WinampYT) está abierto, se cerrará; tus listas y ajustes se conservan.$\r$\n$\r$\nPulsa Siguiente para continuar."
+!define MUI_WELCOMEPAGE_TEXT "Reproductor retro de música, videos y películas: YouTube, la música de tu PC, radios, Internet TV, consola DJ, skins clásicos y más.$\r$\n$\r$\nSe instala solo para tu usuario (no pide permisos de administrador). Si RetroAmp (o una versión anterior: RetroAmp 1.1, WINAMP_Plus o WinampYT) está abierto, se cerrará; tus listas y ajustes se conservan.$\r$\n$\r$\nPulsa Siguiente para continuar."
 !define MUI_FINISHPAGE_RUN "$INSTDIR\RetroAmp.exe"
 !define MUI_FINISHPAGE_RUN_TEXT "Abrir RetroAmp ahora"
-!define MUI_FINISHPAGE_SHOWREADME "$INSTDIR\LEEME.txt"
-!define MUI_FINISHPAGE_SHOWREADME_TEXT "Ver el LEEME (instrucciones y atajos)"
+!define MUI_FINISHPAGE_SHOWREADME "$INSTDIR\ManualUsuario.pdf"
+!define MUI_FINISHPAGE_SHOWREADME_TEXT "Ver el manual de usuario (PDF)"
 !define MUI_FINISHPAGE_SHOWREADME_NOTCHECKED
 
 !insertmacro MUI_PAGE_WELCOME
@@ -53,10 +56,10 @@ VIAddVersionKey /LANG=1034 "Comments" "github.com/ElarCastro/RetroAmp"
 
 !insertmacro MUI_LANGUAGE "Spanish"
 
-; Cierra RetroAmp si está abierto (con su propia opción --salir; sin PowerShell)
+; Cierra RetroAmp si está abierto (con su propia opción /salir)
 !macro StopApp
   IfFileExists "$INSTDIR\RetroAmp.exe" 0 +3
-    ExecWait '"$INSTDIR\RetroAmp.exe" --salir'
+    ExecWait '"$INSTDIR\RetroAmp.exe" /salir'
     Sleep 2500
 !macroend
 
@@ -65,67 +68,63 @@ Section "RetroAmp (programa)" SecMain
   SetShellVarContext current
   !insertmacro StopApp
 
-  SetOutPath "$INSTDIR"
-  SetOverwrite on
-  ; Archivos de la versión 1.0 que ya no se usan
+  ; Archivos de versiones anteriores que ya no se usan (los datos del usuario se acomodan solos al abrir)
   Delete "$INSTDIR\servidor.ps1"
   Delete "$INSTDIR\host.cs"
-  File "app\RetroAmp.exe"
-  File "app\RetroAmp.exe.config"
-  File "app\RetroAmp.ico"
-  File "app\RetroAmp.html"
-  File "app\LEEME.txt"
-
-  SetOutPath "$INSTDIR\bin"
-  File "app\bin\deno.exe"
-  ; yt-dlp puede actualizarse desde el menú: no pisar una versión más nueva ya instalada
-  SetOverwrite ifnewer
-  File "app\bin\yt-dlp.exe"
-  SetOverwrite on
-  SetOutPath "$INSTDIR\bin\webview2"
-  File /r "app\bin\webview2\*.*"
-
-
-  ; ---- Pasar datos desde la versión anterior (WinampYT) ----
-  StrCpy $1 "$LOCALAPPDATA\Programs\WinampYT"
-  StrCmp $INSTDIR $1 no_old
-  IfFileExists "$1\*.*" 0 no_old
-    IfFileExists "$1\WinampYT.exe" 0 +2
-      ExecWait '"$1\WinampYT.exe" --salir'
-    Sleep 1500
-    CreateDirectory "$INSTDIR\playlists"
-    IfFileExists "$INSTDIR\estado.json" +2 0
-      CopyFiles /SILENT "$1\estado.json" "$INSTDIR"
-    CopyFiles /SILENT "$1\playlists\*.*" "$INSTDIR\playlists"
-    CreateDirectory "$INSTDIR\cache"
-    CopyFiles /SILENT "$1\cache\*.*" "$INSTDIR\cache"
-    IfFileExists "$INSTDIR\ventana.txt" +2 0
-      CopyFiles /SILENT "$1\ventana.txt" "$INSTDIR"
-    ; quitar la versión anterior (sus listas quedan copiadas aquí)
-    Delete "$DESKTOP\WinampYT.lnk"
-    RMDir /r "$SMPROGRAMS\WinampYT"
-    DeleteRegValue HKCU "${RUNKEY}" "WinampYT"
-    DeleteRegKey HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\WinampYT"
-    DeleteRegKey HKCU "Software\WinampYT"
-    RMDir /r "$1"
-  no_old:
-  ; Restos de la versión portable que ya no se usan
+  Delete "$INSTDIR\RetroAmp.exe.config"
+  Delete "$INSTDIR\RetroAmp.html"
   Delete "$INSTDIR\Iniciar-RetroAmp.bat"
   Delete "$INSTDIR\Detener-RetroAmp.bat"
 
+  SetOverwrite on
+  SetOutPath "$INSTDIR"
+  File "${SRC}\RetroAmp.exe"
+  File "${SRC}\LEEME.txt"
+  File "${SRC}\ManualUsuario.pdf"
+
+  SetOutPath "$INSTDIR\datos"
+  File "${SRC}\datos\RetroAmp.html"
+  File "${SRC}\datos\RetroAmp.ico"
+  File "${SRC}\datos\Detener-RetroAmp.bat"
+  SetOutPath "$INSTDIR\datos\fonts"
+  File /r "${SRC}\datos\fonts\*.*"
+  SetOutPath "$INSTDIR\datos\lib"
+  File /r "${SRC}\datos\lib\*.*"
+  SetOutPath "$INSTDIR\datos\skins"
+  File /r "${SRC}\datos\skins\*.*"
+
+  ; La versión 1.1 tenía bin junto al .exe: si ya existe, RetroAmp lo pasa a datos\bin al abrirse.
+  SetOutPath "$INSTDIR\datos\bin"
+  File "${SRC}\datos\bin\deno.exe"
+  File "${SRC}\datos\bin\ffmpeg.exe"
+  File "${SRC}\datos\bin\ffprobe.exe"
+  ; yt-dlp se actualiza desde el programa: no pisar una versión más nueva ya instalada
+  SetOverwrite ifnewer
+  File "${SRC}\datos\bin\yt-dlp.exe"
+  SetOverwrite on
+  SetOutPath "$INSTDIR\datos\bin\webview2"
+  File /r "${SRC}\datos\bin\webview2\*.*"
+
+  CreateDirectory "$INSTDIR\media\musica"
+  CreateDirectory "$INSTDIR\media\video"
+  CreateDirectory "$INSTDIR\media\playlists"
+
   SetOutPath "$INSTDIR"
   CreateDirectory "$SMPROGRAMS\RetroAmp"
-  CreateShortcut "$SMPROGRAMS\RetroAmp\RetroAmp.lnk" "$INSTDIR\RetroAmp.exe" "" "$INSTDIR\RetroAmp.ico" 0 SW_SHOWNORMAL "" "Reproductor de música de YouTube"
-  CreateShortcut "$SMPROGRAMS\RetroAmp\Cerrar RetroAmp.lnk" "$INSTDIR\RetroAmp.exe" "--salir" "$INSTDIR\RetroAmp.ico" 0
-  CreateShortcut "$SMPROGRAMS\RetroAmp\LEEME.lnk" "$INSTDIR\LEEME.txt"
+  CreateShortcut "$SMPROGRAMS\RetroAmp\RetroAmp.lnk" "$INSTDIR\RetroAmp.exe" "" "$INSTDIR\datos\RetroAmp.ico" 0 SW_SHOWNORMAL "" "Reproductor retro de música y video"
+  CreateShortcut "$SMPROGRAMS\RetroAmp\Cerrar RetroAmp.lnk" "$INSTDIR\RetroAmp.exe" "/salir" "$INSTDIR\datos\RetroAmp.ico" 0
+  CreateShortcut "$SMPROGRAMS\RetroAmp\Manual de usuario.lnk" "$INSTDIR\ManualUsuario.pdf"
+  CreateShortcut "$SMPROGRAMS\RetroAmp\Mis archivos (media).lnk" "$INSTDIR\media"
   CreateShortcut "$SMPROGRAMS\RetroAmp\Desinstalar RetroAmp.lnk" "$INSTDIR\Desinstalar.exe"
+  Delete "$SMPROGRAMS\RetroAmp\LEEME.lnk"
 
   WriteUninstaller "$INSTDIR\Desinstalar.exe"
   WriteRegStr HKCU "Software\RetroAmp" "InstallDir" "$INSTDIR"
   WriteRegStr HKCU "${UNINSTKEY}" "DisplayName" "RetroAmp"
   WriteRegStr HKCU "${UNINSTKEY}" "DisplayVersion" "${VERSION}"
-  WriteRegStr HKCU "${UNINSTKEY}" "Publisher" "RetroAmp"
-  WriteRegStr HKCU "${UNINSTKEY}" "DisplayIcon" "$INSTDIR\RetroAmp.ico"
+  WriteRegStr HKCU "${UNINSTKEY}" "Publisher" "Elar Castro"
+  WriteRegStr HKCU "${UNINSTKEY}" "URLInfoAbout" "https://github.com/ElarCastro/RetroAmp"
+  WriteRegStr HKCU "${UNINSTKEY}" "DisplayIcon" "$INSTDIR\RetroAmp.exe"
   WriteRegStr HKCU "${UNINSTKEY}" "InstallLocation" "$INSTDIR"
   WriteRegStr HKCU "${UNINSTKEY}" "UninstallString" '"$INSTDIR\Desinstalar.exe"'
   WriteRegStr HKCU "${UNINSTKEY}" "QuietUninstallString" '"$INSTDIR\Desinstalar.exe" /S'
@@ -138,10 +137,10 @@ SectionEnd
 
 Section "Acceso directo en el escritorio" SecDesk
   SetShellVarContext current
-  CreateShortcut "$DESKTOP\RetroAmp.lnk" "$INSTDIR\RetroAmp.exe" "" "$INSTDIR\RetroAmp.ico" 0 SW_SHOWNORMAL "" "Reproductor de música de YouTube"
+  CreateShortcut "$DESKTOP\RetroAmp.lnk" "$INSTDIR\RetroAmp.exe" "" "$INSTDIR\datos\RetroAmp.ico" 0 SW_SHOWNORMAL "" "Reproductor retro de música y video"
 SectionEnd
 
-; Desmarcado por defecto: lo elige el usuario (también se cambia luego en OPC > INICIO)
+; Desmarcado por defecto: lo elige el usuario
 Section /o "Iniciar con Windows" SecAuto
   WriteRegStr HKCU "${RUNKEY}" "RetroAmp" '"$INSTDIR\RetroAmp.exe" --inicio'
 SectionEnd
@@ -154,9 +153,9 @@ Section "-inicio automático existente"
 SectionEnd
 
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
-  !insertmacro MUI_DESCRIPTION_TEXT ${SecMain} "El reproductor y los programas que necesita (yt-dlp, Deno y WebView2). Incluye accesos en el Menú Inicio."
+  !insertmacro MUI_DESCRIPTION_TEXT ${SecMain} "El reproductor y lo que necesita (yt-dlp, Deno, FFmpeg y WebView2), con accesos en el Menú Inicio."
   !insertmacro MUI_DESCRIPTION_TEXT ${SecDesk} "Crea el icono de RetroAmp en el escritorio."
-  !insertmacro MUI_DESCRIPTION_TEXT ${SecAuto} "Abre RetroAmp minimizado al encender Windows. Se puede cambiar luego en OPC > INICIO."
+  !insertmacro MUI_DESCRIPTION_TEXT ${SecAuto} "Abre RetroAmp minimizado al encender Windows."
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 ; ---------------- Desinstalar ----------------
@@ -171,23 +170,14 @@ Section "Uninstall"
   DeleteRegKey HKCU "Software\RetroAmp"
 
   Delete "$INSTDIR\RetroAmp.exe"
-  Delete "$INSTDIR\RetroAmp.exe.config"
-  Delete "$INSTDIR\RetroAmp.ico"
-  Delete "$INSTDIR\RetroAmp.html"
-  Delete "$INSTDIR\servidor.ps1"
-  Delete "$INSTDIR\host.cs"
   Delete "$INSTDIR\LEEME.txt"
-  Delete "$INSTDIR\registro.txt"
-  Delete "$INSTDIR\ventana.txt"
-  RMDir /r "$INSTDIR\bin"
-  RMDir /r "$INSTDIR\cache"
-  RMDir /r "$INSTDIR\perfil"
+  Delete "$INSTDIR\ManualUsuario.pdf"
+  RMDir /r "$INSTDIR\datos"
 
   IfSilent keep
-  MessageBox MB_YESNO|MB_ICONQUESTION|MB_DEFBUTTON2 "¿Borrar también tus listas guardadas y ajustes de RetroAmp?$\r$\n$\r$\n(Los MP3 de la carpeta Música\RetroAmp no se tocan.)" IDYES wipe IDNO keep
+  MessageBox MB_YESNO|MB_ICONQUESTION|MB_DEFBUTTON2 "¿Borrar también la carpeta media (tus listas, ajustes, MP3, videos y grabaciones)?$\r$\n$\r$\nSi eliges No, se queda en:$\r$\n$INSTDIR\media" IDYES wipe IDNO keep
   wipe:
-    RMDir /r "$INSTDIR\playlists"
-    Delete "$INSTDIR\estado.json"
+    RMDir /r "$INSTDIR\media"
   keep:
   Delete "$INSTDIR\Desinstalar.exe"
   RMDir "$INSTDIR"
