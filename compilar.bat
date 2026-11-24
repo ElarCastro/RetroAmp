@@ -27,6 +27,7 @@ copy /y LEEME.txt "%OUT%\" >nul
 if exist manual\ManualUsuario.pdf copy /y manual\ManualUsuario.pdf "%OUT%\" >nul
 copy /y RetroAmp.html "%OUT%\datos\" >nul
 copy /y RetroAmp.ico "%OUT%\datos\" >nul
+copy /y RetroAmp.ico "%OUT%\" >nul
 copy /y Detener-RetroAmp.bat "%OUT%\datos\" >nul
 copy /y VT323-Regular.ttf "%OUT%\datos\fonts\" >nul
 copy /y VT323-LICENCIA-OFL.txt "%OUT%\datos\fonts\" >nul

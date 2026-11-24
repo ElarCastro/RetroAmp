@@ -15,9 +15,9 @@ using System.Windows.Forms;
 [assembly: AssemblyCompany("Elar Castro")]
 [assembly: AssemblyCopyright("Elar Castro - github.com/ElarCastro/RetroAmp")]
 [assembly: AssemblyTrademark("")]
-[assembly: AssemblyVersion("1.2.0.0")]
-[assembly: AssemblyFileVersion("1.2.0.0")]
-[assembly: AssemblyInformationalVersion("1.2")]
+[assembly: AssemblyVersion("1.3.0.0")]
+[assembly: AssemblyFileVersion("1.3.0.0")]
+[assembly: AssemblyInformationalVersion("1.3")]
 
 namespace RetroAmp
 {
@@ -94,7 +94,9 @@ namespace RetroAmp
         // Desde 2.8 todo lo del programa vive en la subcarpeta "datos"; junto al .exe solo quedan LEEME.txt y Media.
         // Si la carpeta viene de una versión anterior, se acomoda sola la primera vez (no se pierde nada).
         static readonly string[] ProgramItems = { "bin", "fonts", "RetroAmp.html", "Detener-RetroAmp.bat", "WinampYT.html", "Detener-WinampYT.bat", "WinampYT.exe.config",
-                                                  "RetroAmp.exe.config", "RetroAmp.ico" };   // RetroAmp 1.0/1.1 tenía todo junto al .exe
+                                                  "RetroAmp.exe.config" };   // RetroAmp 1.0/1.1 tenía todo junto al .exe
+        // RetroAmp.ico NO se mueve ni se borra: los accesos directos (y la barra de tareas) de la 1.1 lo usan
+        // junto al .exe, y los del instalador 1.2 en datos\. Si se borra, Windows muestra una hoja en blanco.
         static readonly string[] DataItems = { "cache", "perfil", "playlists", "estado.json", "biblioteca.json", "ventana.txt", "ventanas.txt",
                                                "spotify.txt", "spotify-youtube.txt", "registro.txt" };
         static void Ordenar(string root)
@@ -121,7 +123,7 @@ namespace RetroAmp
             try { me = Path.GetFileName(Assembly.GetEntryAssembly().Location); } catch { }
             string[] olds = { "WinampYT.exe", "WinampYT.exe.config", "datos\\WinampYT.html", "datos\\Detener-WinampYT.bat",
                               "WINAMP_Plus.exe", "WINAMP_Plus.exe.config", "datos\\WINAMP_Plus.html", "datos\\Detener-WINAMP_Plus.bat",
-                              "datos\\RetroAmp.exe.config", "datos\\RetroAmp.ico" };
+                              "datos\\RetroAmp.exe.config" };
             if (!File.Exists(Path.Combine(root, "datos\\RetroAmp.html"))) return;
             foreach (string n in olds)
             {
@@ -363,13 +365,14 @@ namespace RetroAmp
             try { SetProcessDpiAwarenessContext(new IntPtr(-4)); }
             catch { try { SetProcessDPIAware(); } catch { } }
             try { Application.EnableVisualStyles(); } catch { }
-            // 1.2: el paquete "_actualizacion.zip" es solo para el actualizador interno (no trae datos\bin).
+            // 1.3: el paquete "_actualizacion.zip" es solo para el actualizador interno (no trae datos\bin).
             // Si alguien lo abre directo, se avisa en vez de abrir el reproductor a medias en el navegador.
-            if (!Directory.Exists(Path.Combine(root, "datos\\bin\\webview2")) && Environment.GetEnvironmentVariable("RETROAMP_NAVEGADOR") == null)
+            if (!Directory.Exists(Path.Combine(root, "datos\\bin\\webview2")) && !Directory.Exists(Path.Combine(root, "bin\\webview2"))   // bin\ suelto: versiones 1.0/1.1
+                && Environment.GetEnvironmentVariable("RETROAMP_NAVEGADOR") == null)
             {
                 MessageBox.Show("A esta copia de RetroAmp le falta la carpeta datos\\bin (la ventana del programa y sus herramientas).\n\n" +
                     "Seguramente abriste el paquete «actualizacion», que solo usa el actualizador interno.\n\n" +
-                    "Instala RetroAmp con «RetroAmp-1.2-Instalador.zip» o usa «RetroAmp-1.2-portable.zip», de github.com/ElarCastro/RetroAmp/releases",
+                    "Instala RetroAmp con el Instalador o usa la versión portable (los archivos «Instalador.zip» o «portable.zip») de github.com/ElarCastro/RetroAmp/releases",
                     "RetroAmp", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return 1;
             }

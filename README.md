@@ -8,14 +8,14 @@ Reproductor **retro, inspirado en el Winamp clásico**, para Windows: música, v
 
 | Archivo | Para qué |
 |---|---|
-| 👉 [**RetroAmp-1.2-Instalador.zip**](https://github.com/ElarCastro/RetroAmp/releases/download/v1.2/RetroAmp-1.2-Instalador.zip) | Instalador con accesos directos. Actualiza RetroAmp 1.1 sin perder tus listas. |
-| [RetroAmp-1.2-portable.zip](https://github.com/ElarCastro/RetroAmp/releases/download/v1.2/RetroAmp-1.2-portable.zip) | Sin instalar: descomprime y abre `RetroAmp.exe`. Sirve en una USB. |
-| [SHA256SUMS.txt](https://github.com/ElarCastro/RetroAmp/releases/download/v1.2/SHA256SUMS.txt) | Firmas para comprobar que la descarga está completa y no fue alterada. |
+| 👉 [**RetroAmp-1.3-Instalador.zip**](https://github.com/ElarCastro/RetroAmp/releases/download/v1.3/RetroAmp-1.3-Instalador.zip) | Instalador con accesos directos. Actualiza RetroAmp 1.1 o 1.2 sin perder tus listas. |
+| [RetroAmp-1.3-portable.zip](https://github.com/ElarCastro/RetroAmp/releases/download/v1.3/RetroAmp-1.3-portable.zip) | Sin instalar: descomprime y abre `RetroAmp.exe`. Sirve en una USB. |
+| [SHA256SUMS.txt](https://github.com/ElarCastro/RetroAmp/releases/download/v1.3/SHA256SUMS.txt) | Firmas para comprobar que la descarga está completa y no fue alterada. |
 
 Todas las versiones están en [Releases](https://github.com/ElarCastro/RetroAmp/releases).
 
 1. Descarga el instalador y descomprímelo.
-2. Ejecuta `RetroAmp-1.2-Setup.exe`. No pide permisos de administrador.
+2. Ejecuta `RetroAmp-1.3-Setup.exe`. No pide permisos de administrador.
 3. Si Windows muestra *"Windows protegió su PC"*, pulsa **Más información → Ejecutar de todas formas**. El programa no tiene firma digital de pago.
 
 **Requisitos:** Windows 10 u 11, de 64 bits.
@@ -25,15 +25,21 @@ Todas las versiones están en [Releases](https://github.com/ElarCastro/RetroAmp/
 En PowerShell, dentro de la carpeta donde descargaste el archivo:
 
 ```powershell
-Get-FileHash .\RetroAmp-1.2-Instalador.zip -Algorithm SHA256
+Get-FileHash .\RetroAmp-1.3-Instalador.zip -Algorithm SHA256
 ```
 
 El resultado debe coincidir con la línea correspondiente de `SHA256SUMS.txt`.
 
-## 🆕 Novedades de la versión 1.2
+## 🆕 Novedades de la versión 1.3
+
+- **Solo YouTube**: RetroAmp reproduce videos, música y transmisiones en vivo de YouTube, además de tu música de la PC. Se quitaron los canales de TV por internet (IPTV), las radios por internet y las páginas de TV en vivo. Si tenías alguno en tus listas, se quita solo al abrir.
+- Si se abre por error el paquete `actualizacion` (que solo usa el actualizador interno), RetroAmp avisa en vez de abrirse a medias en el navegador.
+- **Ícono arreglado**: la 1.2 borraba su propio ícono al abrirse y los accesos directos (y el fijado en la barra de tareas) se veían como una hoja en blanco.
+- Si tienes la 1.2, el aviso de versión nueva te ofrece **actualizar con un clic**.
+
+## Novedades de la versión 1.2
 
 - **Lo mejor de WINAMP_Plus 2.17 dentro de RetroAmp**: video y películas con subtítulos, YouTube en vivo (con imagen o solo audio) y su grabadora, consola DJ, 23 skins clásicos (.wsz), importar listas de Spotify, biblioteca y preferencias con árbol de secciones.
-- **Solo YouTube**: RetroAmp reproduce videos, música y transmisiones en vivo de YouTube, además de tu música de la PC. Se quitaron los canales de TV por internet (IPTV), las radios por internet y las páginas de TV en vivo.
 - **Actualizaciones más seguras**: el programa busca versiones nuevas en este repositorio y **comprueba la firma SHA-256** antes de instalarlas. El cambio de archivos lo hace el propio `RetroAmp.exe`, **sin scripts `.cmd` ni PowerShell ocultos**.
 - **Menos falsas alarmas de antivirus**: ya no borra la marca "descargado de internet" de sus archivos, y el `.exe` lleva sus datos de autor y versión.
 - **Iniciar con Windows** abre RetroAmp minimizado, como en la 1.1.

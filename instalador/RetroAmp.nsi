@@ -1,4 +1,4 @@
-; Instalador de RetroAmp 1.2 (NSIS 3)
+; Instalador de RetroAmp 1.3 (NSIS 3)
 ; Compilar:  makensis instalador\RetroAmp.nsi   (con la carpeta lista en instalador\app\RetroAmp)
 Unicode true
 SetCompressor /SOLID lzma
@@ -7,8 +7,8 @@ RequestExecutionLevel user
 ManifestDPIAware true
 
 !define APP       "RetroAmp"
-!define VERSION   "1.2"
-!define VERSION4  "1.2.0.0"
+!define VERSION   "1.3"
+!define VERSION4  "1.3.0.0"
 !define SRC       "app\RetroAmp"
 !define UNINSTKEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\RetroAmp"
 !define RUNKEY    "Software\Microsoft\Windows\CurrentVersion\Run"
@@ -38,7 +38,7 @@ VIAddVersionKey /LANG=1034 "Comments" "github.com/ElarCastro/RetroAmp"
 !define MUI_COMPONENTSPAGE_SMALLDESC
 
 !define MUI_WELCOMEPAGE_TITLE "Bienvenido a RetroAmp ${VERSION}"
-!define MUI_WELCOMEPAGE_TEXT "Reproductor retro de música, videos y películas: YouTube, la música de tu PC, radios, Internet TV, consola DJ, skins clásicos y más.$\r$\n$\r$\nSe instala solo para tu usuario (no pide permisos de administrador). Si RetroAmp (o una versión anterior: RetroAmp 1.1, WINAMP_Plus o WinampYT) está abierto, se cerrará; tus listas y ajustes se conservan.$\r$\n$\r$\nPulsa Siguiente para continuar."
+!define MUI_WELCOMEPAGE_TEXT "Reproductor retro de música, videos y películas: YouTube, la música de tu PC, radios, Internet TV, consola DJ, skins clásicos y más.$\r$\n$\r$\nSe instala solo para tu usuario (no pide permisos de administrador). Si RetroAmp (o una versión anterior: RetroAmp 1.1/1.2, WINAMP_Plus o WinampYT) está abierto, se cerrará; tus listas y ajustes se conservan.$\r$\n$\r$\nPulsa Siguiente para continuar."
 !define MUI_FINISHPAGE_RUN "$INSTDIR\RetroAmp.exe"
 !define MUI_FINISHPAGE_RUN_TEXT "Abrir RetroAmp ahora"
 !define MUI_FINISHPAGE_SHOWREADME "$INSTDIR\ManualUsuario.pdf"
@@ -79,6 +79,7 @@ Section "RetroAmp (programa)" SecMain
   SetOverwrite on
   SetOutPath "$INSTDIR"
   File "${SRC}\RetroAmp.exe"
+  File "${SRC}\RetroAmp.ico"   ; para los accesos directos fijados en la barra con la versión 1.1
   File "${SRC}\LEEME.txt"
   File "${SRC}\ManualUsuario.pdf"
 
@@ -111,8 +112,8 @@ Section "RetroAmp (programa)" SecMain
 
   SetOutPath "$INSTDIR"
   CreateDirectory "$SMPROGRAMS\RetroAmp"
-  CreateShortcut "$SMPROGRAMS\RetroAmp\RetroAmp.lnk" "$INSTDIR\RetroAmp.exe" "" "$INSTDIR\datos\RetroAmp.ico" 0 SW_SHOWNORMAL "" "Reproductor retro de música y video"
-  CreateShortcut "$SMPROGRAMS\RetroAmp\Cerrar RetroAmp.lnk" "$INSTDIR\RetroAmp.exe" "/salir" "$INSTDIR\datos\RetroAmp.ico" 0
+  CreateShortcut "$SMPROGRAMS\RetroAmp\RetroAmp.lnk" "$INSTDIR\RetroAmp.exe" "" "$INSTDIR\RetroAmp.exe" 0 SW_SHOWNORMAL "" "Reproductor retro de música y video"
+  CreateShortcut "$SMPROGRAMS\RetroAmp\Cerrar RetroAmp.lnk" "$INSTDIR\RetroAmp.exe" "/salir" "$INSTDIR\RetroAmp.exe" 0
   CreateShortcut "$SMPROGRAMS\RetroAmp\Manual de usuario.lnk" "$INSTDIR\ManualUsuario.pdf"
   CreateShortcut "$SMPROGRAMS\RetroAmp\Mis archivos (media).lnk" "$INSTDIR\media"
   CreateShortcut "$SMPROGRAMS\RetroAmp\Desinstalar RetroAmp.lnk" "$INSTDIR\Desinstalar.exe"
@@ -137,7 +138,7 @@ SectionEnd
 
 Section "Acceso directo en el escritorio" SecDesk
   SetShellVarContext current
-  CreateShortcut "$DESKTOP\RetroAmp.lnk" "$INSTDIR\RetroAmp.exe" "" "$INSTDIR\datos\RetroAmp.ico" 0 SW_SHOWNORMAL "" "Reproductor retro de música y video"
+  CreateShortcut "$DESKTOP\RetroAmp.lnk" "$INSTDIR\RetroAmp.exe" "" "$INSTDIR\RetroAmp.exe" 0 SW_SHOWNORMAL "" "Reproductor retro de música y video"
 SectionEnd
 
 ; Desmarcado por defecto: lo elige el usuario
@@ -170,6 +171,7 @@ Section "Uninstall"
   DeleteRegKey HKCU "Software\RetroAmp"
 
   Delete "$INSTDIR\RetroAmp.exe"
+  Delete "$INSTDIR\RetroAmp.ico"
   Delete "$INSTDIR\LEEME.txt"
   Delete "$INSTDIR\ManualUsuario.pdf"
   RMDir /r "$INSTDIR\datos"
