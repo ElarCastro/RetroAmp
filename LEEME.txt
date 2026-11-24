@@ -5,7 +5,7 @@ Proyecto de Elar Castro: https://github.com/ElarCastro/RetroAmp
 ABRIR
 - Doble clic en  RetroAmp.exe  . No se instala nada y no abre ninguna consola.
 - Puedes llevar la carpeta completa en una USB o copiarla a otra PC.
-- Ya trae todo lo necesario (yt-dlp, Deno, ffmpeg y 23 skins clásicos):
+- Ya trae todo lo necesario (yt-dlp, Deno, ffmpeg y 4 skins clásicos):
   no descarga nada para empezar.
 - Para cerrarlo: botón ×, o clic derecho en el icono junto al reloj > Salir.
   También sirve datos\Detener-RetroAmp.bat (o "RetroAmp.exe /salir").
@@ -43,7 +43,7 @@ QUÉ HAY EN LA CARPETA
   datos\         el programa; no hace falta abrirla:
     cache\     audio escuchado
     bin\       yt-dlp, Deno, ffmpeg y WebView2   fonts\  lib\  perfil\
-    skins\     los 23 skins que trae el programa
+    skins\     los 4 skins que trae el programa
     registro.txt errores, para revisarlos
 Si copias esta versión encima de una anterior, al abrirla acomoda sola los
 archivos viejos dentro de "datos" (no se pierde nada).
@@ -127,6 +127,10 @@ NOVEDADES 1.3
 - Si abres por error el paquete "actualizacion" (que solo usa el
   actualizador interno), RetroAmp te avisa en vez de abrirse a medias en
   el navegador.
+- Skins más nítidos y sin marcas: se amplían a píxel exacto según la escala
+  de tu pantalla (antes se veían borrosos con Windows al 125 %). Vienen 4
+  skins sin la palabra WINAMP ni marcas de otros: Amstrad, Axonamp, DOSamp y
+  Black & White. Puedes seguir agregando cualquier skin .wsz.
 - Arreglado el ícono: la 1.2 borraba su propio ícono al abrirse y los
   accesos directos (y el fijado en la barra de tareas) se veían como una
   hoja en blanco.

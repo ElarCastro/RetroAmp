@@ -606,15 +606,18 @@
 
   /* ---------- Skins clásicos (.wsz) ---------- */
   #skWrap,#skEqWrap{display:none}
-  body.skinned:not(.shade) #skWrap{display:block;position:relative;width:550px;height:232px}
+  /* 1.3: --sk = cuánto se amplía el skin (275×116 px). Se elige para que cada píxel del skin caiga en píxeles
+     enteros de la pantalla (con la escala de Windows al 125 % o 175 %, el doble exacto se veía borroso). */
+  :root{--sk:2}
+  body.skinned:not(.shade) #skWrap{display:block;position:relative;width:calc(275px * var(--sk));height:calc(116px * var(--sk))}
   body.skinned:not(.shade) #main > :not(#skWrap){display:none !important}
   body.skinned:not(.shade) #main{padding:0;border:0;background:none;box-shadow:none}
-  body.skinned.skeq #skEqWrap{display:block;position:relative;width:550px;height:232px}
+  body.skinned.skeq #skEqWrap{display:block;position:relative;width:calc(275px * var(--sk));height:calc(116px * var(--sk))}
   body.skinned.skeq #eqWin > :not(#skEqWrap){display:none !important}
   body.skinned.skeq #eqWin{padding:0;border:0;background:none;box-shadow:none;height:auto !important}
-  body.skinned .col:has(> #main), body.skinned.skeq .col:has(> #eqWin){min-width:550px}
+  body.skinned .col:has(> #main), body.skinned.skeq .col:has(> #eqWin){min-width:calc(275px * var(--sk))}
   body.skinned.shade .col{min-width:0 !important}  /* mini reproductor: que quepa en 380 px */
-  .skwin{position:absolute;left:0;top:0;width:275px;height:116px;transform:scale(2);transform-origin:0 0;background-repeat:no-repeat;image-rendering:pixelated;user-select:none;overflow:hidden}
+  .skwin{position:absolute;left:0;top:0;width:275px;height:116px;transform:scale(var(--sk));transform-origin:0 0;background-repeat:no-repeat;image-rendering:pixelated;user-select:none;overflow:hidden}
   .skwin .sk,.skwin .skth,.skTime i{position:absolute;background-repeat:no-repeat;image-rendering:pixelated}
   .skwin .skth{pointer-events:none}
   .skwin canvas.sk{image-rendering:pixelated}
@@ -905,6 +908,7 @@
         <li><b>Solo YouTube</b>: RetroAmp reproduce videos, música y transmisiones <b>en vivo de YouTube</b>, además de tu música y tus videos de la PC. Se quitaron los canales de TV por internet (IPTV), las radios por internet y las páginas de TV en vivo; si tenías alguno en tus listas, se quita solo al abrir el programa.</li>
         <li>Si abres por error el paquete «actualizacion» (que solo usa el actualizador interno), RetroAmp te avisa en vez de abrirse a medias en el navegador.</li>
         <li><b>Arreglado el ícono</b>: la versión 1.2 borraba su propio ícono al abrirse y los accesos directos (y el fijado en la barra de tareas) se veían como una hoja en blanco. Ahora los accesos usan el ícono del propio RetroAmp.exe.</li>
+        <li><b>Skins más nítidos y sin marcas</b>: el skin se amplía a píxel exacto según la escala de tu pantalla (antes se veía borroso con Windows al 125 %). Vienen 4 skins sin la palabra WINAMP ni marcas de otros (Amstrad, Axonamp, DOSamp y Black &amp; White); puedes seguir agregando cualquier .wsz.</li>
         <li>Manual y ayuda actualizados, con capturas nuevas.</li>
       </ul>
       <p><b>De la versión 1.2:</b></p>
@@ -1096,7 +1100,7 @@
       <h3 id="hSkin">SKINS CLÁSICOS (.WSZ)</h3>
       <p>Además de los temas, RetroAmp puede usar <b>skins clásicos de Winamp 2</b> (archivos <b>.wsz</b>). El programa ya trae una colección lista para elegir en <b>PREF › Apariencia</b>, y hay miles más gratis en internet, por ejemplo en <b><a href="https://skins.webamp.org/" class="xlink" data-ext title="Abrir en el navegador">skins.webamp.org</a></b>.</p>
       <ul>
-        <li><b>Agregar un skin</b>: descarga el archivo .wsz y arrástralo a la ventana de RetroAmp, o ve a <b>PREF › Apariencia › CARGAR…</b> y elígelo. Se guarda una copia en <b>media\perfil\skins</b> y se aplica de inmediato. Los 23 skins que trae el programa están en datos\skins y no se pueden borrar; los que agregas tú sí (BORRAR). También puedes copiar varios .wsz a esa carpeta y elegirlos después en la lista.</li>
+        <li><b>Agregar un skin</b>: descarga el archivo .wsz y arrástralo a la ventana de RetroAmp, o ve a <b>PREF › Apariencia › CARGAR…</b> y elígelo. Se guarda una copia en <b>media\perfil\skins</b> y se aplica de inmediato. Los 4 skins que trae el programa están en datos\skins y no se pueden borrar; los que agregas tú sí (BORRAR). También puedes copiar varios .wsz a esa carpeta y elegirlos después en la lista.</li>
         <li><b>Qué cambia</b>: el reproductor y el ecualizador se dibujan con las imágenes del skin, igual que en el Winamp clásico (al doble de tamaño para que se vean bien). La lista y las demás ventanas toman los colores y la barra de título del skin.</li>
         <li><b>Cómo se usa el reproductor con skin</b>: los botones de abajo son anterior, reproducir, pausa, detener, siguiente y ⏏ (buscar / añadir). Las barras pequeñas son el volumen y el balance; la barra larga es la posición (arrástrala). <b>EQ</b> y <b>PL</b> abren el ecualizador y la lista. Los botones de aleatorio y repetir están a la derecha. Clic en el tiempo cambia entre transcurrido y restante. La rueda del mouse sube o baja el volumen.</li>
         <li><b>Letras O A I D V</b> (a la izquierda del tiempo): cada una abre o cierra una ventana y se ve hundida mientras esa ventana está abierta. <b>O</b> Preferencias, <b>A</b> Ayuda, <b>I</b> Biblioteca, <b>D</b> Consola DJ y <b>V</b> Visualización. Si pasas el mouse encima te dice qué hace cada una.</li>
@@ -1113,7 +1117,7 @@
         <li>Copia la carpeta completa a una USB u otra PC y funciona igual, con tus listas, ajustes y descargas.</li>
         <li>Junto a <b>RetroAmp.exe</b> solo verás <b>LEEME.txt</b>, <b>ManualUsuario.pdf</b> (esta ayuda con imágenes, para leer o imprimir) y dos carpetas. Para respaldar todo o pasarlo a otra PC o a una versión nueva basta copiar <b>media</b>.</li>
         <li><b>media</b>, todo lo tuyo:<br><b>musica\</b> tus MP3 (descargas y los que copies) · <b>video\</b> tus videos y películas · <b>playlists\</b> tus listas guardadas · <b>grabaciones\</b> con <b>tv\</b> y <b>radio\</b> (lo que grabas con la GRABADORA) y <b>Consola DJ\</b> (tus mezclas) · <b>perfil\</b> tu lista actual, ajustes, biblioteca y posición de las ventanas, y dentro <b>skins\</b> (los skins que tú agregas) y <b>spotify\</b> (la conexión con Spotify).</li>
-        <li><b>datos</b>, lo del programa (no hace falta abrirla): <b>cache\</b> audio ya escuchado · <b>bin\</b> herramientas (yt-dlp, Deno, ffmpeg, WebView2) · <b>skins\</b> los 23 skins que trae el programa (no se borran) · <b>fonts\</b>, <b>lib\</b>, <b>perfil\</b> (lo interno de la ventana, no tus ajustes) y <b>registro.txt</b> (errores).</li>
+        <li><b>datos</b>, lo del programa (no hace falta abrirla): <b>cache\</b> audio ya escuchado · <b>bin\</b> herramientas (yt-dlp, Deno, ffmpeg, WebView2) · <b>skins\</b> los 4 skins que trae el programa (no se borran) · <b>fonts\</b>, <b>lib\</b>, <b>perfil\</b> (lo interno de la ventana, no tus ajustes) y <b>registro.txt</b> (errores).</li>
         <li><b>media\perfil\spotify</b> guarda tu conexión con Spotify: <b>no la compartas</b>. Si le pasas el programa a alguien, borra esa carpeta antes (o pulsa SALIR en PREF › Spotify).</li>
         <li>El programa ya trae todas las herramientas (yt-dlp, Deno y ffmpeg): no descarga nada para empezar. Si faltara alguna, la descarga sola la primera vez.</li>
       </ul>
@@ -5119,9 +5123,16 @@ mp3Busy = true; msg(`${video ? 'Video' : 'MP3'}: ${n} ${n > 1 ? 'descargas' : 'd
     }
 
     // ---------- Activar / quitar ----------
+    // Ampliación del skin a píxel exacto: con la pantalla al 125 % queda en 2,4 (3 píxeles reales por píxel del skin)
+    function skK() { const d = window.devicePixelRatio || 1; return Math.max(1, Math.round(2 * d)) / d; }
+    let skLastCss = '';
+    (function watchDpr() {   // al pasar la ventana a otro monitor (otra escala) se vuelve a calcular
+      try { matchMedia(`(resolution: ${window.devicePixelRatio || 1}dppx)`).addEventListener('change', () => { if (skLastCss) setCss(skLastCss); watchDpr(); }, { once: true }); } catch (e) {}
+    })();
     function setCss(s) {
       let st = document.getElementById('skinCss'); if (!st) { st = document.createElement('style'); st.id = 'skinCss'; document.head.appendChild(st); }
-      st.textContent = s;
+      skLastCss = s;
+      st.textContent = s ? `:root{--sk:${skK()}}\n` + s : s;
       Object.keys(FLOAT).forEach(id => { try { const d = FLOAT[id].document; d.head.querySelectorAll('style,link[rel=stylesheet]').forEach(x => x.remove()); copyStyles(d); } catch (e) {} });
     }
     async function use(ab, name) {
@@ -5175,6 +5186,7 @@ mp3Busy = true; msg(`${video ? 'Video' : 'MP3'}: ${n} ${n > 1 ? 'descargas' : 'd
       if (location.protocol === 'file:') return;
       await refreshList();
       if (S.skin && list.includes(S.skin)) load(S.skin, true);
+      else if (S.skin) { S.skin = ''; save(); }   // 1.3: ese skin ya no viene con el programa: se vuelve al tema
     }
     // ---------- Vista previa para Preferencias › Apariencia (sin cambiar el skin que usas) ----------
     const prevCache = {};

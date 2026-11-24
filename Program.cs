@@ -211,6 +211,12 @@ namespace RetroAmp
                 MoveOne(Path.Combine(p.Conf, n), Path.Combine(p.Conf, "spotify", n), log);
             // skins que agregó el usuario (los que no vienen con el programa) pasan a media\perfil\skins
             string sk = Path.Combine(p.Data, "skins");
+            // 1.3: primero se quitan los skins que el programa ya no trae (si no, pasarían a ser "del usuario")
+            foreach (string n in Server.RemovedSkins)
+            {
+                string f = Path.Combine(sk, n);
+                try { if (File.Exists(f)) { File.Delete(f); log.Append(n + " (ya no viene con el programa) "); } } catch { }
+            }
             if (Directory.Exists(sk))
                 foreach (string f in Directory.GetFiles(sk))
                     if (Array.IndexOf(Server.BundledSkins, Path.GetFileName(f)) < 0 && (f.EndsWith(".wsz", StringComparison.OrdinalIgnoreCase) || f.EndsWith(".zip", StringComparison.OrdinalIgnoreCase)))
