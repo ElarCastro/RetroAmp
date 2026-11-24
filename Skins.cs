@@ -1,5 +1,5 @@
 // RetroAmp - skins clásicos (.wsz).
-// Los 4 que trae el programa están en datos\skins; los que agrega el usuario se guardan en media\perfil\skins
+// Los que trae el programa están en datos\skins; los que agrega el usuario se guardan en media\perfil\skins
 // (así se respaldan con media). Los incluidos no se pueden borrar.
 using System;
 using System.Collections.Generic;
@@ -13,14 +13,25 @@ namespace RetroAmp
     {
         string SkinDir { get { return Path.Combine(P.Data, "skins"); } }           // incluidos
         string UserSkinDir { get { return Path.Combine(P.Conf, "skins"); } }       // los del usuario
-        // Los skins que vienen con el programa. 1.3: solo los que no muestran la palabra WINAMP ni marcas o
-        // personajes de otros (Nintendo, Sony, Napster, Windows, Internet Explorer, series de TV).
-        public static readonly string[] BundledSkins = { "Winamp_Amstrad_skullz.wsz", "Winamp_Axonamp.wsz", "Winamp_DOSamp.wsz", "Winamp_White_and_Black.wsz" };
-        // Los que traían las versiones anteriores y ya no: se borran de datos\skins al abrir (no son del usuario).
-        public static readonly string[] RemovedSkins = { "Winamp_AmpBoy.wsz", "Winamp_BaseOLD.wsz", "Winamp_Classified.wsz", "Winamp_Classified_v5.5.wsz",
-            "Winamp_Daria.wsz", "Winamp_Dexteramp_.wsz", "Winamp_FRYamp.wsz", "Winamp_Interamp.wsz", "Winamp_Napster1.wsz", "Winamp_Napster2.wsz",
-            "Winamp_Sony_R909blue.wsz", "Winamp_Sonyamp_CDX-MP3.wsz", "Winamp_SuperMario.wsz", "Winamp_TexasInstruments.wsz", "Winamp_Win98amp.wsz",
-            "Winamp_Windows9x.wsz", "Winamp_XPamp.wsz", "Winamp_XPampBlue.wsz", "Winamp_black.wsz" };
+        // Los skins que vienen con el programa. 1.3: se llaman RetroAmp_* y en sus imágenes dice RETROAMP (no WINAMP);
+        // se suma Bento Classified. Base 2.91 = el antiguo BaseOLD, Classified 3 y 5 = los Classified v5.5 de Winamp3 y Winamp5.
+        public static readonly string[] BundledSkins = { "RetroAmp_AmpBoy.wsz", "RetroAmp_Amstrad_skullz.wsz", "RetroAmp_Axonamp.wsz",
+            "RetroAmp_Base_2.91.wsz", "RetroAmp_Bento_Classified.wsz", "RetroAmp_Classified_3.wsz",
+            "RetroAmp_Classified_5.wsz", "RetroAmp_DOSamp.wsz", "RetroAmp_Daria.wsz",
+            "RetroAmp_Dexteramp_.wsz", "RetroAmp_FRYamp.wsz", "RetroAmp_Interamp.wsz",
+            "RetroAmp_Napster1.wsz", "RetroAmp_Napster2.wsz", "RetroAmp_Sony_R909blue.wsz",
+            "RetroAmp_Sonyamp_CDX-MP3.wsz", "RetroAmp_SuperMario.wsz", "RetroAmp_TexasInstruments.wsz",
+            "RetroAmp_White_and_Black.wsz", "RetroAmp_Win98amp.wsz", "RetroAmp_Windows9x.wsz",
+            "RetroAmp_XPamp.wsz", "RetroAmp_XPampBlue.wsz", "RetroAmp_black.wsz" };
+        // Los nombres de antes (Winamp_*): se borran de datos\\skins al abrir para que no queden repetidos ni pasen a "del usuario"
+        public static readonly string[] RemovedSkins = { "Winamp_AmpBoy.wsz", "Winamp_Amstrad_skullz.wsz", "Winamp_Axonamp.wsz",
+            "Winamp_BaseOLD.wsz", "Winamp_Classified.wsz", "Winamp_Classified_v5.5.wsz",
+            "Winamp_DOSamp.wsz", "Winamp_Daria.wsz", "Winamp_Dexteramp_.wsz",
+            "Winamp_FRYamp.wsz", "Winamp_Interamp.wsz", "Winamp_Napster1.wsz",
+            "Winamp_Napster2.wsz", "Winamp_Sony_R909blue.wsz", "Winamp_Sonyamp_CDX-MP3.wsz",
+            "Winamp_SuperMario.wsz", "Winamp_TexasInstruments.wsz", "Winamp_White_and_Black.wsz",
+            "Winamp_Win98amp.wsz", "Winamp_Windows9x.wsz", "Winamp_XPamp.wsz",
+            "Winamp_XPampBlue.wsz", "Winamp_black.wsz" };
 
         static string SkinName(string n)
         {
