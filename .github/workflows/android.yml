@@ -42,6 +42,13 @@ jobs:
           cd android
           set -o pipefail
           gradle --no-daemon assembleRelease 2>&1 | tee ../compilacion.txt
+      - name: Probar YouTube (sin Android)
+        if: always()
+        continue-on-error: true
+        run: |
+          cd android
+          timeout 300 gradle --no-daemon -q :probe:run > ../prueba-youtube.txt 2>&1 || true
+          cat ../prueba-youtube.txt
       - name: Publicar en el lanzamiento de pruebas
         if: always()
         env:
@@ -52,6 +59,7 @@ jobs:
           [ -f compilacion.txt ] || echo "sin registro" > compilacion.txt
           gh release view android-pruebas >/dev/null 2>&1 || gh release create android-pruebas --prerelease --latest=false --target main \
             --title "RetroAmp Android (pruebas)" --notes "APK de pruebas de RetroAmp para Android. Se actualiza solo con cada cambio."
-          gh release upload android-pruebas estado.txt compilacion.txt --clobber
+          [ -f prueba-youtube.txt ] || echo 'sin prueba' > prueba-youtube.txt
+          gh release upload android-pruebas estado.txt compilacion.txt prueba-youtube.txt --clobber
           APK=android/app/build/outputs/apk/release/app-release.apk
           if [ -f "$APK" ]; then cp "$APK" "RetroAmp-${V}-android.apk"; gh release upload android-pruebas "RetroAmp-${V}-android.apk" --clobber; fi

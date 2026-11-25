@@ -1,0 +1,17 @@
+// Prueba en la computadora de GitHub (sin Android): ¿YouTube responde con el mismo código que usa el APK?
+plugins { id 'application' }
+java { toolchain { languageVersion = JavaLanguageVersion.of(17) } }
+sourceSets {
+    main {
+        java {
+            srcDir '../app/src/main/java'
+            include 'com/elarcastro/retroamp/YT.java', 'com/elarcastro/retroamp/Net.java', 'com/elarcastro/retroamp/NpDownloader.java', 'probe/**'
+        }
+        java.srcDir 'src/main/java'
+    }
+}
+dependencies {
+    implementation 'com.github.teamnewpipe:NewPipeExtractor:v0.26.5'
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+}
+application { mainClass = 'probe.Probe' }
