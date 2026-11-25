@@ -93,7 +93,7 @@ public final class Proxy {
     static Response part(String url, long a, long z) throws IOException {
         boolean web = false; String ua = DESKTOP_UA;
         try {
-            web = YoutubeParsingHelper.isWebStreamingUrl(url) || YoutubeParsingHelper.isTvHtml5StreamingUrl(url);
+            web = YoutubeParsingHelper.isWebStreamingUrl(url);
             if (YoutubeParsingHelper.isAndroidStreamingUrl(url)) ua = YoutubeParsingHelper.getAndroidUserAgent(null);
             else if (YoutubeParsingHelper.isIosStreamingUrl(url)) ua = YoutubeParsingHelper.getIosUserAgent(null);
         } catch (Throwable ignored) { }
