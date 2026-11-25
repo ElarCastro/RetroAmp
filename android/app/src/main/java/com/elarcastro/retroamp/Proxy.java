@@ -14,6 +14,8 @@ import java.util.regex.Pattern;
 import javax.net.ssl.SSLSocketFactory;
 
 import okhttp3.Request;
+import okhttp3.RequestBody;
+import org.schabi.newpipe.extractor.services.youtube.YoutubeParsingHelper;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
@@ -48,7 +50,9 @@ public final class Proxy {
         try {
             String cr = first.header("Content-Range", "");
             Matcher cm = CRANGE.matcher(cr == null ? "" : cr);
+            long clen = clen(src.url);
             if (cm.find()) total = Long.parseLong(cm.group(3));
+            else if (clen > 0) total = clen;
             else { ResponseBody b0 = first.body(); total = b0 == null ? -1 : b0.contentLength(); if (total >= 0) total += start; }
             if (total < 0) throw new IOException("YouTube no dijo el tamaño");
             if (end < 0 || end >= total) end = total - 1;
@@ -76,12 +80,36 @@ public final class Proxy {
         } finally { first.close(); }
     }
 
+    static final String DESKTOP_UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
+    static final java.util.concurrent.atomic.AtomicLong RN = new java.util.concurrent.atomic.AtomicLong();
+
+    /** Tamaño total del archivo (viene en la dirección de YouTube como "clen"). */
+    static long clen(String url) {
+        Matcher m = Pattern.compile("[?&]clen=(\\d+)").matcher(url);
+        return m.find() ? Long.parseLong(m.group(1)) : -1;
+    }
+
+    /** Un pedazo [a, z] del archivo de YouTube, pedido igual que lo hace NewPipe para cada tipo de dirección. */
     static Response part(String url, long a, long z) throws IOException {
-        Request rq = new Request.Builder().url(url)
-                .header("User-Agent", Net.UA.replace(" RetroAmp", ""))
-                .header("Range", "bytes=" + a + "-" + z)
-                .build();
-        Response resp = Net.STREAM.newCall(rq).execute();
+        boolean web = false; String ua = DESKTOP_UA;
+        try {
+            web = YoutubeParsingHelper.isWebStreamingUrl(url) || YoutubeParsingHelper.isTvHtml5StreamingUrl(url);
+            if (YoutubeParsingHelper.isAndroidStreamingUrl(url)) ua = YoutubeParsingHelper.getAndroidUserAgent(null);
+            else if (YoutubeParsingHelper.isIosStreamingUrl(url)) ua = YoutubeParsingHelper.getIosUserAgent(null);
+        } catch (Throwable ignored) { }
+        try { return send(url, a, z, web, ua); }
+        catch (Net.HttpError e) {
+            if (e.code != 403) throw e;
+            return send(url, a, z, !web, ua);   // se prueba la otra forma de pedirlo
+        }
+    }
+    static Response send(String url, long a, long z, boolean post, String ua) throws IOException {
+        Request.Builder b = new Request.Builder().header("User-Agent", ua).header("Accept", "*/*");
+        if (post) {
+            b.url(url + "&range=" + a + "-" + z + "&rn=" + RN.incrementAndGet())
+             .post(RequestBody.create(new byte[]{0x78, 0}, null));
+        } else b.url(url).header("Range", "bytes=" + a + "-" + z);
+        Response resp = Net.STREAM.newCall(b.build()).execute();
         if (resp.code() != 200 && resp.code() != 206) { int c = resp.code(); resp.close(); throw new Net.HttpError(c); }
         return resp;
     }

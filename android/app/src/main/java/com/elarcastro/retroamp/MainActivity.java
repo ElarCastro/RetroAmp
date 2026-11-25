@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowInsets;
 import android.view.WindowManager;
 import android.webkit.ConsoleMessage;
 import android.webkit.CookieManager;
@@ -58,13 +59,25 @@ public class MainActivity extends Activity {
         Window w = getWindow();
         w.setStatusBarColor(Color.BLACK);
         w.setNavigationBarColor(Color.BLACK);
-        try { startEngine(this); } catch (Exception e) { Log.w("Motor: " + e); }
+        // el motor (servidor local) se abre en otro hilo: Android no deja usar la red en el hilo de la pantalla
+        Thread th = new Thread(() -> { try { startEngine(this); } catch (Exception e) { Log.w("Motor: " + e); } });
+        th.start();
+        try { th.join(5000); } catch (InterruptedException ignored) { }
 
         root = new FrameLayout(this);
         root.setBackgroundColor(Color.BLACK);
         web = new WebView(this);
         root.addView(web, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         setContentView(root);
+        // Android 15 dibuja la app detrás de las barras del sistema: se deja el espacio de la barra de arriba,
+        // la de abajo y el teclado
+        if (Build.VERSION.SDK_INT >= 30) {
+            root.setOnApplyWindowInsetsListener((v, ins) -> {
+                android.graphics.Insets i = ins.getInsets(WindowInsets.Type.systemBars() | WindowInsets.Type.ime() | WindowInsets.Type.displayCutout());
+                v.setPadding(i.left, i.top, i.right, i.bottom);
+                return WindowInsets.CONSUMED;
+            });
+        } else root.setFitsSystemWindows(true);
 
         WebSettings ws = web.getSettings();
         ws.setJavaScriptEnabled(true);

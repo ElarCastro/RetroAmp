@@ -101,7 +101,7 @@ public final class Dl {
                 try {
                     if (total < 0) {
                         Matcher m = Proxy.CRANGE.matcher(String.valueOf(r.header("Content-Range", "")));
-                        total = m.find() ? Long.parseLong(m.group(3)) : -2;
+                        total = m.find() ? Long.parseLong(m.group(3)) : Proxy.clen(src.url) > 0 ? Proxy.clen(src.url) : -2;
                     }
                     ResponseBody b = r.body();
                     if (b == null) break;
