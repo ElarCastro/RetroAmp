@@ -241,7 +241,7 @@ public final class YT {
     /** Explica el error de YouTube en palabras simples. */
     public static String why(Throwable e) {
         String n = e.getClass().getSimpleName(), m = e.getMessage() == null ? "" : e.getMessage();
-        if (n.contains("ReCaptcha")) return "YouTube pidió verificar que no eres un robot; espera unos minutos";
+        if (n.contains("ReCaptcha") || n.contains("NotBot")) return "YouTube pidió verificar que no eres un robot (pasa con algunas redes); espera unos minutos o prueba con otra conexión (datos o wifi)";
         if (n.contains("AgeRestricted")) return "el video tiene restricción de edad";
         if (n.contains("GeographicRestriction")) return "el video no está disponible en tu país";
         if (n.contains("Private")) return "el video es privado";
