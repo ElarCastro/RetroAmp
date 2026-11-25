@@ -1,0 +1,7 @@
+app/build/
+.gradle/
+build/
+local.properties
+app/src/main/assets/www/RetroAmp.html
+app/src/main/assets/www/lib/
+app/src/main/assets/www/fonts/
